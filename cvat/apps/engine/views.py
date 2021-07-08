@@ -13,12 +13,14 @@ from datetime import datetime
 from distutils.util import strtobool
 from tempfile import mkstemp, TemporaryDirectory
 
+from cvat.apps.authentication.models import User
+
 import cv2
 from django.db.models.query import Prefetch
 import django_rq
 from django.apps import apps
 from django.conf import settings
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404

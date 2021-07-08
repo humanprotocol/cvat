@@ -60,8 +60,9 @@
             firstName,
             lastName,
             email,
-            password1,
-            password2,
+            walletAddress,
+            hashedEmail,
+            signedEmail,
             userConfirmations,
         ) => {
             const user = await serverProxy.server.register(
@@ -69,8 +70,9 @@
                 firstName,
                 lastName,
                 email,
-                password1,
-                password2,
+                walletAddress,
+                hashedEmail,
+                signedEmail,
                 userConfirmations,
             );
 

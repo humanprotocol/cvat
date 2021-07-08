@@ -48,16 +48,8 @@ export default async function connectWallet(email: string) {
     const accounts = await web3.eth.getAccounts();
 
     const [address] = accounts;
+    const hashedEmail = hashPersonalMessage(email);
+    const signedEmail = await web3.eth.sign(hashedEmail, address);
 
-    console.log(address);
-
-    const hash = hashPersonalMessage(email);
-
-    console.log(hash);
-
-    const hashedEmail = await web3.eth.sign(hash, address);
-
-    console.log(hashedEmail);
-
-    return { address, hashedEmail };
+    return { address, hashedEmail, signedEmail };
 }

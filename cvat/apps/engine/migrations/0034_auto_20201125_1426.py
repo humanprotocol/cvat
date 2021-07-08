@@ -6,7 +6,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 def create_profile(apps, schema_editor):
-	User = apps.get_model('auth', 'User')
+	User = apps.get_model('authentication', 'User')
 	Profile = apps.get_model('engine', 'Profile')
 	for user in User.objects.all():
 		profile = Profile()

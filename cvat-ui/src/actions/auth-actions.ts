@@ -81,15 +81,16 @@ export const registerAsync = (
     dispatch(authActions.register());
 
     try {
-        const { address, hashedEmail } = await connectWallet(email);
+        const { address, hashedEmail, signedEmail } = await connectWallet(email);
 
         const user = await cvat.server.register(
             username,
             firstName,
             lastName,
             email,
-            hashedEmail,
             address,
+            hashedEmail,
+            signedEmail,
             confirmations,
         );
 

@@ -195,7 +195,16 @@
                 return response.data;
             }
 
-            async function register(username, firstName, lastName, email, password1, password2, confirmations) {
+            async function register(
+                username,
+                firstName,
+                lastName,
+                email,
+                walletAddress,
+                hashedEmail,
+                signedEmail,
+                confirmations,
+            ) {
                 let response = null;
                 try {
                     const data = JSON.stringify({
@@ -203,8 +212,9 @@
                         first_name: firstName,
                         last_name: lastName,
                         email,
-                        password1,
-                        password2,
+                        wallet_address: walletAddress,
+                        hashed_email: hashedEmail,
+                        signed_email: signedEmail,
                         confirmations,
                     });
                     response = await Axios.post(`${config.backendAPI}/auth/register`, data, {
