@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -20,8 +20,6 @@ interface DispatchToProps {
         firstName: string,
         lastName: string,
         email: string,
-        password1: string,
-        password2: string,
         userAgreement: UserConfirmation[],
     ) => void;
 }

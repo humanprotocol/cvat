@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@myetherwallet/mewconnect-web-client": "^2.1.23-beta.9",
     "@types/lodash": "^4.14.170",
     "@types/platform": "^1.3.3",
     "@types/react": "^16.14.8",
@@ -62,12 +63,15 @@
     "@types/redux-logger": "^3.0.8",
     "@types/resize-observer-browser": "^0.1.5",
     "antd": "^4.13.0",
+    "authereum": "^0.1.14",
+    "axios": "^0.21.1",
     "copy-to-clipboard": "^3.3.1",
     "cvat-canvas": "file:../cvat-canvas",
     "cvat-canvas3d": "file:../cvat-canvas3d",
     "cvat-core": "file:../cvat-core",
     "dotenv-webpack": "^1.8.0",
     "error-stack-parser": "^2.0.6",
+    "ethereumjs-util": "^7.0.10",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mousetrap": "^1.6.5",
@@ -88,6 +92,8 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "web3": "^1.4.0",
+    "web3modal": "^1.9.3"
   }
 }

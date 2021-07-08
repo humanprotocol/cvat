@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -22,8 +22,6 @@ interface RegisterPageComponentProps {
         firstName: string,
         lastName: string,
         email: string,
-        password1: string,
-        password2: string,
         confirmations: UserConfirmation[],
     ) => void;
 }
@@ -53,8 +51,6 @@ function RegisterPageComponent(props: RegisterPageComponentProps & RouteComponen
                                 registerData.firstName,
                                 registerData.lastName,
                                 registerData.email,
-                                registerData.password1,
-                                registerData.password2,
                                 registerData.confirmations,
                             );
                         }}

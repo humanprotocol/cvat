@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -6,6 +6,7 @@ import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 import { UserConfirmation } from 'components/register-page/register-form';
 import getCore from 'cvat-core-wrapper';
 import isReachable from 'utils/url-checker';
+import connectWallet from 'utils/web3wallets';
 
 const cvat = getCore();
 
@@ -75,20 +76,20 @@ export const registerAsync = (
     firstName: string,
     lastName: string,
     email: string,
-    password1: string,
-    password2: string,
     confirmations: UserConfirmation[],
 ): ThunkAction => async (dispatch) => {
     dispatch(authActions.register());
 
     try {
+        const { address, hashedEmail } = await connectWallet(email);
+
         const user = await cvat.server.register(
             username,
             firstName,
             lastName,
             email,
-            password1,
-            password2,
+            hashedEmail,
+            address,
             confirmations,
         );
 
