@@ -158,13 +158,21 @@ function build() {
              * @method login
              * @async
              * @memberof module:API.cvat.server
-             * @param {string} username An username of an account
-             * @param {string} password A password of an account
+             * @param {string} email An email of an account
+             * @param {string} walletAddress A wallet address of an account
+             * @param {string} hashedEmail A hashed email of an account
+             * @param {string} signedEmail The signed email password of an account
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async login(username, password) {
-                const result = await PluginRegistry.apiWrapper(cvat.server.login, username, password);
+            async login(email, walletAddress, hashedEmail, signedEmail) {
+                const result = await PluginRegistry.apiWrapper(
+                    cvat.server.login,
+                    email,
+                    walletAddress,
+                    hashedEmail,
+                    signedEmail,
+                );
                 return result;
             },
             /**

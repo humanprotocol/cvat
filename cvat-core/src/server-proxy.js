@@ -230,10 +230,12 @@
                 return response.data;
             }
 
-            async function login(username, password) {
+            async function login(email, walletAddress, hashedEmail, signedEmail) {
                 const authenticationData = [
-                    `${encodeURIComponent('username')}=${encodeURIComponent(username)}`,
-                    `${encodeURIComponent('password')}=${encodeURIComponent(password)}`,
+                    `${encodeURIComponent('email')}=${encodeURIComponent(email)}`,
+                    `${encodeURIComponent('wallet_address')}=${encodeURIComponent(walletAddress)}`,
+                    `${encodeURIComponent('hashed_email')}=${encodeURIComponent(hashedEmail)}`,
+                    `${encodeURIComponent('signed_email')}=${encodeURIComponent(signedEmail)}`,
                 ]
                     .join('&')
                     .replace(/%20/g, '+');

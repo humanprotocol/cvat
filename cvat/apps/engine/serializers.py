@@ -7,7 +7,9 @@ import re
 import shutil
 
 from rest_framework import serializers, exceptions
-from django.contrib.auth.models import User, Group
+#from django.contrib.auth.models import User, Group
+from cvat.apps.authentication.models import User
+from django.contrib.auth.models import Group
 
 from cvat.apps.dataset_manager.formats.utils import get_label_color
 from cvat.apps.engine import models

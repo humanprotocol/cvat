@@ -100,11 +100,14 @@ export const registerAsync = (
     }
 };
 
-export const loginAsync = (username: string, password: string): ThunkAction => async (dispatch) => {
+export const loginAsync = (email: string): ThunkAction => async (dispatch) => {
     dispatch(authActions.login());
 
     try {
-        await cvat.server.login(username, password);
+        const { address, hashedEmail, signedEmail } = await connectWallet(email);
+
+        await cvat.server.login(email, address, hashedEmail, signedEmail);
+
         const users = await cvat.users.get({ self: true });
 
         dispatch(authActions.loginSuccess(users[0]));

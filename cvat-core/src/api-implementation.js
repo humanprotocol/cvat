@@ -79,8 +79,8 @@
             return new User(user);
         };
 
-        cvat.server.login.implementation = async (username, password) => {
-            await serverProxy.server.login(username, password);
+        cvat.server.login.implementation = async (email, walletAddress, hashedEmail, signedEmail) => {
+            await serverProxy.server.login(email, walletAddress, hashedEmail, signedEmail);
         };
 
         cvat.server.logout.implementation = async () => {

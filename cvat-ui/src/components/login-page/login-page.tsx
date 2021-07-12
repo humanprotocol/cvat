@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -15,7 +15,7 @@ import CookieDrawer from './cookie-policy-drawer';
 interface LoginPageComponentProps {
     fetching: boolean;
     renderResetPassword: boolean;
-    onLogin: (username: string, password: string) => void;
+    onLogin: (email: string) => void;
 }
 
 function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps): JSX.Element {
@@ -37,7 +37,7 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
                     <LoginForm
                         fetching={fetching}
                         onSubmit={(loginData: LoginData): void => {
-                            onLogin(loginData.username, loginData.password);
+                            onLogin(loginData.email);
                         }}
                     />
                     <Row justify='start' align='top'>

@@ -22,7 +22,7 @@ class TokenAuthentication(_TokenAuthentication):
         auth = super().authenticate(request)
         session = getattr(request, 'session')
         if auth is not None and session.session_key is None:
-            login(request, auth[0], 'django.contrib.auth.backends.ModelBackend')
+            login(request, auth[0], 'cvat.apps.authentication.authentication_backends.ModelBackend')
         return auth
 
 def register_signals():
