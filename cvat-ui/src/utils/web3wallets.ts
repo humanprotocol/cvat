@@ -5,6 +5,7 @@ import * as ethUtil from 'ethereumjs-util';
 
 import Authereum from 'authereum';
 import MewConnect from '@myetherwallet/mewconnect-web-client';
+import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import Web3 from 'web3';
 import Web3Modal from 'web3modal';
@@ -25,6 +26,12 @@ const providerOptions = {
     },
     authereum: {
         package: Authereum, // required
+    },
+    walletconnect: {
+        package: WalletConnectProvider, // required
+        options: {
+            infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
+        },
     },
 };
 

@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
         'cvat.apps.authentication.auth.TokenAuthentication',
         'cvat.apps.authentication.auth.SignatureAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication'
+        'cvat.apps.authentication.auth.BasicAuthentication'
     ],
     'DEFAULT_VERSIONING_CLASS':
         # Don't try to use URLPathVersioning. It will give you /api/{version}
@@ -236,7 +236,8 @@ LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
     'rules.permissions.ObjectPermissionBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    'cvat.apps.authentication.backends.ModelBackend',
+    #'django.contrib.auth.backends.ModelBackend',
     #'allauth.account.auth_backends.AuthenticationBackend',
     'cvat.apps.authentication.authentication_backends.AuthenticationBackend'
 ]

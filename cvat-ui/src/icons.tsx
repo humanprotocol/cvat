@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import SVGCVATLogo from './assets/cvat-logo.svg';
+import SVGCVATLogo from './assets/cvat-human-logo.svg';
 import SVGAccountIcon from './assets/account-icon.svg';
 import SVGEmptyTasksIcon from './assets/empty-tasks-icon.svg';
 import SVGMenuIcon from './assets/menu-icon.svg';

@@ -19,7 +19,6 @@ import django_rq
 from django.apps import apps
 from django.conf import settings
 from cvat.apps.authentication.models import User
-#from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
@@ -31,7 +30,7 @@ from drf_yasg import openapi
 from drf_yasg.inspectors import CoreAPICompatInspector, NotHandled, FieldInspector
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, serializers, status, viewsets
-from rest_framework.decorators import action
+from rest_framework.decorators import action, permission_classes
 from rest_framework.exceptions import APIException, NotFound, ValidationError
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.renderers import JSONRenderer

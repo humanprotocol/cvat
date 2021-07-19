@@ -7,6 +7,8 @@ from allauth.account.auth_backends import app_settings
 from allauth.account.utils import filter_users_by_email, filter_users_by_username
 from django.contrib.auth import get_user_model
 
+UserModel = get_user_model()
+
 class AuthenticationBackend(_AuthenticationBackend):
 
     def _authenticate_by_email(self, **credentials):
@@ -27,8 +29,6 @@ class AuthenticationBackend(_AuthenticationBackend):
         username = credentials.get("username")
         wallet_address = credentials.get("wallet_address")
 
-        User = get_user_model()
-
         if not username_field or username is None or wallet_address is None:
             return None
         try:
@@ -36,7 +36,7 @@ class AuthenticationBackend(_AuthenticationBackend):
             user = filter_users_by_username(username).get()
             if self._check_wallet_address(user, wallet_address):
                 return user
-        except User.DoesNotExist:
+        except UserModel.DoesNotExist:
             return None
 
     def _check_wallet_address(self, user, wallet_address):
@@ -53,3 +53,10 @@ class AuthenticationBackend(_AuthenticationBackend):
             if not ret:
                 self._stash_user(user)
         return ret
+
+    def get_user(self, user_id):
+        try:
+            user = UserModel._default_manager.get(pk=user_id)
+        except UserModel.DoesNotExist:
+            return None
+        return user if self.user_can_authenticate(user) else None

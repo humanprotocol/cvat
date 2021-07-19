@@ -24,6 +24,9 @@ class RegisterSerializerEx(RegisterSerializer):
     password1 = None
     password2 = None
 
+    def authenticate(self, **kwargs):
+        return authenticate(self.context['request'], **kwargs)
+
     def validate_password1(self, password):
         pass
 

@@ -18,7 +18,7 @@ def setup_user_wallet_address(request, user):
 
     wallet_address = request.data.get('wallet_address')
 
-    assert not WalletToUser.objects.filter(wallet_address=wallet_address).exists()
+    #assert not WalletToUser.objects.filter(wallet_address=wallet_address).exists()
 
     walletToUser = WalletToUser(user=user, wallet_address=wallet_address)
     walletToUser.save()
