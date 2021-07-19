@@ -13,19 +13,18 @@ class User(AbstractUser):
    password = None
 
    def get_session_auth_hash(self):
-       return ''
-        # """
-        # Return an HMAC of the password field.
-        # """
-        # key_salt = "django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash"
-        # return salted_hmac(
-        #     key_salt,
-        #     self.email,
-        #     # RemovedInDjango40Warning: when the deprecation ends, replace
-        #     # with:
-        #     # algorithm='sha256',
-        #     algorithm=settings.DEFAULT_HASHING_ALGORITHM,
-        # ).hexdigest()
+        """
+        Return an HMAC of the password field.
+        """
+        key_salt = "django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash"
+        return salted_hmac(
+            key_salt,
+            self.email,
+            # RemovedInDjango40Warning: when the deprecation ends, replace
+            # with:
+            # algorithm='sha256',
+            algorithm=settings.DEFAULT_HASHING_ALGORITHM,
+        ).hexdigest()
 
 class WalletToUser(models.Model):
     user = models.ForeignKey(User, null=True, blank=True,

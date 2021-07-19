@@ -81,7 +81,7 @@ export const registerAsync = (
     dispatch(authActions.register());
 
     try {
-        const { address, hashedEmail, signedEmail } = await connectWallet(email);
+        const { address, signedEmail } = await connectWallet(email);
 
         const user = await cvat.server.register(
             username,
@@ -89,7 +89,6 @@ export const registerAsync = (
             lastName,
             email,
             address,
-            hashedEmail,
             signedEmail,
             confirmations,
         );
@@ -104,9 +103,9 @@ export const loginAsync = (email: string): ThunkAction => async (dispatch) => {
     dispatch(authActions.login());
 
     try {
-        const { address, hashedEmail, signedEmail } = await connectWallet(email);
+        const { address, signedEmail } = await connectWallet(email);
 
-        await cvat.server.login(email, address, hashedEmail, signedEmail);
+        await cvat.server.login(email, address, signedEmail);
 
         const users = await cvat.users.get({ self: true });
 
