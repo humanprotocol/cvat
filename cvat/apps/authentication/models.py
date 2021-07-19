@@ -13,8 +13,9 @@ class User(AbstractUser):
    password = None
 
    def get_session_auth_hash(self):
+       # TODO: rework this temporary solution
         """
-        Return an HMAC of the password field.
+        Return an HMAC of the email field.
         """
         key_salt = "django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash"
         return salted_hmac(

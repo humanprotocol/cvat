@@ -3,11 +3,11 @@
 # SPDX-License-Identifier: MIT
 
 from web3.auto import w3
-from eth_account.messages import defunct_hash_message
+from eth_account.messages import encode_defunct
 
 def validate_user_wallet_address(wallet_address, email, signed_email):
-    message_hash = defunct_hash_message(text=email)
-    signer = w3.eth.account.recoverHash(message_hash, signature=signed_email)
+    message_hash = encode_defunct(text=email)
+    signer = w3.eth.account.recover_message(message_hash, signature=signed_email)
 
     assert wallet_address == signer
 
