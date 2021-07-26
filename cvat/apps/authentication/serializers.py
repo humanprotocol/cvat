@@ -39,6 +39,7 @@ class RegisterSerializerEx(RegisterSerializer):
             'email': self.validated_data.get('email', ''),
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
+            'signed_email': self.validated_data.get('signed_email', '')
         }
 
     def save(self, request):
