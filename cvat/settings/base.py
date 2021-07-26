@@ -172,8 +172,6 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'authentication.User'
 
-ADAPTER = 'authentication.adapter.UserAdapter'
-
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'cvat.apps.restrictions.serializers.RestrictedRegisterSerializer',
 }
@@ -249,6 +247,8 @@ ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/auth/login'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_ADAPTER = 'cvat.apps.authentication.adapter.UserAdapter'
+
 
 #OLD_PASSWORD_FIELD_ENABLED = True
 
