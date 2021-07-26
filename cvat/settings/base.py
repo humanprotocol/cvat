@@ -234,8 +234,7 @@ LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
     'rules.permissions.ObjectPermissionBackend',
-    'cvat.apps.authentication.backends.ModelBackend',
-    #'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     #'allauth.account.auth_backends.AuthenticationBackend',
     'cvat.apps.authentication.authentication_backends.AuthenticationBackend'
 ]
