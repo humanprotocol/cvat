@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
         'cvat.apps.authentication.auth.TokenAuthentication',
         'cvat.apps.authentication.auth.SignatureAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'cvat.apps.authentication.auth.BasicAuthentication'
+        'rest_framework.authentication.BasicAuthentication'
     ],
     'DEFAULT_VERSIONING_CLASS':
         # Don't try to use URLPathVersioning. It will give you /api/{version}

@@ -16,14 +16,18 @@ class UserAdapter(DefaultAccountAdapter):
         last_name = data.get("last_name")
         email = data.get("email")
         username = data.get("username")
-        signed_email = data.get("signed_email")
-        user.set_hashed_signed_email(signed_email)
+        if "signed_email" in data:
+            user.set_hashed_signed_email(data["signed_email"])
         user_email(user, email)
         user_username(user, username)
         if first_name:
             user_field(user, "first_name", first_name)
         if last_name:
             user_field(user, "last_name", last_name)
+        if "password1" in data:
+            user.set_password(data["password1"])
+        else:
+            user.set_unusable_password()
 
         self.populate_username(request, user)
         if commit:

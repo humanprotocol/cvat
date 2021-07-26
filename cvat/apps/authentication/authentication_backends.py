@@ -7,6 +7,8 @@ from allauth.account.auth_backends import app_settings
 from allauth.account.utils import filter_users_by_email, filter_users_by_username
 from django.contrib.auth import get_user_model
 
+from cvat.apps.authentication.utils import validate_user_wallet_address
+
 UserModel = get_user_model()
 
 class AuthenticationBackend(_AuthenticationBackend):
@@ -19,6 +21,7 @@ class AuthenticationBackend(_AuthenticationBackend):
         # and use username as fallback
         email = credentials.get("email", credentials.get("username"))
         if email:
+            validate_user_wallet_address(credentials["wallet_address"], email, credentials["signed_email"])
             for user in filter_users_by_email(email):
                 if self._check_wallet_address(user, credentials["wallet_address"]):
                     return user

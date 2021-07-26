@@ -1,8 +1,6 @@
 # Copyright (C) 2018 Intel Corporation
 #
 # SPDX-License-Identifier: MIT
-import base64
-import binascii
 from django.conf import settings
 from django.db.models import Q
 import rules
@@ -12,9 +10,8 @@ from rest_framework.permissions import BasePermission
 from django.core import signing
 from rest_framework import authentication, exceptions
 from rest_framework.authentication import TokenAuthentication as _TokenAuthentication
-from rest_framework.authentication import BasicAuthentication as _BasicAuthentication
-from rest_framework.authentication import get_authorization_header, _, HTTP_HEADER_ENCODING
-from django.contrib.auth import login, authenticate, get_user_model
+
+from django.contrib.auth import login
 
 # Even with token authorization it is very important to have a valid session id
 # in cookies because in some cases we cannot use token authorization (e.g. when
@@ -72,52 +69,6 @@ class SignatureAuthentication(authentication.BaseAuthentication):
             raise exceptions.AuthenticationFailed('Invalid signature.')
         if not user.is_active:
             raise exceptions.AuthenticationFailed('User inactive or deleted.')
-
-        return (user, None)
-
-class BasicAuthentication(_BasicAuthentication):
-    def authenticate(self, request):
-        """
-        Returns a `User` if a correct username and wallet address have been supplied
-        using HTTP Basic authentication.  Otherwise returns `None`.
-        """
-        auth = get_authorization_header(request).split()
-
-        if not auth or auth[0].lower() != b'basic':
-            return None
-
-        if len(auth) == 1:
-            msg = _('Invalid basic header. No credentials provided.')
-            raise exceptions.AuthenticationFailed(msg)
-        elif len(auth) > 2:
-            msg = _('Invalid basic header. Credentials string should not contain spaces.')
-            raise exceptions.AuthenticationFailed(msg)
-
-        try:
-            auth_parts = base64.b64decode(auth[1]).decode(HTTP_HEADER_ENCODING).partition(':')
-        except (TypeError, UnicodeDecodeError, binascii.Error):
-            msg = _('Invalid basic header. Credentials not correctly base64 encoded.')
-            raise exceptions.AuthenticationFailed(msg)
-
-        userid, wallet_address = auth_parts[0], auth_parts[2]
-        return self.authenticate_credentials(userid, wallet_address, request)
-
-    def authenticate_credentials(self, userid, wallet_address, request=None):
-        """
-        Authenticate the userid and wallet address against username and wallet_address
-        with optional request for context.
-        """
-        credentials = {
-            get_user_model().USERNAME_FIELD: userid,
-            'wallet_address': wallet_address
-        }
-        user = authenticate(request=request, **credentials)
-
-        if user is None:
-            raise exceptions.AuthenticationFailed(_('Invalid username/password.'))
-
-        if not user.is_active:
-            raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
 
         return (user, None)
 
@@ -291,8 +242,7 @@ class ProjectDeletePermission(BasePermission):
 class TaskCreatePermission(BasePermission):
     # pylint: disable=no-self-use
     def has_permission(self, request, view):
-        return True
-        #return request.user.has_perm('engine.task.create')
+        return request.user.has_perm('engine.task.create')
 
 class TaskAccessPermission(BasePermission):
     # pylint: disable=no-self-use
@@ -338,8 +288,7 @@ class TaskGetQuerySetMixin(object):
 class TaskChangePermission(BasePermission):
     # pylint: disable=no-self-use
     def has_object_permission(self, request, view, obj):
-        return True
-        #return request.user.has_perm('engine.task.change', obj)
+        return request.user.has_perm('engine.task.change', obj)
 
 class TaskDeletePermission(BasePermission):
     # pylint: disable=no-self-use
@@ -349,14 +298,12 @@ class TaskDeletePermission(BasePermission):
 class JobAccessPermission(BasePermission):
     # pylint: disable=no-self-use
     def has_object_permission(self, request, view, obj):
-        return True
-        #return request.user.has_perm('engine.job.access', obj)
+        return request.user.has_perm('engine.job.access', obj)
 
 class JobChangePermission(BasePermission):
     # pylint: disable=no-self-use
     def has_object_permission(self, request, view, obj):
-        return True
-        #return request.user.has_perm('engine.job.change', obj)
+        return request.user.has_perm('engine.job.change', obj)
 
 class JobReviewPermission(BasePermission):
     # pylint: disable=no-self-use

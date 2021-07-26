@@ -67,17 +67,18 @@ class PasswordResetSerializerEx(PasswordResetSerializer):
 class LoginSerializer(_LoginSerializer):
     password = None
     wallet_address = CharField(required=True)
+    signed_email = CharField(required=True)
 
     def authenticate(self, **kwargs):
         return authenticate(self.context['request'], **kwargs)
 
-    def _validate_email(self, email, wallet_address):
+    def _validate_email(self, email, wallet_address, signed_email):
         user = None
 
-        if email and wallet_address:
-            user = self.authenticate(email=email, wallet_address=wallet_address)
+        if email and wallet_address and signed_email:
+            user = self.authenticate(email=email, wallet_address=wallet_address, signed_email=signed_email)
         else:
-            msg = _('Must include "email" and "wallet_address".')
+            msg = _('Must include "email" and "wallet_address" and "signed_email".')
             raise exceptions.ValidationError(msg)
 
         return user
@@ -109,6 +110,7 @@ class LoginSerializer(_LoginSerializer):
         username = attrs.get('username')
         email = attrs.get('email')
         wallet_address = attrs.get('wallet_address')
+        signed_email = attrs.get('signed_email')
 
         user = None
 
@@ -117,7 +119,7 @@ class LoginSerializer(_LoginSerializer):
 
             # Authentication through email
             if app_settings.AUTHENTICATION_METHOD == app_settings.AuthenticationMethod.EMAIL:
-                user = self._validate_email(email, wallet_address)
+                user = self._validate_email(email, wallet_address, signed_email)
 
             # Authentication through username
             elif app_settings.AUTHENTICATION_METHOD == app_settings.AuthenticationMethod.USERNAME:
