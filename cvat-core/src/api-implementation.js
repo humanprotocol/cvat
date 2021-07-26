@@ -61,7 +61,6 @@
             lastName,
             email,
             walletAddress,
-            hashedEmail,
             signedEmail,
             userConfirmations,
         ) => {
@@ -71,7 +70,6 @@
                 lastName,
                 email,
                 walletAddress,
-                hashedEmail,
                 signedEmail,
                 userConfirmations,
             );
@@ -79,8 +77,8 @@
             return new User(user);
         };
 
-        cvat.server.login.implementation = async (email, walletAddress, hashedEmail, signedEmail) => {
-            await serverProxy.server.login(email, walletAddress, hashedEmail, signedEmail);
+        cvat.server.login.implementation = async (email, walletAddress, signedEmail) => {
+            await serverProxy.server.login(email, walletAddress, signedEmail);
         };
 
         cvat.server.logout.implementation = async () => {

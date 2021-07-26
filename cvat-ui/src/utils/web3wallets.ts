@@ -1,21 +1,12 @@
 // Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
-import * as ethUtil from 'ethereumjs-util';
-
 import Authereum from 'authereum';
 import MewConnect from '@myetherwallet/mewconnect-web-client';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import Web3 from 'web3';
 import Web3Modal from 'web3modal';
-
-function hashPersonalMessage(msg: string): string {
-    const buffer = Buffer.from(msg);
-    const result = ethUtil.hashPersonalMessage(buffer);
-    const hash = ethUtil.bufferToHex(result);
-    return hash;
-}
 
 const providerOptions = {
     mewconnect: {
@@ -55,8 +46,7 @@ export default async function connectWallet(email: string) {
     const accounts = await web3.eth.getAccounts();
 
     const [address] = accounts;
-    const hashedEmail = hashPersonalMessage(email);
-    const signedEmail = await web3.eth.sign(hashedEmail, address);
+    const signedEmail = await web3.eth.personal.sign(email, address);
 
-    return { address, hashedEmail, signedEmail };
+    return { address, signedEmail };
 }

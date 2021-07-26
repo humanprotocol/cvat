@@ -195,16 +195,7 @@
                 return response.data;
             }
 
-            async function register(
-                username,
-                firstName,
-                lastName,
-                email,
-                walletAddress,
-                hashedEmail,
-                signedEmail,
-                confirmations,
-            ) {
+            async function register(username, firstName, lastName, email, walletAddress, signedEmail, confirmations) {
                 let response = null;
                 try {
                     const data = JSON.stringify({
@@ -213,7 +204,6 @@
                         last_name: lastName,
                         email,
                         wallet_address: walletAddress,
-                        hashed_email: hashedEmail,
                         signed_email: signedEmail,
                         confirmations,
                     });
@@ -230,11 +220,10 @@
                 return response.data;
             }
 
-            async function login(email, walletAddress, hashedEmail, signedEmail) {
+            async function login(email, walletAddress, signedEmail) {
                 const authenticationData = [
                     `${encodeURIComponent('email')}=${encodeURIComponent(email)}`,
                     `${encodeURIComponent('wallet_address')}=${encodeURIComponent(walletAddress)}`,
-                    `${encodeURIComponent('hashed_email')}=${encodeURIComponent(hashedEmail)}`,
                     `${encodeURIComponent('signed_email')}=${encodeURIComponent(signedEmail)}`,
                 ]
                     .join('&')

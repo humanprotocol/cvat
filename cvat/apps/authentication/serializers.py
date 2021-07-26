@@ -20,7 +20,6 @@ class RegisterSerializerEx(RegisterSerializer):
     last_name = serializers.CharField(required=False)
     wallet_address = serializers.CharField(write_only=True, required=True)
     signed_email = serializers.CharField(write_only=True, required=True)
-    hashed_email = serializers.CharField(write_only=True, required=True)
     password1 = None
     password2 = None
 
@@ -31,7 +30,7 @@ class RegisterSerializerEx(RegisterSerializer):
         pass
 
     def validate(self, data):
-        validate_user_wallet_address(data['wallet_address'], data['hashed_email'], data['signed_email'])
+        validate_user_wallet_address(data['wallet_address'], data['email'], data['signed_email'])
         return data
 
     def get_cleaned_data(self):

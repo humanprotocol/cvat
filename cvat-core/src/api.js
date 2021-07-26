@@ -123,23 +123,13 @@ function build() {
              * @param {string} lastName A last name for the new account
              * @param {string} email A email address for the new account
              * @param {string} walletAddress A wallet address for the new account
-             * @param {string} hashedEmail A hashed email for the new account
              * @param {string} signedEmail The signed email password for the new account
              * @param {Object} userConfirmations An user confirmations of terms of use if needed
              * @returns {Object} response data
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async register(
-                username,
-                firstName,
-                lastName,
-                email,
-                walletAddress,
-                hashedEmail,
-                signedEmail,
-                userConfirmations,
-            ) {
+            async register(username, firstName, lastName, email, walletAddress, signedEmail, userConfirmations) {
                 const result = await PluginRegistry.apiWrapper(
                     cvat.server.register,
                     username,
@@ -147,7 +137,6 @@ function build() {
                     lastName,
                     email,
                     walletAddress,
-                    hashedEmail,
                     signedEmail,
                     userConfirmations,
                 );
@@ -160,19 +149,12 @@ function build() {
              * @memberof module:API.cvat.server
              * @param {string} email An email of an account
              * @param {string} walletAddress A wallet address of an account
-             * @param {string} hashedEmail A hashed email of an account
              * @param {string} signedEmail The signed email password of an account
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async login(email, walletAddress, hashedEmail, signedEmail) {
-                const result = await PluginRegistry.apiWrapper(
-                    cvat.server.login,
-                    email,
-                    walletAddress,
-                    hashedEmail,
-                    signedEmail,
-                );
+            async login(email, walletAddress, signedEmail) {
+                const result = await PluginRegistry.apiWrapper(cvat.server.login, email, walletAddress, signedEmail);
                 return result;
             },
             /**
