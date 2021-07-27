@@ -13,7 +13,6 @@ from django.utils.translation import gettext_lazy as _
 from cvat.apps.authentication.utils import hash_signed_email
 
 class User(AbstractUser):
-   password = None
    hashed_signed_email = models.CharField(_('hashed_signed_email'), max_length=128, default='')
 
    _hashed_signed_email = None
