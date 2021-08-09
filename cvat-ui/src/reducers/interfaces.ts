@@ -18,9 +18,9 @@ export interface AuthState {
     user: any;
     authActionsFetching: boolean;
     authActionsInitialized: boolean;
-    showChangePasswordDialog: boolean;
-    allowChangePassword: boolean;
-    allowResetPassword: boolean;
+    // showChangePasswordDialog: boolean;
+    // allowChangePassword: boolean;
+    // allowResetPassword: boolean;
 }
 
 export interface ProjectsQuery {
@@ -237,9 +237,9 @@ export interface NotificationsState {
             login: null | ErrorState;
             logout: null | ErrorState;
             register: null | ErrorState;
-            changePassword: null | ErrorState;
-            requestPasswordReset: null | ErrorState;
-            resetPassword: null | ErrorState;
+            // changePassword: null | ErrorState;
+            // requestPasswordReset: null | ErrorState;
+            // resetPassword: null | ErrorState;
             loadAuthActions: null | ErrorState;
         };
         projects: {
@@ -331,10 +331,10 @@ export interface NotificationsState {
             inferenceDone: string;
         };
         auth: {
-            changePasswordDone: string;
+            // changePasswordDone: string;
             registerDone: string;
-            requestPasswordResetDone: string;
-            resetPasswordDone: string;
+            // requestPasswordResetDone: string;
+            // resetPasswordDone: string;
         };
     };
 }

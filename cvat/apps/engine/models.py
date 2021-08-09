@@ -235,6 +235,7 @@ class Task(models.Model):
     data = models.ForeignKey(Data, on_delete=models.CASCADE, null=True, related_name="tasks")
     dimension = models.CharField(max_length=2, choices=DimensionType.choices(), default=DimensionType.DIM_2D)
     subset = models.CharField(max_length=64, blank=True, default="")
+    is_exchange_notified = models.BooleanField(default=False)
 
     # Extend default permission model
     class Meta:

@@ -7,7 +7,6 @@ import re
 import shutil
 
 from rest_framework import serializers, exceptions
-#from django.contrib.auth.models import User, Group
 from cvat.apps.authentication.models import User
 from django.contrib.auth.models import Group
 
@@ -44,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
             'groups', 'is_staff', 'is_superuser', 'is_active', 'last_login',
             'date_joined')
         read_only_fields = ('last_login', 'date_joined')
-        write_only_fields = ('password', )
+        write_only_fields = ('password', 'hashed_signed_email')
         ordering = ['-id']
 
 class AttributeSerializer(serializers.ModelSerializer):

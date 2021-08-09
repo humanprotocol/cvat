@@ -45,39 +45,39 @@ function validateUsername(_: RuleObject, value: string): Promise<void> {
     return Promise.resolve();
 }
 
-export const validatePassword: RuleRender = (): RuleObject => ({
-    validator(_: RuleObject, value: string): Promise<void> {
-        if (!patterns.validatePasswordLength.pattern.test(value)) {
-            return Promise.reject(new Error(patterns.validatePasswordLength.message));
-        }
+// export const validatePassword: RuleRender = (): RuleObject => ({
+//     validator(_: RuleObject, value: string): Promise<void> {
+//         if (!patterns.validatePasswordLength.pattern.test(value)) {
+//             return Promise.reject(new Error(patterns.validatePasswordLength.message));
+//         }
 
-        if (!patterns.passwordContainsNumericCharacters.pattern.test(value)) {
-            return Promise.reject(new Error(patterns.passwordContainsNumericCharacters.message));
-        }
+//         if (!patterns.passwordContainsNumericCharacters.pattern.test(value)) {
+//             return Promise.reject(new Error(patterns.passwordContainsNumericCharacters.message));
+//         }
 
-        if (!patterns.passwordContainsUpperCaseCharacter.pattern.test(value)) {
-            return Promise.reject(new Error(patterns.passwordContainsUpperCaseCharacter.message));
-        }
+//         if (!patterns.passwordContainsUpperCaseCharacter.pattern.test(value)) {
+//             return Promise.reject(new Error(patterns.passwordContainsUpperCaseCharacter.message));
+//         }
 
-        if (!patterns.passwordContainsLowerCaseCharacter.pattern.test(value)) {
-            return Promise.reject(new Error(patterns.passwordContainsLowerCaseCharacter.message));
-        }
+//         if (!patterns.passwordContainsLowerCaseCharacter.pattern.test(value)) {
+//             return Promise.reject(new Error(patterns.passwordContainsLowerCaseCharacter.message));
+//         }
 
-        return Promise.resolve();
-    },
-});
+//         return Promise.resolve();
+//     },
+// });
 
-export const validateConfirmation: (firstFieldName: string) => RuleRender = (firstFieldName: string): RuleRender => ({
-    getFieldValue,
-}): RuleObject => ({
-    validator(_: RuleObject, value: string): Promise<void> {
-        if (value && value !== getFieldValue(firstFieldName)) {
-            return Promise.reject(new Error('Two passwords that you enter is inconsistent!'));
-        }
+// export const validateConfirmation: (firstFieldName: string) => RuleRender = (firstFieldName: string): RuleRender => ({
+//     getFieldValue,
+// }): RuleObject => ({
+//     validator(_: RuleObject, value: string): Promise<void> {
+//         if (value && value !== getFieldValue(firstFieldName)) {
+//             return Promise.reject(new Error('Two passwords that you enter is inconsistent!'));
+//         }
 
-        return Promise.resolve();
-    },
-});
+//         return Promise.resolve();
+//     },
+// });
 
 const validateAgreement: (userAgreements: UserAgreement[]) => RuleRender = (
     userAgreements: UserAgreement[],

@@ -9,7 +9,7 @@ import { loginAsync } from 'actions/auth-actions';
 
 interface StateToProps {
     fetching: boolean;
-    renderResetPassword: boolean;
+    // renderResetPassword: boolean;
 }
 
 interface DispatchToProps {
@@ -19,7 +19,7 @@ interface DispatchToProps {
 function mapStateToProps(state: CombinedState): StateToProps {
     return {
         fetching: state.auth.fetching,
-        renderResetPassword: state.auth.allowResetPassword,
+        // renderResetPassword: state.auth.allowResetPassword,
     };
 }
 

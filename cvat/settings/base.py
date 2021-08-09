@@ -490,3 +490,9 @@ CACHES = {
 
 USE_CACHE = True
 
+NOTIFY_JOBFLOW_URL = 'http://human-cvat:5001/notify'
+
+S3_ENDPOINT_URL = 'http://minio:9000'
+S3_ACCESS_KEY_ID = 'admin'
+S3_ACCESS_SECRET_KEY = 'password'
+S3_BUCKET_NAME = 'cvat'

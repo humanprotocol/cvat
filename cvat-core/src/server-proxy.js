@@ -264,58 +264,58 @@
                 Axios.defaults.headers.common.Authorization = '';
             }
 
-            async function changePassword(oldPassword, newPassword1, newPassword2) {
-                try {
-                    const data = JSON.stringify({
-                        old_password: oldPassword,
-                        new_password1: newPassword1,
-                        new_password2: newPassword2,
-                    });
-                    await Axios.post(`${config.backendAPI}/auth/password/change`, data, {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-            }
+            // async function changePassword(oldPassword, newPassword1, newPassword2) {
+            //     try {
+            //         const data = JSON.stringify({
+            //             old_password: oldPassword,
+            //             new_password1: newPassword1,
+            //             new_password2: newPassword2,
+            //         });
+            //         await Axios.post(`${config.backendAPI}/auth/password/change`, data, {
+            //             proxy: config.proxy,
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //         });
+            //     } catch (errorData) {
+            //         throw generateError(errorData);
+            //     }
+            // }
 
-            async function requestPasswordReset(email) {
-                try {
-                    const data = JSON.stringify({
-                        email,
-                    });
-                    await Axios.post(`${config.backendAPI}/auth/password/reset`, data, {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-            }
+            // async function requestPasswordReset(email) {
+            //     try {
+            //         const data = JSON.stringify({
+            //             email,
+            //         });
+            //         await Axios.post(`${config.backendAPI}/auth/password/reset`, data, {
+            //             proxy: config.proxy,
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //         });
+            //     } catch (errorData) {
+            //         throw generateError(errorData);
+            //     }
+            // }
 
-            async function resetPassword(newPassword1, newPassword2, uid, _token) {
-                try {
-                    const data = JSON.stringify({
-                        new_password1: newPassword1,
-                        new_password2: newPassword2,
-                        uid,
-                        token: _token,
-                    });
-                    await Axios.post(`${config.backendAPI}/auth/password/reset/confirm`, data, {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-            }
+            // async function resetPassword(newPassword1, newPassword2, uid, _token) {
+            //     try {
+            //         const data = JSON.stringify({
+            //             new_password1: newPassword1,
+            //             new_password2: newPassword2,
+            //             uid,
+            //             token: _token,
+            //         });
+            //         await Axios.post(`${config.backendAPI}/auth/password/reset/confirm`, data, {
+            //             proxy: config.proxy,
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //         });
+            //     } catch (errorData) {
+            //         throw generateError(errorData);
+            //     }
+            // }
 
             async function authorized() {
                 try {
@@ -1181,9 +1181,9 @@
                             exception,
                             login,
                             logout,
-                            changePassword,
-                            requestPasswordReset,
-                            resetPassword,
+                            // changePassword,
+                            // requestPasswordReset,
+                            // resetPassword,
                             authorized,
                             register,
                             request: serverRequest,
