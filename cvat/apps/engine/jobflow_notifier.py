@@ -23,6 +23,5 @@ def jobflow_notifier(db_jobs, db_task):
         "task_address": db_task.name,
         "payouts": payouts
     }
-    print(payload)
     requests.post(NOTIFY_JOBFLOW_URL, json=payload)
     db_task.is_exchange_notified = True

@@ -30,9 +30,7 @@ def update_task_status(instance, **kwargs):
 
     if status != db_task.status:
         if status == StatusChoice.COMPLETED and not db_task.is_exchange_notified:
-            print(f'Completed: {db_task.id}')
             jobflow_notifier(db_jobs, db_task)
-            print("Notified")
         db_task.status = status
         db_task.save()
 

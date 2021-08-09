@@ -73,7 +73,6 @@
     "dotenv-webpack": "^1.8.0",
     "error-stack-parser": "^2.0.6",
     "ethereumjs-util": "^7.0.10",
-    "fortmatic": "^2.2.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mousetrap": "^1.6.5",

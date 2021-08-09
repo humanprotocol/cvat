@@ -4,7 +4,6 @@
 import Authereum from 'authereum';
 import MewConnect from '@myetherwallet/mewconnect-web-client';
 import WalletConnectProvider from '@walletconnect/web3-provider';
-import Fortmatic from 'fortmatic';
 
 import Web3 from 'web3';
 import Web3Modal from 'web3modal';
@@ -23,12 +22,6 @@ const providerOptions = {
         package: WalletConnectProvider, // required
         options: {
             infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
-        },
-    },
-    fortmatic: {
-        package: Fortmatic, // required
-        options: {
-            key: 'pk_live_828345C7A500E609', // required
         },
     },
 };
