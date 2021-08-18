@@ -26,9 +26,7 @@ const defaultState: NotificationsState = {
             login: null,
             logout: null,
             register: null,
-            // changePassword: null,
-            // requestPasswordReset: null,
-            // resetPassword: null,
+            changePassword: null,
             loadAuthActions: null,
         },
         projects: {
@@ -120,10 +118,8 @@ const defaultState: NotificationsState = {
             inferenceDone: '',
         },
         auth: {
-            // changePasswordDone: '',
+            changePasswordDone: '',
             registerDone: '',
-            // requestPasswordResetDone: '',
-            // resetPasswordDone: '',
         },
     },
 };
@@ -184,8 +180,8 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         register: {
-                            message: 'Could not register on the server',
-                            reason: action.payload.error.toString(),
+                            message: 'Could not login on the server',
+                            reason: 'Unable to login with provided credentials',
                         },
                     },
                 },
@@ -210,89 +206,34 @@ export default function (state = defaultState, action: AnyAction): Notifications
                 ...state,
             };
         }
-        // case AuthActionTypes.CHANGE_PASSWORD_SUCCESS: {
-        //     return {
-        //         ...state,
-        //         messages: {
-        //             ...state.messages,
-        //             auth: {
-        //                 ...state.messages.auth,
-        //                 changePasswordDone: 'New password has been saved.',
-        //             },
-        //         },
-        //     };
-        // }
-        // case AuthActionTypes.CHANGE_PASSWORD_FAILED: {
-        //     return {
-        //         ...state,
-        //         errors: {
-        //             ...state.errors,
-        //             auth: {
-        //                 ...state.errors.auth,
-        //                 changePassword: {
-        //                     message: 'Could not change password',
-        //                     reason: action.payload.error.toString(),
-        //                     className: 'cvat-notification-notice-change-password-failed',
-        //                 },
-        //             },
-        //         },
-        //     };
-        // }
-        // case AuthActionTypes.REQUEST_PASSWORD_RESET_SUCCESS: {
-        //     return {
-        //         ...state,
-        //         messages: {
-        //             ...state.messages,
-        //             auth: {
-        //                 ...state.messages.auth,
-        //                 requestPasswordResetDone: `Check your email for a link to reset your password.
-        //                     If it doesn’t appear within a few minutes, check your spam folder.`,
-        //             },
-        //         },
-        //     };
-        // }
-        // case AuthActionTypes.REQUEST_PASSWORD_RESET_FAILED: {
-        //     return {
-        //         ...state,
-        //         errors: {
-        //             ...state.errors,
-        //             auth: {
-        //                 ...state.errors.auth,
-        //                 requestPasswordReset: {
-        //                     message: 'Could not reset password on the server.',
-        //                     reason: action.payload.error.toString(),
-        //                 },
-        //             },
-        //         },
-        //     };
-        // }
-        // case AuthActionTypes.RESET_PASSWORD_SUCCESS: {
-        //     return {
-        //         ...state,
-        //         messages: {
-        //             ...state.messages,
-        //             auth: {
-        //                 ...state.messages.auth,
-        //                 resetPasswordDone: 'Password has been reset with the new password.',
-        //             },
-        //         },
-        //     };
-        // }
-        // case AuthActionTypes.RESET_PASSWORD_FAILED: {
-        //     return {
-        //         ...state,
-        //         errors: {
-        //             ...state.errors,
-        //             auth: {
-        //                 ...state.errors.auth,
-        //                 resetPassword: {
-        //                     message: 'Could not set new password on the server.',
-        //                     reason: action.payload.error.toString(),
-        //                 },
-        //             },
-        //         },
-        //     };
-        // }
+        case AuthActionTypes.CHANGE_PASSWORD_SUCCESS: {
+            return {
+                ...state,
+                messages: {
+                    ...state.messages,
+                    auth: {
+                        ...state.messages.auth,
+                        changePasswordDone: 'New password has been saved.',
+                    },
+                },
+            };
+        }
+        case AuthActionTypes.CHANGE_PASSWORD_FAILED: {
+            return {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    auth: {
+                        ...state.errors.auth,
+                        changePassword: {
+                            message: 'Could not change password',
+                            reason: action.payload.error.toString(),
+                            className: 'cvat-notification-notice-change-password-failed',
+                        },
+                    },
+                },
+            };
+        }
         case AuthActionTypes.LOAD_AUTH_ACTIONS_FAILED: {
             return {
                 ...state,

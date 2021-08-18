@@ -48,7 +48,7 @@ class AuthenticationBackend(_AuthenticationBackend):
         try:
             walletToUser = WalletToUser.objects.get(wallet_address=wallet_address)
         except WalletToUser.DoesNotExist:
-            raise WalletToUser.DoesNotExist
+            return None
 
         ret = user == walletToUser.user
         if ret:

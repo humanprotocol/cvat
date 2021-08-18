@@ -14,7 +14,6 @@ import CookieDrawer from './cookie-policy-drawer';
 
 interface LoginPageComponentProps {
     fetching: boolean;
-    // renderResetPassword: boolean;
     onLogin: (email: string) => void;
 }
 
@@ -27,7 +26,6 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
         xl: { span: 4 },
     };
 
-    // const { fetching, onLogin, renderResetPassword } = props;
     const { fetching, onLogin } = props;
 
     return (
@@ -41,23 +39,6 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
                             onLogin(loginData.email);
                         }}
                     />
-                    <Row justify='start' align='top'>
-                        <Col>
-                            <Text strong>
-                                New to CVAT? Create
-                                <Link to='/auth/register'> an account</Link>
-                            </Text>
-                        </Col>
-                    </Row>
-                    {/* {renderResetPassword && (
-                        <Row justify='start' align='top'>
-                            <Col>
-                                <Text strong>
-                                    <Link to='/auth/password/reset'>Forgot your password?</Link>
-                                </Text>
-                            </Col>
-                        </Row>
-                    )} */}
                 </Col>
             </Row>
             <CookieDrawer />

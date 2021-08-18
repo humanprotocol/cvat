@@ -29,7 +29,7 @@ import getCore from 'cvat-core-wrapper';
 import consts from 'consts';
 
 import { CVATLogo, AccountIcon } from 'icons';
-//import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
+import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
 import { switchSettingsDialog as switchSettingsDialogAction } from 'actions/settings-actions';
 import { logoutAsync, authActions } from 'actions/auth-actions';
 import { CombinedState } from 'reducers/interfaces';
@@ -60,10 +60,10 @@ interface StateToProps {
     tool: Tool;
     switchSettingsShortcut: string;
     settingsDialogShown: boolean;
-    // DialogShown: boolean;
-    // changePasswordFetching: boolean;
+    DialogShown: boolean;
+    changePasswordFetching: boolean;
     logoutFetching: boolean;
-    // renderChangePasswordItem: boolean;
+    renderChangePasswordItem: boolean;
     isAnalyticsPluginActive: boolean;
     isModelsPluginActive: boolean;
     isGitPluginActive: boolean;
@@ -72,7 +72,7 @@ interface StateToProps {
 interface DispatchToProps {
     onLogout: () => void;
     switchSettingsDialog: (show: boolean) => void;
-    // switchChangePasswordDialog: (show: boolean) => void;
+    switchChangePasswordDialog: (show: boolean) => void;
 }
 
 function mapStateToProps(state: CombinedState): StateToProps {
@@ -81,8 +81,8 @@ function mapStateToProps(state: CombinedState): StateToProps {
             user,
             fetching: logoutFetching,
             fetching: changePasswordFetching,
-            // showChangePasswordDialog: changePasswordDialogShown,
-            // allowChangePassword: renderChangePasswordItem,
+            showChangePasswordDialog: changePasswordDialogShown,
+            allowChangePassword: renderChangePasswordItem,
         },
         plugins: { list },
         about: { server, packageVersion },
@@ -111,10 +111,10 @@ function mapStateToProps(state: CombinedState): StateToProps {
         },
         switchSettingsShortcut: normalizedKeyMap.SWITCH_SETTINGS,
         settingsDialogShown,
-        // changePasswordDialogShown,
-        // changePasswordFetching,
+        changePasswordDialogShown,
+        changePasswordFetching,
         logoutFetching,
-        // renderChangePasswordItem,
+        renderChangePasswordItem,
         isAnalyticsPluginActive: list.ANALYTICS,
         isModelsPluginActive: list.MODELS,
         isGitPluginActive: list.GIT_INTEGRATION,
@@ -125,7 +125,7 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
     return {
         onLogout: (): void => dispatch(logoutAsync()),
         switchSettingsDialog: (show: boolean): void => dispatch(switchSettingsDialogAction(show)),
-        // switchChangePasswordDialog: (show: boolean): void => dispatch(authActions.switchChangePasswordDialog(show)),
+        switchChangePasswordDialog: (show: boolean): void => dispatch(authActions.switchChangePasswordDialog(show)),
     };
 }
 
@@ -136,13 +136,13 @@ function HeaderContainer(props: Props): JSX.Element {
         user,
         tool,
         logoutFetching,
-        // changePasswordFetching,
+        changePasswordFetching,
         settingsDialogShown,
         switchSettingsShortcut,
         onLogout,
         switchSettingsDialog,
-        // switchChangePasswordDialog,
-        // renderChangePasswordItem,
+        switchChangePasswordDialog,
+        renderChangePasswordItem,
         isAnalyticsPluginActive,
         isModelsPluginActive,
     } = props;
@@ -231,7 +231,7 @@ function HeaderContainer(props: Props): JSX.Element {
                 <InfoCircleOutlined />
                 About
             </Menu.Item>
-            {/* {renderChangePasswordItem && (
+            {user.isStaff && (
                 <Menu.Item
                     className='cvat-header-menu-change-password'
                     onClick={(): void => switchChangePasswordDialog(true)}
@@ -240,8 +240,7 @@ function HeaderContainer(props: Props): JSX.Element {
                     {changePasswordFetching ? <LoadingOutlined /> : <EditOutlined />}
                     Change password
                 </Menu.Item>
-            )}} */}
-
+            )}
             <Menu.Item onClick={onLogout} disabled={logoutFetching}>
                 {logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
                 Logout
@@ -345,8 +344,8 @@ function HeaderContainer(props: Props): JSX.Element {
                     </span>
                 </Dropdown>
             </div>
-            {/* <SettingsModal visible={settingsDialogShown} onClose={() => switchSettingsDialog(false)} />
-            {renderChangePasswordItem && <ChangePasswordDialog onClose={() => switchChangePasswordDialog(false)} />} */}
+            <SettingsModal visible={settingsDialogShown} onClose={() => switchSettingsDialog(false)} />
+            {renderChangePasswordItem && <ChangePasswordDialog onClose={() => switchChangePasswordDialog(false)} />}
         </Layout.Header>
     );
 }
