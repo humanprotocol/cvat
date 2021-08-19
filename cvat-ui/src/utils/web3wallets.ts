@@ -10,26 +10,26 @@ import Web3Modal from 'web3modal';
 
 const providerOptions = {
     mewconnect: {
-        package: MewConnect, // required
+        package: MewConnect,
         options: {
-            infuraId: '2b78e14debb2482c8865cc1b494bc2dc', // my infura id
+            infuraId: '2b78e14debb2482c8865cc1b494bc2dc',
         },
     },
     authereum: {
-        package: Authereum, // required
+        package: Authereum,
     },
     walletconnect: {
-        package: WalletConnectProvider, // required
+        package: WalletConnectProvider,
         options: {
-            infuraId: '2b78e14debb2482c8865cc1b494bc2dc', // my infura id
+            infuraId: '2b78e14debb2482c8865cc1b494bc2dc',
         },
     },
 };
 
 const web3Modal = new Web3Modal({
-    network: 'mainnet', // optional
-    cacheProvider: false, // optional
-    providerOptions, // required
+    network: 'mainnet',
+    cacheProvider: false,
+    providerOptions,
 });
 
 function initWeb3(provider: any): Web3 {
