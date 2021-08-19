@@ -5,16 +5,16 @@
 import requests
 
 from cvat.apps.authentication.models import WalletToUser
-from cvat.settings.base import NOTIFY_JOBFLOW_URL
+from cvat.settings.base import CVAT_URL, JOBFLOW_URL
 
-def jobflow_notifier(db_jobs, db_task):
+def notify_jobflow(db_jobs, db_task):
     payouts = []
     for job in db_jobs:
         wallet_to_user = WalletToUser.objects.get(user=job.assignee)
         wallet_address = wallet_to_user.wallet_address
         payout = {
             "wallet_address": wallet_address,
-            "job_url": f'localhost:8080/tasks/{job.segment.task.id}/jobs/{job.id}'
+            "job_url": f'{CVAT_URL}/tasks/{job.segment.task.id}/jobs/{job.id}'
         }
         payouts.append(payout)
 
@@ -23,5 +23,5 @@ def jobflow_notifier(db_jobs, db_task):
         "task_address": db_task.name,
         "payouts": payouts
     }
-    requests.post(NOTIFY_JOBFLOW_URL, json=payload)
+    requests.post(f'{JOBFLOW_URL}/notify', json=payload)
     db_task.is_exchange_notified = True

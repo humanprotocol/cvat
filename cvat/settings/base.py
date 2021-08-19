@@ -489,4 +489,5 @@ CACHES = {
 
 USE_CACHE = True
 
-NOTIFY_JOBFLOW_URL = os.getenv('NOTIFY_JOBFLOW_URL', 'http://human-cvat:5001/notify')
+CVAT_URL = os.getenv('CVAT_URL', 'http://cvat:8080')
+JOBFLOW_URL = os.getenv('JOBFLOW_URL', 'http://human-cvat:5001')

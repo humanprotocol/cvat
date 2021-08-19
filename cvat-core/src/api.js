@@ -129,12 +129,10 @@ function build() {
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async register(username, /* firstName, lastName, */ email, walletAddress, signedEmail, userConfirmations) {
+            async register(username, email, walletAddress, signedEmail, userConfirmations) {
                 const result = await PluginRegistry.apiWrapper(
                     cvat.server.register,
                     username,
-                    // firstName,
-                    // lastName,
                     email,
                     walletAddress,
                     signedEmail,

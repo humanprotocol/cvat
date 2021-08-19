@@ -60,7 +60,7 @@ interface StateToProps {
     tool: Tool;
     switchSettingsShortcut: string;
     settingsDialogShown: boolean;
-    DialogShown: boolean;
+    changePasswordDialogShown: boolean;
     changePasswordFetching: boolean;
     logoutFetching: boolean;
     renderChangePasswordItem: boolean;

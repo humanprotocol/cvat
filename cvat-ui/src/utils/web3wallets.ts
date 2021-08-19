@@ -12,7 +12,7 @@ const providerOptions = {
     mewconnect: {
         package: MewConnect, // required
         options: {
-            infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
+            infuraId: '2b78e14debb2482c8865cc1b494bc2dc', // my infura id
         },
     },
     authereum: {
@@ -21,7 +21,7 @@ const providerOptions = {
     walletconnect: {
         package: WalletConnectProvider, // required
         options: {
-            infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
+            infuraId: '2b78e14debb2482c8865cc1b494bc2dc', // my infura id
         },
     },
 };

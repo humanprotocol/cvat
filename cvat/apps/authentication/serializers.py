@@ -10,7 +10,7 @@ from rest_framework import serializers, exceptions
 from django.conf import settings
 from rest_framework.fields import CharField
 
-from cvat.apps.authentication.utils import setup_user_wallet_address, validate_user_wallet_address, check_wallet_address_existence
+from cvat.apps.authentication.utils import setup_user_wallet_address, validate_user_wallet_address, is_wallet_address_exists
 
 # Get the UserModel
 UserModel = get_user_model()
@@ -31,7 +31,9 @@ class RegisterSerializerEx(RegisterSerializer):
 
     def validate(self, data):
         validate_user_wallet_address(data['wallet_address'], data['email'], data['signed_email'])
-        check_wallet_address_existence(data['wallet_address'])
+        if is_wallet_address_exists(data['wallet_address']):
+            msg = _('Wallet address is already registered.')
+            raise exceptions.ValidationError(msg)
         return data
 
     def get_cleaned_data(self):

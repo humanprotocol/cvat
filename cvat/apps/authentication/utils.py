@@ -16,11 +16,12 @@ def validate_user_wallet_address(wallet_address, email, signed_email):
         msg = _('Could not verificate wallet owner.')
         raise exceptions.ValidationError(msg)
 
-def check_wallet_address_existence(wallet_address):
+def is_wallet_address_exists(wallet_address) -> bool:
     from cvat.apps.authentication.models import WalletToUser
     if WalletToUser.objects.filter(wallet_address=wallet_address).exists():
-        msg = _('Wallet address is already registered.')
-        raise exceptions.ValidationError(msg)
+        return True
+    else:
+        return False
 
 def setup_user_wallet_address(request, user):
     """
