@@ -57,11 +57,7 @@ export const authActions = {
 
 export type AuthActions = ActionUnion<typeof authActions>;
 
-export const registerAsync = (
-    email: string,
-    address: string,
-    signedEmail: string,
-): ThunkAction => async (dispatch) => {
+export const registerAsync = (email: string, address: string, signedEmail: string): ThunkAction => async (dispatch) => {
     dispatch(authActions.register());
 
     try {
@@ -140,9 +136,7 @@ export const loadAuthActionsAsync = (): ThunkAction => async (dispatch) => {
     dispatch(authActions.loadServerAuthActions());
 
     try {
-        const promises: Promise<boolean>[] = [
-            isReachable(`${cvat.config.backendAPI}/auth/password/change`, 'OPTIONS'),
-        ];
+        const promises: Promise<boolean>[] = [isReachable(`${cvat.config.backendAPI}/auth/password/change`, 'OPTIONS')];
         const [allowChangePassword] = await Promise.all(promises);
 
         dispatch(authActions.loadServerAuthActionsSuccess(allowChangePassword));

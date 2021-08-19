@@ -32,7 +32,7 @@ const web3Modal = new Web3Modal({
     providerOptions, // required
 });
 
-function initWeb3(provider: any) {
+function initWeb3(provider: any): Web3 {
     const web3: any = new Web3(provider);
     return web3;
 }
