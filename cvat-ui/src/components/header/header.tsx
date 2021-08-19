@@ -60,7 +60,7 @@ interface StateToProps {
     tool: Tool;
     switchSettingsShortcut: string;
     settingsDialogShown: boolean;
-    changePasswordDialogShown: boolean;
+    DialogShown: boolean;
     changePasswordFetching: boolean;
     logoutFetching: boolean;
     renderChangePasswordItem: boolean;
@@ -231,7 +231,7 @@ function HeaderContainer(props: Props): JSX.Element {
                 <InfoCircleOutlined />
                 About
             </Menu.Item>
-            {renderChangePasswordItem && (
+            {user.isStaff && (
                 <Menu.Item
                     className='cvat-header-menu-change-password'
                     onClick={(): void => switchChangePasswordDialog(true)}
@@ -241,7 +241,6 @@ function HeaderContainer(props: Props): JSX.Element {
                     Change password
                 </Menu.Item>
             )}
-
             <Menu.Item onClick={onLogout} disabled={logoutFetching}>
                 {logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
                 Logout

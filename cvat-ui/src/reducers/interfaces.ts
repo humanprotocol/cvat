@@ -20,7 +20,6 @@ export interface AuthState {
     authActionsInitialized: boolean;
     showChangePasswordDialog: boolean;
     allowChangePassword: boolean;
-    allowResetPassword: boolean;
 }
 
 export interface ProjectsQuery {
@@ -238,8 +237,6 @@ export interface NotificationsState {
             logout: null | ErrorState;
             register: null | ErrorState;
             changePassword: null | ErrorState;
-            requestPasswordReset: null | ErrorState;
-            resetPassword: null | ErrorState;
             loadAuthActions: null | ErrorState;
         };
         projects: {
@@ -333,8 +330,6 @@ export interface NotificationsState {
         auth: {
             changePasswordDone: string;
             registerDone: string;
-            requestPasswordResetDone: string;
-            resetPasswordDone: string;
         };
     };
 }

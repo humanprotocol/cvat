@@ -122,22 +122,22 @@ function build() {
              * @param {string} firstName A first name for the new account
              * @param {string} lastName A last name for the new account
              * @param {string} email A email address for the new account
-             * @param {string} password1 A password for the new account
-             * @param {string} password2 The confirmation password for the new account
+             * @param {string} walletAddress A wallet address for the new account
+             * @param {string} signedEmail The signed email for the new account
              * @param {Object} userConfirmations An user confirmations of terms of use if needed
              * @returns {Object} response data
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async register(username, firstName, lastName, email, password1, password2, userConfirmations) {
+            async register(username, /* firstName, lastName, */ email, walletAddress, signedEmail, userConfirmations) {
                 const result = await PluginRegistry.apiWrapper(
                     cvat.server.register,
                     username,
-                    firstName,
-                    lastName,
+                    // firstName,
+                    // lastName,
                     email,
-                    password1,
-                    password2,
+                    walletAddress,
+                    signedEmail,
                     userConfirmations,
                 );
                 return result;
@@ -147,13 +147,14 @@ function build() {
              * @method login
              * @async
              * @memberof module:API.cvat.server
-             * @param {string} username An username of an account
-             * @param {string} password A password of an account
+             * @param {string} email An email of an account
+             * @param {string} walletAddress A wallet address of an account
+             * @param {string} signedEmail The signed email password of an account
              * @throws {module:API.cvat.exceptions.PluginError}
              * @throws {module:API.cvat.exceptions.ServerError}
              */
-            async login(username, password) {
-                const result = await PluginRegistry.apiWrapper(cvat.server.login, username, password);
+            async login(email, walletAddress, signedEmail) {
+                const result = await PluginRegistry.apiWrapper(cvat.server.login, email, walletAddress, signedEmail);
                 return result;
             },
             /**
@@ -185,41 +186,6 @@ function build() {
                     oldPassword,
                     newPassword1,
                     newPassword2,
-                );
-                return result;
-            },
-            /**
-             * Method allows to reset user password
-             * @method requestPasswordReset
-             * @async
-             * @memberof module:API.cvat.server
-             * @param {string} email A email address for the account
-             * @throws {module:API.cvat.exceptions.PluginError}
-             * @throws {module:API.cvat.exceptions.ServerError}
-             */
-            async requestPasswordReset(email) {
-                const result = await PluginRegistry.apiWrapper(cvat.server.requestPasswordReset, email);
-                return result;
-            },
-            /**
-             * Method allows to confirm reset user password
-             * @method resetPassword
-             * @async
-             * @memberof module:API.cvat.server
-             * @param {string} newPassword1 New password for the account
-             * @param {string} newPassword2 Confirmation password for the account
-             * @param {string} uid User id
-             * @param {string} token Request authentication token
-             * @throws {module:API.cvat.exceptions.PluginError}
-             * @throws {module:API.cvat.exceptions.ServerError}
-             */
-            async resetPassword(newPassword1, newPassword2, uid, token) {
-                const result = await PluginRegistry.apiWrapper(
-                    cvat.server.resetPassword,
-                    newPassword1,
-                    newPassword2,
-                    uid,
-                    token,
                 );
                 return result;
             },

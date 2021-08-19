@@ -1,11 +1,11 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
 import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
-import { UserConfirmation } from 'components/register-page/register-form';
 import getCore from 'cvat-core-wrapper';
 import isReachable from 'utils/url-checker';
+import connectWallet from 'utils/web3wallets';
 
 const cvat = getCore();
 
@@ -25,12 +25,6 @@ export enum AuthActionTypes {
     CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS',
     CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED',
     SWITCH_CHANGE_PASSWORD_DIALOG = 'SWITCH_CHANGE_PASSWORD_DIALOG',
-    REQUEST_PASSWORD_RESET = 'REQUEST_PASSWORD_RESET',
-    REQUEST_PASSWORD_RESET_SUCCESS = 'REQUEST_PASSWORD_RESET_SUCCESS',
-    REQUEST_PASSWORD_RESET_FAILED = 'REQUEST_PASSWORD_RESET_FAILED',
-    RESET_PASSWORD = 'RESET_PASSWORD_CONFIRM',
-    RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_CONFIRM_SUCCESS',
-    RESET_PASSWORD_FAILED = 'RESET_PASSWORD_CONFIRM_FAILED',
     LOAD_AUTH_ACTIONS = 'LOAD_AUTH_ACTIONS',
     LOAD_AUTH_ACTIONS_SUCCESS = 'LOAD_AUTH_ACTIONS_SUCCESS',
     LOAD_AUTH_ACTIONS_FAILED = 'LOAD_AUTH_ACTIONS_FAILED',
@@ -53,43 +47,25 @@ export const authActions = {
     changePasswordFailed: (error: any) => createAction(AuthActionTypes.CHANGE_PASSWORD_FAILED, { error }),
     switchChangePasswordDialog: (showChangePasswordDialog: boolean) =>
         createAction(AuthActionTypes.SWITCH_CHANGE_PASSWORD_DIALOG, { showChangePasswordDialog }),
-    requestPasswordReset: () => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET),
-    requestPasswordResetSuccess: () => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET_SUCCESS),
-    requestPasswordResetFailed: (error: any) => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET_FAILED, { error }),
-    resetPassword: () => createAction(AuthActionTypes.RESET_PASSWORD),
-    resetPasswordSuccess: () => createAction(AuthActionTypes.RESET_PASSWORD_SUCCESS),
-    resetPasswordFailed: (error: any) => createAction(AuthActionTypes.RESET_PASSWORD_FAILED, { error }),
     loadServerAuthActions: () => createAction(AuthActionTypes.LOAD_AUTH_ACTIONS),
-    loadServerAuthActionsSuccess: (allowChangePassword: boolean, allowResetPassword: boolean) =>
+    loadServerAuthActionsSuccess: (allowChangePassword: boolean) =>
         createAction(AuthActionTypes.LOAD_AUTH_ACTIONS_SUCCESS, {
             allowChangePassword,
-            allowResetPassword,
         }),
     loadServerAuthActionsFailed: (error: any) => createAction(AuthActionTypes.LOAD_AUTH_ACTIONS_FAILED, { error }),
 };
 
 export type AuthActions = ActionUnion<typeof authActions>;
 
-export const registerAsync = (
-    username: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    password1: string,
-    password2: string,
-    confirmations: UserConfirmation[],
-): ThunkAction => async (dispatch) => {
+export const registerAsync = (email: string, address: string, signedEmail: string): ThunkAction => async (dispatch) => {
     dispatch(authActions.register());
 
     try {
         const user = await cvat.server.register(
-            username,
-            firstName,
-            lastName,
+            email, // temp username
             email,
-            password1,
-            password2,
-            confirmations,
+            address,
+            signedEmail,
         );
 
         dispatch(authActions.registerSuccess(user));
@@ -98,16 +74,20 @@ export const registerAsync = (
     }
 };
 
-export const loginAsync = (username: string, password: string): ThunkAction => async (dispatch) => {
+export const loginAsync = (email: string): ThunkAction => async (dispatch) => {
     dispatch(authActions.login());
-
+    let address;
+    let signedEmail;
     try {
-        await cvat.server.login(username, password);
+        ({ address, signedEmail } = await connectWallet(email));
+
+        await cvat.server.login(email, address, signedEmail);
+
         const users = await cvat.users.get({ self: true });
 
         dispatch(authActions.loginSuccess(users[0]));
     } catch (error) {
-        dispatch(authActions.loginFailed(error));
+        dispatch(registerAsync(email, address, signedEmail));
     }
 };
 
@@ -152,44 +132,14 @@ export const changePasswordAsync = (
     }
 };
 
-export const requestPasswordResetAsync = (email: string): ThunkAction => async (dispatch) => {
-    dispatch(authActions.requestPasswordReset());
-
-    try {
-        await cvat.server.requestPasswordReset(email);
-        dispatch(authActions.requestPasswordResetSuccess());
-    } catch (error) {
-        dispatch(authActions.requestPasswordResetFailed(error));
-    }
-};
-
-export const resetPasswordAsync = (
-    newPassword1: string,
-    newPassword2: string,
-    uid: string,
-    token: string,
-): ThunkAction => async (dispatch) => {
-    dispatch(authActions.resetPassword());
-
-    try {
-        await cvat.server.resetPassword(newPassword1, newPassword2, uid, token);
-        dispatch(authActions.resetPasswordSuccess());
-    } catch (error) {
-        dispatch(authActions.resetPasswordFailed(error));
-    }
-};
-
 export const loadAuthActionsAsync = (): ThunkAction => async (dispatch) => {
     dispatch(authActions.loadServerAuthActions());
 
     try {
-        const promises: Promise<boolean>[] = [
-            isReachable(`${cvat.config.backendAPI}/auth/password/change`, 'OPTIONS'),
-            isReachable(`${cvat.config.backendAPI}/auth/password/reset`, 'OPTIONS'),
-        ];
-        const [allowChangePassword, allowResetPassword] = await Promise.all(promises);
+        const promises: Promise<boolean>[] = [isReachable(`${cvat.config.backendAPI}/auth/password/change`, 'OPTIONS')];
+        const [allowChangePassword] = await Promise.all(promises);
 
-        dispatch(authActions.loadServerAuthActionsSuccess(allowChangePassword, allowResetPassword));
+        dispatch(authActions.loadServerAuthActionsSuccess(allowChangePassword));
     } catch (error) {
         dispatch(authActions.loadServerAuthActionsFailed(error));
     }

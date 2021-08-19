@@ -195,16 +195,14 @@
                 return response.data;
             }
 
-            async function register(username, firstName, lastName, email, password1, password2, confirmations) {
+            async function register(username, email, walletAddress, signedEmail, confirmations) {
                 let response = null;
                 try {
                     const data = JSON.stringify({
                         username,
-                        first_name: firstName,
-                        last_name: lastName,
                         email,
-                        password1,
-                        password2,
+                        wallet_address: walletAddress,
+                        signed_email: signedEmail,
                         confirmations,
                     });
                     response = await Axios.post(`${config.backendAPI}/auth/register`, data, {
@@ -220,10 +218,11 @@
                 return response.data;
             }
 
-            async function login(username, password) {
+            async function login(email, walletAddress, signedEmail) {
                 const authenticationData = [
-                    `${encodeURIComponent('username')}=${encodeURIComponent(username)}`,
-                    `${encodeURIComponent('password')}=${encodeURIComponent(password)}`,
+                    `${encodeURIComponent('email')}=${encodeURIComponent(email)}`,
+                    `${encodeURIComponent('wallet_address')}=${encodeURIComponent(walletAddress)}`,
+                    `${encodeURIComponent('signed_email')}=${encodeURIComponent(signedEmail)}`,
                 ]
                     .join('&')
                     .replace(/%20/g, '+');
@@ -271,41 +270,6 @@
                         new_password2: newPassword2,
                     });
                     await Axios.post(`${config.backendAPI}/auth/password/change`, data, {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-            }
-
-            async function requestPasswordReset(email) {
-                try {
-                    const data = JSON.stringify({
-                        email,
-                    });
-                    await Axios.post(`${config.backendAPI}/auth/password/reset`, data, {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-            }
-
-            async function resetPassword(newPassword1, newPassword2, uid, _token) {
-                try {
-                    const data = JSON.stringify({
-                        new_password1: newPassword1,
-                        new_password2: newPassword2,
-                        uid,
-                        token: _token,
-                    });
-                    await Axios.post(`${config.backendAPI}/auth/password/reset/confirm`, data, {
                         proxy: config.proxy,
                         headers: {
                             'Content-Type': 'application/json',
@@ -1181,8 +1145,6 @@
                             login,
                             logout,
                             changePassword,
-                            requestPasswordReset,
-                            resetPassword,
                             authorized,
                             register,
                             request: serverRequest,

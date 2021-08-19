@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -14,7 +14,6 @@ const defaultState: AuthState = {
     authActionsInitialized: false,
     allowChangePassword: false,
     showChangePasswordDialog: false,
-    allowResetPassword: false,
 };
 
 export default function (state = defaultState, action: AuthActions | BoundariesActions): AuthState {
@@ -98,36 +97,6 @@ export default function (state = defaultState, action: AuthActions | BoundariesA
                         !state.showChangePasswordDialog :
                         action.payload.showChangePasswordDialog,
             };
-        case AuthActionTypes.REQUEST_PASSWORD_RESET:
-            return {
-                ...state,
-                fetching: true,
-            };
-        case AuthActionTypes.REQUEST_PASSWORD_RESET_SUCCESS:
-            return {
-                ...state,
-                fetching: false,
-            };
-        case AuthActionTypes.REQUEST_PASSWORD_RESET_FAILED:
-            return {
-                ...state,
-                fetching: false,
-            };
-        case AuthActionTypes.RESET_PASSWORD:
-            return {
-                ...state,
-                fetching: true,
-            };
-        case AuthActionTypes.RESET_PASSWORD_SUCCESS:
-            return {
-                ...state,
-                fetching: false,
-            };
-        case AuthActionTypes.RESET_PASSWORD_FAILED:
-            return {
-                ...state,
-                fetching: false,
-            };
         case AuthActionTypes.LOAD_AUTH_ACTIONS:
             return {
                 ...state,
@@ -139,7 +108,6 @@ export default function (state = defaultState, action: AuthActions | BoundariesA
                 authActionsFetching: false,
                 authActionsInitialized: true,
                 allowChangePassword: action.payload.allowChangePassword,
-                allowResetPassword: action.payload.allowResetPassword,
             };
         case AuthActionTypes.LOAD_AUTH_ACTIONS_FAILED:
             return {
@@ -147,7 +115,6 @@ export default function (state = defaultState, action: AuthActions | BoundariesA
                 authActionsFetching: false,
                 authActionsInitialized: true,
                 allowChangePassword: false,
-                allowResetPassword: false,
             };
         case BoundariesActionTypes.RESET_AFTER_ERROR: {
             return { ...defaultState };

@@ -1,7 +1,6 @@
 # Copyright (C) 2018 Intel Corporation
 #
 # SPDX-License-Identifier: MIT
-
 from django.conf import settings
 from django.db.models import Q
 import rules
@@ -11,6 +10,7 @@ from rest_framework.permissions import BasePermission
 from django.core import signing
 from rest_framework import authentication, exceptions
 from rest_framework.authentication import TokenAuthentication as _TokenAuthentication
+
 from django.contrib.auth import login
 
 # Even with token authorization it is very important to have a valid session id
@@ -22,12 +22,13 @@ class TokenAuthentication(_TokenAuthentication):
         auth = super().authenticate(request)
         session = getattr(request, 'session')
         if auth is not None and session.session_key is None:
-            login(request, auth[0], 'django.contrib.auth.backends.ModelBackend')
+            login(request, auth[0], 'cvat.apps.authentication.authentication_backends.ModelBackend')
         return auth
 
 def register_signals():
+    from cvat.apps.authentication.models import User
     from django.db.models.signals import post_migrate, post_save
-    from django.contrib.auth.models import User, Group
+    from django.contrib.auth.models import Group
 
     def create_groups(sender, **kwargs):
         for role in AUTH_ROLE:

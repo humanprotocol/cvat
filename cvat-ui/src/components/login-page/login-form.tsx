@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -6,11 +6,10 @@ import React from 'react';
 import Form from 'antd/lib/form';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 export interface LoginData {
-    username: string;
-    password: string;
+    email: string;
 }
 
 interface Props {
@@ -24,36 +23,18 @@ function LoginFormComponent(props: Props): JSX.Element {
         <Form onFinish={onSubmit} className='login-form'>
             <Form.Item
                 hasFeedback
-                name='username'
+                name='email'
                 rules={[
                     {
                         required: true,
-                        message: 'Please specify a username',
+                        message: 'Please specify a email',
                     },
                 ]}
             >
                 <Input
-                    autoComplete='username'
+                    autoComplete='email'
                     prefix={<UserOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-                    placeholder='Username'
-                />
-            </Form.Item>
-
-            <Form.Item
-                hasFeedback
-                name='password'
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please specify a password',
-                    },
-                ]}
-            >
-                <Input
-                    autoComplete='current-password'
-                    prefix={<LockOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-                    placeholder='Password'
-                    type='password'
+                    placeholder='Email'
                 />
             </Form.Item>
 
