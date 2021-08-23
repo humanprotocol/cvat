@@ -9,6 +9,7 @@ from cvat.apps.engine.log import slogger
 from cvat.settings.base import CVAT_URL, CVAT_EXCHANGE_URL
 
 def notify_jobflow(db_jobs, db_task):
+    logger = slogger.task[db_task.id]
     try:
         payouts = []
         for job in db_jobs:
@@ -25,7 +26,8 @@ def notify_jobflow(db_jobs, db_task):
             "task_address": db_task.name,
             "payouts": payouts
         }
-        requests.post(f'{CVAT_EXCHANGE_URL}/notify', json=payload)
+        response = requests.post(f'{CVAT_EXCHANGE_URL}/notify', json=payload)
+        response.raise_for_status()
         db_task.is_exchange_notified = True
-    except requests.ConnectionError:
-        slogger.task[db_task.id].error('Could not connect to the exchange and notify. Task {}'.format(db_task.id))
+    except requests.RequestException as err:
+        logger.error(err)

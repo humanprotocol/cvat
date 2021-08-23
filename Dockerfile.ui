@@ -53,8 +53,8 @@ COPY cvat-ui/ /tmp/cvat-ui/
 
 ARG infura_id
 ARG web3_network
-ENV REACT_APP_INFURA_ID=$infura_id
-ENV REACT_APP_WEB3_NETWORK=$web3_network
+ENV INFURA_ID=$infura_id
+ENV WEB3_NETWORK=$web3_network
 
 RUN npm run build
 

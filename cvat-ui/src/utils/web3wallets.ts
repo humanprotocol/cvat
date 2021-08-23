@@ -12,7 +12,8 @@ const providerOptions = {
     mewconnect: {
         package: MewConnect,
         options: {
-            infuraId: process.env.REACT_APP_INFURA_ID,
+            infuraId: process.env.INFURA_ID,
+            rpc: `wss://${process.env.WEB3_NETWORK}.infura.io/ws/v3/${process.env.INFURA_ID}`,
         },
     },
     authereum: {
@@ -21,13 +22,14 @@ const providerOptions = {
     walletconnect: {
         package: WalletConnectProvider,
         options: {
-            infuraId: process.env.REACT_APP_INFURA_ID,
+            infuraId: process.env.INFURA_ID,
+            rpc: `wss://${process.env.WEB3_NETWORK}.infura.io/ws/v3/${process.env.INFURA_ID}`,
         },
     },
 };
 
 const web3Modal = new Web3Modal({
-    network: process.env.REACT_APP_WEB3_NETWORK,
+    network: process.env.WEB3_NETWORK,
     cacheProvider: false,
     providerOptions,
 });
