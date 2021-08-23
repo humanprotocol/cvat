@@ -4,9 +4,8 @@
 
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Title from 'antd/lib/typography/Title';
-import Text from 'antd/lib/typography/Text';
 import { Row, Col } from 'antd/lib/grid';
 
 import LoginForm, { LoginData } from './login-form';
@@ -14,7 +13,6 @@ import CookieDrawer from './cookie-policy-drawer';
 
 interface LoginPageComponentProps {
     fetching: boolean;
-    renderResetPassword: boolean;
     onLogin: (email: string) => void;
 }
 
@@ -27,7 +25,7 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
         xl: { span: 4 },
     };
 
-    const { fetching, onLogin, renderResetPassword } = props;
+    const { fetching, onLogin } = props;
 
     return (
         <>
@@ -40,23 +38,6 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
                             onLogin(loginData.email);
                         }}
                     />
-                    <Row justify='start' align='top'>
-                        <Col>
-                            <Text strong>
-                                New to CVAT? Create
-                                <Link to='/auth/register'> an account</Link>
-                            </Text>
-                        </Col>
-                    </Row>
-                    {renderResetPassword && (
-                        <Row justify='start' align='top'>
-                            <Col>
-                                <Text strong>
-                                    <Link to='/auth/password/reset'>Forgot your password?</Link>
-                                </Text>
-                            </Col>
-                        </Row>
-                    )}
                 </Col>
             </Row>
             <CookieDrawer />

@@ -235,7 +235,6 @@ LOGIN_REDIRECT_URL = '/'
 AUTHENTICATION_BACKENDS = [
     'rules.permissions.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
-    #'allauth.account.auth_backends.AuthenticationBackend',
     'cvat.apps.authentication.authentication_backends.AuthenticationBackend'
 ]
 
@@ -490,3 +489,5 @@ CACHES = {
 
 USE_CACHE = True
 
+CVAT_URL = os.getenv('CVAT_URL', 'http://cvat:8080')
+CVAT_EXCHANGE_URL = os.getenv('CVAT_EXCHANGE_URL', 'http://human-exchange-cvat:5001')

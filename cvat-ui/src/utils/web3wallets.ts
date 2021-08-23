@@ -10,29 +10,31 @@ import Web3Modal from 'web3modal';
 
 const providerOptions = {
     mewconnect: {
-        package: MewConnect, // required
+        package: MewConnect,
         options: {
-            infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
+            infuraId: process.env.INFURA_ID,
+            rpc: `wss://${process.env.WEB3_NETWORK}.infura.io/ws/v3/${process.env.INFURA_ID}`,
         },
     },
     authereum: {
-        package: Authereum, // required
+        package: Authereum,
     },
     walletconnect: {
-        package: WalletConnectProvider, // required
+        package: WalletConnectProvider,
         options: {
-            infuraId: 'a6afd04d29e242be93a6ce29abb4a1ea', // my infura id
+            infuraId: process.env.INFURA_ID,
+            rpc: `wss://${process.env.WEB3_NETWORK}.infura.io/ws/v3/${process.env.INFURA_ID}`,
         },
     },
 };
 
 const web3Modal = new Web3Modal({
-    network: 'mainnet', // optional
-    cacheProvider: false, // optional
-    providerOptions, // required
+    network: process.env.WEB3_NETWORK,
+    cacheProvider: false,
+    providerOptions,
 });
 
-function initWeb3(provider: any) {
+function initWeb3(provider: any): Web3 {
     const web3: any = new Web3(provider);
     return web3;
 }
@@ -42,7 +44,6 @@ export default async function connectWallet(email: string) {
     const provider = await web3Modal.connect();
 
     const web3: any = initWeb3(provider);
-
     const accounts = await web3.eth.getAccounts();
 
     const [address] = accounts;

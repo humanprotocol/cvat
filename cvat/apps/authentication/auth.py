@@ -28,7 +28,6 @@ class TokenAuthentication(_TokenAuthentication):
 def register_signals():
     from cvat.apps.authentication.models import User
     from django.db.models.signals import post_migrate, post_save
-    #from django.contrib.auth.models import User, Group
     from django.contrib.auth.models import Group
 
     def create_groups(sender, **kwargs):
