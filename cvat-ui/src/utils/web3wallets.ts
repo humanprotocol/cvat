@@ -12,7 +12,7 @@ const providerOptions = {
     mewconnect: {
         package: MewConnect,
         options: {
-            infuraId: '2b78e14debb2482c8865cc1b494bc2dc',
+            infuraId: process.env.REACT_APP_INFURA_ID,
         },
     },
     authereum: {
@@ -21,13 +21,13 @@ const providerOptions = {
     walletconnect: {
         package: WalletConnectProvider,
         options: {
-            infuraId: '2b78e14debb2482c8865cc1b494bc2dc',
+            infuraId: process.env.REACT_APP_INFURA_ID,
         },
     },
 };
 
 const web3Modal = new Web3Modal({
-    network: 'mainnet',
+    network: process.env.REACT_APP_WEB3_NETWORK,
     cacheProvider: false,
     providerOptions,
 });
@@ -42,7 +42,6 @@ export default async function connectWallet(email: string) {
     const provider = await web3Modal.connect();
 
     const web3: any = initWeb3(provider);
-
     const accounts = await web3.eth.getAccounts();
 
     const [address] = accounts;

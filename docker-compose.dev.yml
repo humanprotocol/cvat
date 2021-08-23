@@ -24,4 +24,6 @@ services:
         https_proxy:
         no_proxy:
         socks_proxy:
+        infura_id: '2b78e14debb2482c8865cc1b494bc2dc'
+        web3_network: 'rinkeby'
       dockerfile: Dockerfile.ui
