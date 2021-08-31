@@ -44,25 +44,10 @@ context('When clicking on the Logout button, get the user session closed.', () =
         cy.deletingRegisteredUsers([Cypress.env('regularUserEmail')]);
     });
 
-    //  beforeEach(() => {
-    //     // before each test, we can automatically preserve the
-    //     // 'csrftoken' and 'sessionid' cookies. this means they
-    //     // will not be cleared before the NEXT test starts.
-
-    //     Cypress.Cookies.preserveOnce('csrftoken', 'remember_token')
-    //     Cypress.Cookies.preserveOnce('sessionid', 'remember_token')
-    //   })
-
     describe(`Testing issue "${issueId}"`, () => {
         it('Login and logout', () => {
             cy.closeModalUnsupportedPlatform();
-            cy.pause();
-            //login();
-            // cy.visit('/', {headers: {
-            //     Authorization: `Token ${authKey}`,
-            // }});
             cy.visit('/');
-            cy.pause();
             cy.logout(Cypress.env('regularUserEmail'));
             cy.url().should('include', '/auth/login');
         });

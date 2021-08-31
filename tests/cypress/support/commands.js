@@ -25,29 +25,6 @@ Cypress.Commands.add('login', (username = Cypress.env('user'), password = Cypres
     });
 });
 
-Cypress.Commands.add(
-    'login_as_user',
-    (
-        email = Cypress.env('regularUserEmail'),
-        walletAddress = Cypress.env('regularUserWalletAddress'),
-        signedEmail = Cypress.env('regularUserSignedEmail'),
-    ) => {
-        let authKey;
-        cy.request({
-            method: 'POST',
-            url: '/api/v1/auth/login',
-            body: {
-                email: email,
-                wallet_address: walletAddress,
-                signed_email: signedEmail,
-            },
-        }).then((response) => {
-            authKey = response['body']['key'];
-        });
-        return authKey;
-    },
-);
-
 Cypress.Commands.add('logout', () => {
     cy.get('.cvat-right-header').within(() => {
         cy.get('.cvat-header-menu-dropdown').trigger('mouseover', { which: 1 });
