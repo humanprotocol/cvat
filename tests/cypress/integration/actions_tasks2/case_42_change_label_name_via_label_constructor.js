@@ -10,9 +10,14 @@ context('Changing a label name via label constructor.', () => {
     const secondLabelName = `Second case ${caseId}`;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing case "${caseId}"`, () => {

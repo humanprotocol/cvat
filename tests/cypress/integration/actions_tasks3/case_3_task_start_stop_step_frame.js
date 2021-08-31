@@ -30,10 +30,15 @@ context('Check if parameters "startFrame", "stopFrame", "frameStep" works as exp
     };
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

@@ -11,9 +11,14 @@ context('Add/delete labels and attributes.', () => {
     const textDefaultValue = 'Some default value for type Text';
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing "${labelName}"`, () => {

@@ -34,8 +34,13 @@ context('Wrong attribute is removed in label constructor.', () => {
     ];
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing issue "${issueId}"`, () => {

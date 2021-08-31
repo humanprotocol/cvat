@@ -14,8 +14,13 @@ context('Create an annotation task with manifest.', () => {
     let filesToAttach = [];
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

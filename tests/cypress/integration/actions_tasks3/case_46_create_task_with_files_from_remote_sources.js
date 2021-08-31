@@ -13,9 +13,14 @@ context('Create a task with files from remote sources.', () => {
     const correctUrl = wrongUrl.replace('cvatt.jpg', 'cvat.jpg');
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -14,8 +14,13 @@ export const multiAttrParams = {
     typeAttribute: 'Text',
 };
 
+beforeEach(() => {
+    Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+    Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
+});
+
 it('Prepare to testing', () => {
-    cy.visit('/');
+    cy.visit('/admin');
     cy.login();
     cy.goToProjectsList();
     cy.get('.cvat-projects-page').should('exist');

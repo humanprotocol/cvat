@@ -42,19 +42,18 @@ context('Import annotations for frames with dots in name.', { browser: '!firefox
     }
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
-        cy.createAnnotationTask(
-            taskName,
-            labelName,
-            attrName,
-            textDefaultValue,
-            archiveName,
-        );
+        cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, archiveName);
         cy.openTaskJob(taskName);
         cy.createRectangle(createRectangleShape2Points);
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

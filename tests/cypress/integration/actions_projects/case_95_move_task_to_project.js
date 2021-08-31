@@ -11,14 +11,14 @@ context('Move a task to a project.', () => {
         label: 'Tree',
         attrName: 'Kind',
         attrValue: 'Oak',
-    }
+    };
 
     const project = {
         name: `Case ${caseID}`,
         label: 'Tree',
         attrName: 'Kind',
-        attrVaue: 'Oak'
-    }
+        attrVaue: 'Oak',
+    };
 
     const imagesCount = 1;
     const imageFileName = `image_${task.name.replace(' ', '_').toLowerCase()}`;
@@ -33,13 +33,16 @@ context('Move a task to a project.', () => {
     const directoryToArchive = imagesFolder;
 
     before(() => {
-        cy.visit('/');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, task.name, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
     });
 
     beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
+
         cy.goToTaskList();
         cy.createAnnotationTask(task.name, task.label, task.attrName, task.attrValue, archiveName);
         cy.goToProjectsList();

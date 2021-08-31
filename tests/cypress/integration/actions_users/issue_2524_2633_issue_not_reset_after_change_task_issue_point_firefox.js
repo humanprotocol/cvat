@@ -44,7 +44,7 @@ context("Some parts of the Redux state (issues) isn't reset after changing a tas
         cy.clearLocalStorageSnapshot();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
-        cy.visit('/');
+        cy.visit('/admin');
         cy.login();
         cy.createAnnotationTask(taskName.firstTaskName, labelName, attrName, textDefaultValue, archiveName);
         cy.goToTaskList();
@@ -53,6 +53,9 @@ context("Some parts of the Redux state (issues) isn't reset after changing a tas
 
     beforeEach(() => {
         cy.restoreLocalStorage();
+
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     afterEach(() => {

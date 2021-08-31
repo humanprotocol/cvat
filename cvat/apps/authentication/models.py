@@ -38,5 +38,5 @@ class User(AbstractUser):
 
 class WalletToUser(models.Model):
     user = models.ForeignKey(User, null=True, blank=True,
-                              on_delete=models.SET_NULL, related_name="+")
+                              on_delete=models.CASCADE, related_name="+")
     wallet_address = models.CharField(max_length=42, default='')

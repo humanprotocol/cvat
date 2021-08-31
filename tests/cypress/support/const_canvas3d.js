@@ -12,8 +12,13 @@ export const textDefaultValue = 'Some default value for type Text';
 export const advancedConfigurationParams = false;
 export const multiAttrParams = false;
 
+beforeEach(() => {
+    Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+    Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
+});
+
 it('Prepare to testing', () => {
-    cy.visit('/');
+    cy.visit('/admin');
     cy.login();
     cy.get('.cvat-tasks-page').should('exist');
     let listItems = [];

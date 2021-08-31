@@ -12,7 +12,7 @@ context('Context images for 2D tasks.', () => {
     const textDefaultValue = 'color';
     const pathToArchive = `../../${__dirname}/assets/case_90/case_90_context_image.zip`;
 
-    function previewRotate (directionRotation, expectedDeg) {
+    function previewRotate(directionRotation, expectedDeg) {
         if (directionRotation === 'right') {
             cy.get('[data-icon="rotate-right"]').click();
         } else {
@@ -21,31 +21,28 @@ context('Context images for 2D tasks.', () => {
         cy.get('.ant-image-preview-img').should('have.attr', 'style').and('contain', `rotate(${expectedDeg}deg)`);
     }
 
-    function previewScaleWheel (zoom, expectedScaleValue) {
+    function previewScaleWheel(zoom, expectedScaleValue) {
         cy.get('.ant-image-preview-img')
-            .trigger('wheel', {deltaY: zoom})
+            .trigger('wheel', { deltaY: zoom })
             .should('have.attr', 'style')
             .and('contain', `scale3d(${expectedScaleValue})`);
     }
 
-    function previewScaleButton (zoom, expectedScaleValue) {
+    function previewScaleButton(zoom, expectedScaleValue) {
         cy.get(`[data-icon="zoom-${zoom}"]`).click();
-        cy.get('.ant-image-preview-img')
-            .should('have.attr', 'style')
-            .and('contain', `scale3d(${expectedScaleValue})`);
+        cy.get('.ant-image-preview-img').should('have.attr', 'style').and('contain', `scale3d(${expectedScaleValue})`);
     }
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
-        cy.createAnnotationTask(
-            taskName,
-            labelName,
-            attrName,
-            textDefaultValue,
-            pathToArchive,
-        );
+        cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, pathToArchive);
         cy.openTaskJob(taskName);
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {
@@ -88,20 +85,22 @@ context('Context images for 2D tasks.', () => {
         });
 
         it('Preview a context image. Move.', () => {
-            cy.get('.ant-image-preview-img-wrapper').should('have.attr', 'style').then((translate3d) => {
-                cy.get('.ant-image-preview-img').trigger('mousedown', {button: 0});
-                cy.get('.ant-image-preview-moving').should('exist');
-                cy.get('.ant-image-preview-wrap').trigger('mousemove', 300, 300);
-                cy.get('.ant-image-preview-img-wrapper').should('have.attr', 'style').and('not.equal', translate3d)
-                cy.get('.ant-image-preview-img').trigger('mouseup');
-                cy.get('.ant-image-preview-moving').should('not.exist');
-                cy.get('.ant-image-preview-img-wrapper').should('have.attr', 'style').and('equal', translate3d)
-            });
+            cy.get('.ant-image-preview-img-wrapper')
+                .should('have.attr', 'style')
+                .then((translate3d) => {
+                    cy.get('.ant-image-preview-img').trigger('mousedown', { button: 0 });
+                    cy.get('.ant-image-preview-moving').should('exist');
+                    cy.get('.ant-image-preview-wrap').trigger('mousemove', 300, 300);
+                    cy.get('.ant-image-preview-img-wrapper').should('have.attr', 'style').and('not.equal', translate3d);
+                    cy.get('.ant-image-preview-img').trigger('mouseup');
+                    cy.get('.ant-image-preview-moving').should('not.exist');
+                    cy.get('.ant-image-preview-img-wrapper').should('have.attr', 'style').and('equal', translate3d);
+                });
         });
 
         it('Preview a context image. Cancel preview.', () => {
             cy.get('.ant-image-preview-wrap').type('{Esc}');
-            cy.get('.ant-image-preview-wrap').should('have.attr', 'style').and('contain', 'display: none')
+            cy.get('.ant-image-preview-wrap').should('have.attr', 'style').and('contain', 'display: none');
         });
     });
 });

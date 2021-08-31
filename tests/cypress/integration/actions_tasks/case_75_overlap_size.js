@@ -29,7 +29,7 @@ context('Overlap size.', () => {
     const calculatedOverlapSize = advancedConfigurationParams.segmentSize - advancedConfigurationParams.overlapSize;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
@@ -43,6 +43,11 @@ context('Overlap size.', () => {
             advancedConfigurationParams,
         );
         cy.openTask(taskName);
+    });
+
+    beforeEach(() => {
+        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
+        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

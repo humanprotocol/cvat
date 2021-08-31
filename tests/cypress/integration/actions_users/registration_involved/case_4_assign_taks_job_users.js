@@ -21,21 +21,46 @@ context('Multiple users. Assign task, job.', () => {
     const archivePath = `cypress/fixtures/${archiveName}`;
     const imagesFolder = `cypress/fixtures/${imageFileName}`;
     const directoryToArchive = imagesFolder;
-    const secondUserName = 'Seconduser';
-    const thirdUserName = 'Thirduser';
+    let authKey;
+    let authKey2;
 
-    const secondUser = {
-        firstName: `${secondUserName} fitstname`,
-        lastName: `${secondUserName} lastname`,
-        emailAddr: `${secondUserName.toLowerCase()}@local.local`,
-        password: 'UfdU21!dds',
-    };
-    const thirdUser = {
-        firstName: `${thirdUserName} fitstname`,
-        lastName: `${thirdUserName} lastname`,
-        emailAddr: `${thirdUserName.toLowerCase()}@local.local`,
-        password: 'Fv5Df3#f55g',
-    };
+    function regularUserLogin() {
+        cy.request({
+            method: 'POST',
+            url: '/api/v1/auth/login',
+            body: {
+                email: Cypress.env('regularUserEmail'),
+                wallet_address: Cypress.env('regularUserWalletAddress'),
+                signed_email: Cypress.env('regularUserSignedEmail'),
+            },
+        }).then(async (response) => {
+            authKey = await response['body']['key'];
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${authKey}`,
+                },
+            });
+        });
+    }
+
+    function regularUser2Login() {
+        cy.request({
+            method: 'POST',
+            url: '/api/v1/auth/login',
+            body: {
+                email: Cypress.env('regularUser2Email'),
+                wallet_address: Cypress.env('regularUser2WalletAddress'),
+                signed_email: Cypress.env('regularUser2SignedEmail'),
+            },
+        }).then(async (response) => {
+            authKey = await response['body']['key'];
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${authKey2}`,
+                },
+            });
+        });
+    }
 
     before(() => {
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
@@ -43,7 +68,8 @@ context('Multiple users. Assign task, job.', () => {
     });
 
     after(() => {
-        cy.deletingRegisteredUsers([secondUserName, thirdUserName]);
+        cy.deletingRegisteredUsers([Cypress.env('regularUserEmail'), Cypress.env('regularUser2Email')]);
+        cy.visit('/admin');
         cy.login();
         cy.deleteTask(taskName);
     });
@@ -51,14 +77,13 @@ context('Multiple users. Assign task, job.', () => {
     describe(`Testing case "${caseId}"`, () => {
         // First user is "admin".
         it('Register second user, tries to create task and logout.', () => {
-            cy.visit('auth/register');
-            cy.url().should('include', '/auth/register');
+            cy.visit('/');
+            cy.url().should('include', '/login');
             cy.userRegistration(
-                secondUser.firstName,
-                secondUser.lastName,
-                secondUserName,
-                secondUser.emailAddr,
-                secondUser.password,
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
             );
             cy.createAnnotationTask(
                 taskName,
@@ -75,63 +100,65 @@ context('Multiple users. Assign task, job.', () => {
             );
             cy.closeNotification('.cvat-notification-notice-create-task-failed');
             cy.contains('.cvat-item-task-name', `${taskName}`).should('not.exist');
-            cy.logout(secondUserName);
+            cy.logout();
         });
         it('Register third user and logout.', () => {
-            cy.get('a[href="/auth/register"]').click();
-            cy.url().should('include', '/auth/register');
+            cy.visit('/');
+            cy.url().should('include', '/login');
             cy.userRegistration(
-                thirdUser.firstName,
-                thirdUser.lastName,
-                thirdUserName,
-                thirdUser.emailAddr,
-                thirdUser.password,
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
             );
-            cy.logout(thirdUserName);
+            cy.logout();
         });
         it('First user login, create a task and logout', () => {
+            cy.visit('/admin');
             cy.login();
             cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, archiveName);
             cy.logout();
         });
         it('Second user login, tries to add label and logout', () => {
-            cy.login(secondUserName, secondUser.password);
+            regularUserLogin();
             cy.openTask(taskName);
             cy.addNewLabel('failAddLabel');
             cy.closeNotification('.cvat-notification-notice-update-task-failed');
             cy.contains('.cvat-constructor-viewer-item', 'failAddLabel').should('not.exist');
-            cy.logout(secondUserName);
+            cy.logout();
         });
         it('Assign the task to the second user and logout', () => {
+            cy.visit('/admin');
             cy.login();
             cy.openTask(taskName);
-            cy.assignTaskToUser(secondUserName);
+            cy.assignTaskToUser(Cypress.env('regularUserEmail'));
             cy.logout();
         });
         it('Second user login. The task can be opened. Logout', () => {
-            cy.login(secondUserName, secondUser.password);
+            regularUserLogin();
             cy.contains('strong', taskName).should('exist');
             cy.openTask(taskName);
-            cy.logout(secondUserName);
+            cy.logout();
         });
         it('Third user login. The task not exist. Logout', () => {
-            cy.login(thirdUserName, thirdUser.password);
+            regularUser2Login();
             cy.contains('strong', taskName).should('not.exist');
-            cy.logout(thirdUserName);
+            cy.logout();
         });
         it('First user login and assign the job to the third user. Logout', () => {
+            cy.visit('/admin');
             cy.login();
             cy.openTask(taskName);
-            cy.assignJobToUser(0, thirdUserName);
+            cy.assignJobToUser(0, Cypress.env('regularUser2Email'));
             cy.logout();
         });
         it('Third user login. Tries to delete task. The task can be opened.', () => {
-            cy.login(thirdUserName, thirdUser.password);
+            regularUser2Login();
             cy.contains('strong', taskName).should('exist');
             cy.deleteTask(taskName);
             cy.closeNotification('.cvat-notification-notice-delete-task-failed');
             cy.openTask(taskName);
-            cy.logout(thirdUserName);
+            cy.logout();
         });
     });
 });
