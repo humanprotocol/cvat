@@ -32,35 +32,39 @@ context('When clicking on the Logout button, get the user session closed.', () =
             cy.url().should('include', '/auth/login');
         });
 
-        // it('Login and open task', () => {
-        //     cy.regularUserLogin(Cypress.env('regularUserEmail'), Cypress.env('regularUserWalletAddress'), Cypress.env('regularUserSignedEmail'));
-        //     cy.openTask(taskName);
-        //     // get id task
-        //     cy.url().then((link) => {
-        //         taskId = Number(link.split('/').slice(-1)[0]);
-        //     });
-        // });
+        it('Login and open task', () => {
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
+            cy.openTask(taskName);
+            // get id task
+            cy.url().then((link) => {
+                taskId = Number(link.split('/').slice(-1)[0]);
+            });
+        });
 
-        // it('Logout and login to task via token', () => {
-        //     cy.logout();
-        //     // get token and login to task
-        //     cy.request({
-        //         method: 'POST',
-        //         url: '/api/v1/auth/login',
-        //         body: {
-        //             email: Cypress.env('regularUserEmail'),
-        //             wallet_address: Cypress.env('regularUserWalletAddress'),
-        //             signed_email: Cypress.env('regularUserSignedEmail'),
-        //         },
-        //     }).then(async (response) => {
-        //         response = await response['headers']['set-cookie'];
-        //         const csrfToken = response[0].match(/csrftoken=\w+/)[0].replace('csrftoken=', '');
-        //         const sessionId = response[1].match(/sessionid=\w+/)[0].replace('sessionid=', '');
-        //         cy.visit(`/login-with-token/${sessionId}/${csrfToken}?next=/tasks/${taskId}`);
-        //         cy.contains('.cvat-task-details-task-name', `${taskName}`).should('be.visible');
-        //     });
-        //     cy.logout();
-        // });
+        it('Logout and login to task via token', () => {
+            cy.logout();
+            // get token and login to task
+            cy.request({
+                method: 'POST',
+                url: '/api/v1/auth/login',
+                body: {
+                    email: Cypress.env('regularUserEmail'),
+                    wallet_address: Cypress.env('regularUserWalletAddress'),
+                    signed_email: Cypress.env('regularUserSignedEmail'),
+                },
+            }).then(async (response) => {
+                response = await response['headers']['set-cookie'];
+                const csrfToken = response[0].match(/csrftoken=\w+/)[0].replace('csrftoken=', '');
+                const sessionId = response[1].match(/sessionid=\w+/)[0].replace('sessionid=', '');
+                cy.visit(`/login-with-token/${sessionId}/${csrfToken}?next=/tasks/${taskId}`);
+                cy.contains('.cvat-task-details-task-name', `${taskName}`).should('be.visible');
+            });
+            cy.logout();
+        });
 
         it('Correct email and incorrect wallet', () => {
             cy.request({
