@@ -25,6 +25,26 @@ Cypress.Commands.add('login', (username = Cypress.env('user'), password = Cypres
     });
 });
 
+Cypress.Commands.add('regularUserLogin', (email, walletAddress, signedEmail) => {
+    cy.request({
+        method: 'POST',
+        url: '/api/v1/auth/login',
+        body: {
+            email: email,
+            wallet_address: walletAddress,
+            signed_email: signedEmail,
+        },
+    })
+        .then((response) => response['body']['key'])
+        .then((token) =>
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }),
+        );
+});
+
 Cypress.Commands.add('logout', () => {
     cy.get('.cvat-right-header').within(() => {
         cy.get('.cvat-header-menu-dropdown').trigger('mouseover', { which: 1 });
@@ -36,7 +56,6 @@ Cypress.Commands.add('logout', () => {
 });
 
 Cypress.Commands.add('userRegistration', (userName, emailAddr, walletAddr, signedEmail) => {
-    let authKey;
     cy.request({
         method: 'POST',
         url: '/api/v1/auth/register',
@@ -46,14 +65,16 @@ Cypress.Commands.add('userRegistration', (userName, emailAddr, walletAddr, signe
             wallet_address: walletAddr,
             signed_email: signedEmail,
         },
-    }).then((response) => {
-        authKey = response['body']['key'];
-    });
-    cy.visit('/', {
-        headers: {
-            Authorization: `Token ${authKey}`,
-        },
-    });
+    })
+        .then((response) => response['body']['key'])
+        .then((token) =>
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }),
+        );
+
     if (Cypress.browser.family === 'chromium') {
         cy.url().should('include', '/tasks');
     }

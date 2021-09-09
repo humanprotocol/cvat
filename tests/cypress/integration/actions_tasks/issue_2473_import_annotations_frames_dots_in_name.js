@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Import annotations for frames with dots in name.', { browser: '!firefox' }, () => {
     const issueId = '2473';
     const labelName = `Issue ${issueId}`;
@@ -49,11 +51,6 @@ context('Import annotations for frames with dots in name.', { browser: '!firefox
         cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, archiveName);
         cy.openTaskJob(taskName);
         cy.createRectangle(createRectangleShape2Points);
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

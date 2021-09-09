@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create and delete a annotation task', () => {
     const caseId = '1';
     const labelName = `Case ${caseId}`;
@@ -27,11 +29,6 @@ context('Create and delete a annotation task', () => {
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing "${labelName}"`, () => {

@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Displaying attached files when creating a task.', () => {
     const issueId = '2661';
     const labelName = `Issue ${issueId}`;
@@ -29,11 +31,6 @@ context('Displaying attached files when creating a task.', () => {
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
         cy.get('#cvat-create-task-button').click();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing "${labelName}"`, () => {

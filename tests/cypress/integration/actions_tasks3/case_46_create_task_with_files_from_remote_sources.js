@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create a task with files from remote sources.', () => {
     const caseId = '46';
     const labelName = `Case ${caseId}`;
@@ -16,11 +18,6 @@ context('Create a task with files from remote sources.', () => {
         cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

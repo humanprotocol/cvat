@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import './preserve_cookies';
+
 export const labelName = `Main task`;
 export const taskName = `New annotation task for ${labelName}`;
 export const attrName = `Attr for ${labelName}`;
@@ -32,11 +34,6 @@ export const multiAttrParams = {
     additionalValue: `Attr value 2`,
     typeAttribute: 'Text',
 };
-
-beforeEach(() => {
-    Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-    Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
-});
 
 it('Prepare to testing', () => {
     cy.visit('/admin');

@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Context images for 2D tasks.', () => {
     const caseId = '90';
     const labelName = `Case ${caseId}`;
@@ -38,11 +40,6 @@ context('Context images for 2D tasks.', () => {
         cy.login();
         cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, pathToArchive);
         cy.openTaskJob(taskName);
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

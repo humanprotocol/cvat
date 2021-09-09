@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Changing a label name via label constructor.', () => {
     const caseId = '42';
     const firstLabelName = `First case ${caseId}`;
@@ -13,11 +15,6 @@ context('Changing a label name via label constructor.', () => {
         cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing case "${caseId}"`, () => {

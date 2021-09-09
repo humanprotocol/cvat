@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Add/delete labels and attributes.', () => {
     const caseId = '41';
     const labelName = `Case ${caseId}`;
@@ -14,11 +16,6 @@ context('Add/delete labels and attributes.', () => {
         cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing "${labelName}"`, () => {

@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Try to create a task with an incorrect dataset repository.', () => {
     const caseId = '76';
     const labelName = `Case ${caseId}`;
@@ -29,11 +31,6 @@ context('Try to create a task with an incorrect dataset repository.', () => {
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
         cy.get('#cvat-create-task-button').click();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing "${labelName}"`, () => {

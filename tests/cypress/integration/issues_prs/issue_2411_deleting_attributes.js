@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Wrong attribute is removed in label constructor.', () => {
     const issueId = '2411';
     const taskRaw = [
@@ -36,11 +38,6 @@ context('Wrong attribute is removed in label constructor.', () => {
     before(() => {
         cy.visit('/admin');
         cy.login();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     describe(`Testing issue "${issueId}"`, () => {

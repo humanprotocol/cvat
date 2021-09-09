@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Hotkeys to change labels feature.', () => {
     const caseId = '72';
     const labelName = `Case ${caseId}`;
@@ -47,11 +49,6 @@ context('Hotkeys to change labels feature.', () => {
         cy.openTask(taskName);
         cy.addNewLabel(secondLabel);
         cy.openJob();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

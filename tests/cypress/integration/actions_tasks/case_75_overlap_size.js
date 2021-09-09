@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Overlap size.', () => {
     const caseId = '75';
     const labelName = `Case ${caseId}`;
@@ -43,11 +45,6 @@ context('Overlap size.', () => {
             advancedConfigurationParams,
         );
         cy.openTask(taskName);
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

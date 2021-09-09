@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Rename a label via raw editor.', () => {
     const caseId = '66';
     const labelName = `Case ${caseId}`;
@@ -44,11 +46,6 @@ context('Rename a label via raw editor.', () => {
         cy.createAnnotationTask(taskName, labelName, attrName, textDefaultValue, archiveName);
         cy.openTask(taskName);
         cy.addNewLabel(labelName);
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

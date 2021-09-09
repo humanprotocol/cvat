@@ -65,7 +65,6 @@ context('Move a task between projects.', () => {
     beforeEach(() => {
         Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
         Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
-
         cy.goToProjectsList();
         cy.createProjects(
             firtsProject.name,

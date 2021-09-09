@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context("Some parts of the Redux state (issues) isn't reset after changing a task.", () => {
     const issueId = '2524_2633';
     const labelName = `Issue ${issueId}`;
@@ -53,9 +55,6 @@ context("Some parts of the Redux state (issues) isn't reset after changing a tas
 
     beforeEach(() => {
         cy.restoreLocalStorage();
-
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     afterEach(() => {

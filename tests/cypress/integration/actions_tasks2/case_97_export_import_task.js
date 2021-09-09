@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Export, import an annotation task.', () => {
     const caseId = '97';
     const labelName = 'car';
@@ -53,11 +55,6 @@ context('Export, import an annotation task.', () => {
         cy.createPoint(createPointsShape);
         cy.saveJob();
         cy.goToTaskList();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

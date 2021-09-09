@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import './preserve_cookies';
+
 export const labelName = `points cloud`;
 export const taskName = `Canvas 3D functionality`;
 export const pcdPngZipArr = '../../cypress/integration/canvas3d_functionality/assets/test_canvas3d.zip';
@@ -11,11 +13,6 @@ export const attrName = `Attr for ${labelName}`;
 export const textDefaultValue = 'Some default value for type Text';
 export const advancedConfigurationParams = false;
 export const multiAttrParams = false;
-
-beforeEach(() => {
-    Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-    Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
-});
 
 it('Prepare to testing', () => {
     cy.visit('/admin');

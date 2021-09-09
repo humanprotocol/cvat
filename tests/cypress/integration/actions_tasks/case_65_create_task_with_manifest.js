@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create an annotation task with manifest.', () => {
     const caseId = '65';
     const labelName = `Case ${caseId}`;
@@ -16,11 +18,6 @@ context('Create an annotation task with manifest.', () => {
     before(() => {
         cy.visit('/admin');
         cy.login();
-    });
-
-    beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
     });
 
     after(() => {

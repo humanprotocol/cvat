@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Move a task to a project.', () => {
     const caseID = '95';
     const task = {
@@ -40,9 +42,6 @@ context('Move a task to a project.', () => {
     });
 
     beforeEach(() => {
-        Cypress.Cookies.preserveOnce('csrftoken', 'remember_token');
-        Cypress.Cookies.preserveOnce('sessionid', 'remember_token');
-
         cy.goToTaskList();
         cy.createAnnotationTask(task.name, task.label, task.attrName, task.attrValue, archiveName);
         cy.goToProjectsList();

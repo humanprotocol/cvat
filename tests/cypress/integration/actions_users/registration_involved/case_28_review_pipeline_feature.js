@@ -25,8 +25,6 @@ context('Review pipeline feature', () => {
         multiJobs: true,
         segmentSize: 10,
     };
-    let authKey;
-    let authKey2;
 
     const createRectangleShape2Points = {
         points: 'By 2 Points',
@@ -98,59 +96,6 @@ context('Review pipeline feature', () => {
         firstY: 100,
     };
 
-    function login(email, wallet_address, signed_email) {
-        cy.request({
-            method: 'POST',
-            url: '/api/v1/auth/login',
-            body: {
-                email: email,
-                wallet_address: wallet_address,
-                signed_email: signed_email,
-            },
-        }).then((response) => {
-            authKey = response['body']['key'];
-        });
-        cy.visit('/');
-    }
-
-    function regularUserLogin() {
-        cy.request({
-            method: 'POST',
-            url: '/api/v1/auth/login',
-            body: {
-                email: Cypress.env('regularUserEmail'),
-                wallet_address: Cypress.env('regularUserWalletAddress'),
-                signed_email: Cypress.env('regularUserSignedEmail'),
-            },
-        }).then(async (response) => {
-            authKey = await response['body']['key'];
-            cy.visit('/', {
-                headers: {
-                    Authorization: `Token ${authKey}`,
-                },
-            });
-        });
-    }
-
-    function regularUser2Login() {
-        cy.request({
-            method: 'POST',
-            url: '/api/v1/auth/login',
-            body: {
-                email: Cypress.env('regularUser2Email'),
-                wallet_address: Cypress.env('regularUser2WalletAddress'),
-                signed_email: Cypress.env('regularUser2SignedEmail'),
-            },
-        }).then(async (response) => {
-            authKey = await response['body']['key'];
-            cy.visit('/', {
-                headers: {
-                    Authorization: `Token ${authKey2}`,
-                },
-            });
-        });
-    }
-
     before(() => {
         cy.clearLocalStorageSnapshot();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
@@ -210,10 +155,18 @@ context('Review pipeline feature', () => {
         });
 
         it('Login the second, the third user. The task is missing.', () => {
-            regularUserLogin();
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.contains('.cvat-item-task-name', taskName).should('not.exist');
             cy.logout();
-            regularUser2Login();
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.contains('.cvat-item-task-name', taskName).should('not.exist');
             cy.logout();
         });
@@ -227,7 +180,11 @@ context('Review pipeline feature', () => {
         });
 
         it('Second user login. Open the task, open the job and annotates it.', () => {
-            regularUserLogin();
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.createRectangle(createRectangleShape2PointsSecond);
             for (let i = 1; i < 4; i++) {
@@ -273,7 +230,11 @@ context('Review pipeline feature', () => {
         });
 
         it('The third user opens the job. Review mode is opened automatically.', () => {
-            regularUser2Login();
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.get('.cvat-workspace-selector').should('have.text', 'Review');
 
@@ -366,7 +327,7 @@ context('Review pipeline feature', () => {
         });
 
         it('The second user login. Opens the job again. All issues are visible.', () => {
-            login(
+            cy.regularUserLogin(
                 Cypress.env('regularUserEmail'),
                 Cypress.env('regularUserWalletAddress'),
                 Cypress.env('regularUserSignedEmail'),
@@ -469,7 +430,7 @@ context('Review pipeline feature', () => {
         });
 
         it('The third user login, opens the job, goes to menu, "Submit review" => "Review next" => Assign the first user => Submit.', () => {
-            login(
+            cy.regularUserLogin(
                 Cypress.env('regularUser2Email'),
                 Cypress.env('regularUser2WalletAddress'),
                 Cypress.env('regularUser2SignedEmail'),
@@ -497,7 +458,7 @@ context('Review pipeline feature', () => {
             cy.saveJob();
             cy.get('.cvat-notification-notice-save-annotations-failed').should('not.exist');
             cy.logout();
-            login(
+            cy.regularUserLogin(
                 Cypress.env('regularUserEmail'),
                 Cypress.env('regularUserWalletAddress'),
                 Cypress.env('regularUserSignedEmail'),
@@ -508,7 +469,7 @@ context('Review pipeline feature', () => {
             cy.get('.cvat-notification-notice-save-annotations-failed').should('exist');
             cy.goToTaskList();
             cy.logout();
-            login(
+            cy.regularUserLogin(
                 Cypress.env('regularUser2Email'),
                 Cypress.env('regularUser2WalletAddress'),
                 Cypress.env('regularUser2SignedEmail'),

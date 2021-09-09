@@ -37,7 +37,6 @@ context('Base actions on the project', () => {
     const newLabelName3 = `Third label ${projectName}`;
     const newLabelName4 = `Fourth label ${projectName}`;
     let projectID = '';
-    let authKey;
 
     function getProjectID(projectName) {
         cy.contains('.cvat-project-name', projectName)
@@ -46,25 +45,6 @@ context('Base actions on the project', () => {
             .then(($projectID) => {
                 projectID = $projectID;
             });
-    }
-
-    function regularUserLogin() {
-        cy.request({
-            method: 'POST',
-            url: '/api/v1/auth/login',
-            body: {
-                email: Cypress.env('regularUserEmail'),
-                wallet_address: Cypress.env('regularUserWalletAddress'),
-                signed_email: Cypress.env('regularUserSignedEmail'),
-            },
-        }).then(async (response) => {
-            authKey = await response['body']['key'];
-            cy.visit('/', {
-                headers: {
-                    Authorization: `Token ${authKey}`,
-                },
-            });
-        });
     }
 
     before(() => {
@@ -156,7 +136,11 @@ context('Base actions on the project', () => {
             cy.logout();
         });
         it('Login second user. The project and first tasks available for that user. Tries to delete project. Logout.', () => {
-            regularUserLogin();
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.goToProjectsList();
             // tries to delete project
             cy.deleteProject(projectName, projectID, 'fail');

@@ -4,8 +4,6 @@
 
 /// <reference types="cypress" />
 
-let authKey = '';
-
 describe('Delete users and tasks created during the test run.', () => {
     it('Get a list of users and delete all except id:1', () => {
         cy.request({
