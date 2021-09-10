@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Overlap size.', () => {
     const caseId = '75';
     const labelName = `Case ${caseId}`;
@@ -29,7 +31,7 @@ context('Overlap size.', () => {
     const calculatedOverlapSize = advancedConfigurationParams.segmentSize - advancedConfigurationParams.overlapSize;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

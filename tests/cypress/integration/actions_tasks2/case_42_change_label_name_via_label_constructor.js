@@ -4,13 +4,15 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Changing a label name via label constructor.', () => {
     const caseId = '42';
     const firstLabelName = `First case ${caseId}`;
     const secondLabelName = `Second case ${caseId}`;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
     });

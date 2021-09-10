@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Displaying attached files when creating a task.', () => {
     const issueId = '2661';
     const labelName = `Issue ${issueId}`;
@@ -24,7 +26,7 @@ context('Displaying attached files when creating a task.', () => {
     }
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

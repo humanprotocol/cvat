@@ -1,8 +1,10 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
 /// <reference types="cypress" />
+
+import './preserve_cookies';
 
 export const labelName = `Main task`;
 export const taskName = `New annotation task for ${labelName}`;
@@ -34,7 +36,7 @@ export const multiAttrParams = {
 };
 
 it('Prepare to testing', () => {
-    cy.visit('/');
+    cy.visit('/admin');
     cy.login();
     cy.get('.cvat-tasks-page').should('exist');
     let listItems = [];

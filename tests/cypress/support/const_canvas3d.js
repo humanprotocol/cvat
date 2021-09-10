@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import './preserve_cookies';
+
 export const labelName = `points cloud`;
 export const taskName = `Canvas 3D functionality`;
 export const pcdPngZipArr = '../../cypress/integration/canvas3d_functionality/assets/test_canvas3d.zip';
@@ -13,7 +15,7 @@ export const advancedConfigurationParams = false;
 export const multiAttrParams = false;
 
 it('Prepare to testing', () => {
-    cy.visit('/');
+    cy.visit('/admin');
     cy.login();
     cy.get('.cvat-tasks-page').should('exist');
     let listItems = [];

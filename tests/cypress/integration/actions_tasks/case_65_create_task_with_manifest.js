@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create an annotation task with manifest.', () => {
     const caseId = '65';
     const labelName = `Case ${caseId}`;
@@ -14,7 +16,7 @@ context('Create an annotation task with manifest.', () => {
     let filesToAttach = [];
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
     });
 

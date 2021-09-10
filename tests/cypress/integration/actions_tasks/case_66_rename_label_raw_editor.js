@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Rename a label via raw editor.', () => {
     const caseId = '66';
     const labelName = `Case ${caseId}`;
@@ -37,7 +39,7 @@ context('Rename a label via raw editor.', () => {
     }
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

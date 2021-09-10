@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -8,7 +8,7 @@ context('Check feedback button.', () => {
     const caseId = '38';
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
     });
 

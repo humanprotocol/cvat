@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context("Some parts of the Redux state (issues) isn't reset after changing a task.", () => {
     const issueId = '2524_2633';
     const labelName = `Issue ${issueId}`;
@@ -44,7 +46,7 @@ context("Some parts of the Redux state (issues) isn't reset after changing a tas
         cy.clearLocalStorageSnapshot();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
-        cy.visit('/');
+        cy.visit('/admin');
         cy.login();
         cy.createAnnotationTask(taskName.firstTaskName, labelName, attrName, textDefaultValue, archiveName);
         cy.goToTaskList();

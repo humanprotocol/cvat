@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Move a task to a project.', () => {
     const caseID = '95';
     const task = {
@@ -11,14 +13,14 @@ context('Move a task to a project.', () => {
         label: 'Tree',
         attrName: 'Kind',
         attrValue: 'Oak',
-    }
+    };
 
     const project = {
         name: `Case ${caseID}`,
         label: 'Tree',
         attrName: 'Kind',
-        attrVaue: 'Oak'
-    }
+        attrVaue: 'Oak',
+    };
 
     const imagesCount = 1;
     const imageFileName = `image_${task.name.replace(' ', '_').toLowerCase()}`;
@@ -33,7 +35,7 @@ context('Move a task to a project.', () => {
     const directoryToArchive = imagesFolder;
 
     before(() => {
-        cy.visit('/');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, task.name, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

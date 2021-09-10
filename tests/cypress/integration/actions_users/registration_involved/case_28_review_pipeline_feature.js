@@ -78,22 +78,6 @@ context('Review pipeline feature', () => {
         numberOfPoints: null,
     };
 
-    const secondUserName = 'Pipsecuser';
-    const thirdUserName = 'Pipthirduser';
-
-    const secondUser = {
-        firstName: `${secondUserName} fitstname`,
-        lastName: `${secondUserName} lastname`,
-        emailAddr: `${secondUserName.toLowerCase()}@local.local`,
-        password: 'UfdU21!dds',
-    };
-    const thirdUser = {
-        firstName: `${thirdUserName} fitstname`,
-        lastName: `${thirdUserName} lastname`,
-        emailAddr: `${thirdUserName.toLowerCase()}@local.local`,
-        password: 'Fv5Df3#f55g',
-    };
-
     const customeIssueDescription = 'Custom issue';
 
     const createIssueRectangle = {
@@ -116,7 +100,7 @@ context('Review pipeline feature', () => {
         cy.clearLocalStorageSnapshot();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
-        cy.visit('auth/register');
+        cy.visit('/');
     });
 
     beforeEach(() => {
@@ -128,34 +112,33 @@ context('Review pipeline feature', () => {
     });
 
     after(() => {
-        cy.goToTaskList();
+        cy.deletingRegisteredUsers([Cypress.env('regularUserEmail'), Cypress.env('regularUser2Email')]);
+        cy.visit('/admin');
+        cy.login();
         cy.deleteTask(taskName);
         cy.logout();
-        cy.deletingRegisteredUsers([secondUserName, thirdUserName]);
     });
 
     describe(`Testing "${labelName}"`, () => {
         it('Registration of required users.', () => {
             cy.userRegistration(
-                secondUser.firstName,
-                secondUser.lastName,
-                secondUserName,
-                secondUser.emailAddr,
-                secondUser.password,
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
             );
-            cy.logout(secondUserName);
-            cy.goToRegisterPage();
+            cy.logout();
             cy.userRegistration(
-                thirdUser.firstName,
-                thirdUser.lastName,
-                thirdUserName,
-                thirdUser.emailAddr,
-                thirdUser.password,
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
             );
-            cy.logout(thirdUserName);
+            cy.logout();
         });
 
         it('First user login. Create a task. Open the task. Assign to himself.', () => {
+            cy.visit('/admin');
             cy.login();
             cy.createAnnotationTask(
                 taskName,
@@ -172,32 +155,43 @@ context('Review pipeline feature', () => {
         });
 
         it('Login the second, the third user. The task is missing.', () => {
-            cy.login(secondUserName, secondUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.contains('.cvat-item-task-name', taskName).should('not.exist');
-            cy.logout(secondUserName);
-            cy.login(thirdUserName, thirdUser.password);
+            cy.logout();
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.contains('.cvat-item-task-name', taskName).should('not.exist');
-            cy.logout(thirdUserName);
+            cy.logout();
         });
 
         it('First user login. Assign the first job to the second user.', () => {
+            cy.visit('/admin');
             cy.login();
             cy.openTask(taskName);
-            cy.assignJobToUser(0, secondUserName);
+            cy.assignJobToUser(0, Cypress.env('regularUserEmail'));
             cy.logout();
         });
 
         it('Second user login. Open the task, open the job and annotates it.', () => {
-            cy.login(secondUserName, secondUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.createRectangle(createRectangleShape2PointsSecond);
             for (let i = 1; i < 4; i++) {
                 cy.createRectangle(createRectangleShape2Points);
                 cy.goToNextFrame(i);
             }
-        });
 
-        it('Second user sends the job to review.', () => {
             cy.intercept('POST', '/api/v1/server/logs').as('sendLogs');
             cy.interactMenu('Request a review');
             cy.contains('.cvat-modal-content-save-job', 'The job has unsaved annotations')
@@ -212,17 +206,15 @@ context('Review pipeline feature', () => {
                     cy.get('.cvat-user-search-field').click();
                 });
             cy.get('.ant-select-dropdown').within(() => {
-                cy.contains(new RegExp(`^${thirdUserName}`, 'g')).click();
+                cy.contains(new RegExp(`^${Cypress.env('regularUser2Email')}`, 'g')).click();
             });
             cy.contains('.cvat-request-review-dialog', 'Reviewer:').within(() => {
                 cy.contains('[type="button"]', 'Submit').click();
             });
             cy.url().should('include', '/tasks');
             cy.contains('.cvat-task-details', taskName).should('exist');
-            cy.checkJobStatus(0, 'validation', secondUserName, thirdUserName); // Check status, assignee, reviewer of the job
-        });
+            cy.checkJobStatus(0, 'validation', Cypress.env('regularUserEmail'), Cypress.env('regularUser2Email')); // Check status, assignee, reviewer of the job
 
-        it('Second user opens the job again, switches to standard mode and tried to change anything and save changes. The request will be rejected with 403 code.', () => {
             cy.openJob(0, false);
             cy.get('.cvat-workspace-selector').should('have.text', 'Review');
             cy.changeWorkspace('Standard', labelName);
@@ -234,13 +226,28 @@ context('Review pipeline feature', () => {
                     cy.get('[data-icon="close"]').click(); // Close the notice.
                 });
             cy.goToTaskList();
-            cy.logout(secondUserName);
+            cy.logout();
         });
 
         it('The third user opens the job. Review mode is opened automatically.', () => {
-            cy.login(thirdUserName, thirdUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.get('.cvat-workspace-selector').should('have.text', 'Review');
+
+            // Use quick issues "Incorrect position". Issue will be created immediately
+            cy.createIssueFromObject('#cvat_canvas_shape_1', 'Quick issue: incorrect position');
+            cy.checkIssueLabel('Wrong position');
+
+            // Item submenu: "Quick issue ..." does not appear.
+            cy.get('#cvat_canvas_shape_2').trigger('mousemove').rightclick();
+            cy.get('.cvat-canvas-context-menu')
+                .contains('.cvat-context-menu-item', 'Quick issue ...')
+                .should('not.exist');
+            cy.get('.cvat-canvas-container').click(); // Close the context menu
         });
 
         it('Use quick issues "Incorrect position". Issue will be created immediately.', () => {
@@ -280,10 +287,7 @@ context('Review pipeline feature', () => {
             cy.createIssueFromObject('#cvat_canvas_shape_4', 'Quick issue: incorrect attribute');
             cy.checkIssueLabel('Wrong attribute');
             cy.goCheckFrameNumber(0); // Back to first frame
-        });
 
-        it('Reload page. All the issue still exists.', () => {
-            cy.reload();
             cy.get('.cvat-canvas-container').should('exist');
             cy.checkIssueLabel(customeIssueDescription);
             cy.checkIssueLabel('Wrong position');
@@ -306,7 +310,7 @@ context('Review pipeline feature', () => {
             cy.submitReview('Reject');
             cy.url().should('include', '/tasks');
             cy.contains('.cvat-task-details', taskName).should('exist');
-            cy.checkJobStatus(0, 'annotation', secondUserName, thirdUserName);
+            cy.checkJobStatus(0, 'annotation', Cypress.env('regularUserEmail'), Cypress.env('regularUser2Email'));
         });
 
         it("Reopen the job. Change something there. Save work. That saving wasn't successful. The third user logout.", () => {
@@ -319,11 +323,15 @@ context('Review pipeline feature', () => {
                     cy.get('[data-icon="close"]').click({ multiple: true }); // Close the notice.
                 });
             cy.goToTaskList();
-            cy.logout(thirdUserName);
+            cy.logout();
         });
 
         it('The second user login. Opens the job again. All issues are visible.', () => {
-            cy.login(secondUserName, secondUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.get('.cvat-workspace-selector').should('have.text', 'Standard');
             for (const j of [
@@ -414,29 +422,34 @@ context('Review pipeline feature', () => {
             cy.interactMenu('Request a review');
             cy.contains('.cvat-request-review-dialog', 'Reviewer:').within(() => {
                 cy.get('.cvat-user-search-field').within(() => {
-                    cy.get('input[type="search"]').should('have.value', thirdUserName);
+                    cy.get('input[type="search"]').should('have.value', Cypress.env('regularUser2Email'));
                 });
                 cy.contains('[type="button"]', 'Submit').click();
             });
-            cy.logout(secondUserName);
+            cy.logout();
         });
 
         it('The third user login, opens the job, goes to menu, "Submit review" => "Review next" => Assign the first user => Submit.', () => {
-            cy.login(thirdUserName, thirdUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.interactMenu('Submit the review');
             cy.submitReview('Review next', Cypress.env('user'));
             cy.get('.cvat-not-found').should('exist');
         });
         it('The third user logout. The first user login and opens the job, goes to menu, "Submit review" => Accept => Submit', () => {
-            cy.logout(thirdUserName);
+            cy.logout();
+            cy.visit('/admin');
             cy.login();
             cy.openTaskJob(taskName, 0, false);
             cy.interactMenu('Submit the review');
             cy.submitReview('Accept');
             cy.url().should('include', '/tasks');
             cy.contains('.cvat-task-details', taskName).should('exist');
-            cy.checkJobStatus(0, 'completed', secondUserName, Cypress.env('user'));
+            cy.checkJobStatus(0, 'completed', Cypress.env('regularUserEmail'), Cypress.env('user'));
         });
 
         it("The first user can change annotations. The second users can't change annotations. For the third user the task is not visible.", () => {
@@ -445,17 +458,25 @@ context('Review pipeline feature', () => {
             cy.saveJob();
             cy.get('.cvat-notification-notice-save-annotations-failed').should('not.exist');
             cy.logout();
-            cy.login(secondUserName, secondUser.password);
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.openTaskJob(taskName, 0, false);
             cy.createPoint(createPointsShapeFourth);
             cy.saveJob();
             cy.get('.cvat-notification-notice-save-annotations-failed').should('exist');
             cy.goToTaskList();
-            cy.logout(secondUserName);
-            cy.login(thirdUserName, thirdUser.password);
+            cy.logout();
+            cy.regularUserLogin(
+                Cypress.env('regularUser2Email'),
+                Cypress.env('regularUser2WalletAddress'),
+                Cypress.env('regularUser2SignedEmail'),
+            );
             cy.contains('strong', taskName).should('not.exist');
             cy.goToTaskList();
-            cy.logout(thirdUserName);
+            cy.logout();
         });
 
         it('The first user opens the job and presses "Renew the job".', () => {
@@ -467,7 +488,7 @@ context('Review pipeline feature', () => {
             });
             cy.url().should('include', '/tasks');
             cy.contains('.cvat-task-details', taskName).should('exist');
-            cy.checkJobStatus(0, 'annotation', secondUserName, Cypress.env('user'));
+            cy.checkJobStatus(0, 'annotation', Cypress.env('regularUserEmail'), Cypress.env('user'));
         });
 
         it('The first user opens the job and presses "Finish the job".', () => {
@@ -478,7 +499,7 @@ context('Review pipeline feature', () => {
             });
             cy.url().should('include', '/tasks');
             cy.contains('.cvat-task-details', taskName).should('exist');
-            cy.checkJobStatus(0, 'completed', secondUserName, Cypress.env('user'));
+            cy.checkJobStatus(0, 'completed', Cypress.env('regularUserEmail'), Cypress.env('user'));
         });
 
         it('In column "status" the job has question circle. The first user hover it, short statistics about reviews shown.', () => {

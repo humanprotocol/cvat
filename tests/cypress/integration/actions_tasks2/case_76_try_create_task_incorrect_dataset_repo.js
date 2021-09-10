@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Try to create a task with an incorrect dataset repository.', () => {
     const caseId = '76';
     const labelName = `Case ${caseId}`;
@@ -24,7 +26,7 @@ context('Try to create a task with an incorrect dataset repository.', () => {
     const repositoryWithMissingAccess = 'https://github.com/openvinotoolkit/cvat';
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

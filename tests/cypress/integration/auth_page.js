@@ -17,12 +17,8 @@ describe('Check server availability', () => {
         cy.get('[type="submit"]');
     });
 
-    it('Check placeholder "Username"', () => {
-        cy.get('input').invoke('attr', 'placeholder').should('contain', 'Username');
-    });
-
-    it('Check placeholder "Password"', () => {
-        cy.get('[type="password"]');
+    it('Check placeholder "Email"', () => {
+        cy.get('input').invoke('attr', 'placeholder').should('contain', 'Email');
     });
 
     it('Click to "Sign in" button', () => {
