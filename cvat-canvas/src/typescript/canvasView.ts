@@ -68,10 +68,7 @@ export class CanvasViewImpl implements CanvasView, Listener {
     private controller: CanvasController;
     private svgShapes: Record<number, SVG.Shape>;
     private svgTexts: Record<number, SVG.Text>;
-    private issueRegionPattern_1: SVG.Pattern;
-    private issueRegionPattern_2: SVG.Pattern;
     private drawnStates: Record<number, DrawnState>;
-    private drawnIssueRegions: Record<number, SVG.Shape>;
     private geometry: Geometry;
     private drawHandler: DrawHandler;
     private editHandler: EditHandler;
@@ -520,27 +517,6 @@ export class CanvasViewImpl implements CanvasView, Listener {
             }
         }
 
-        // Transform all drawn issues region
-        for (const issueRegion of Object.values(this.drawnIssueRegions)) {
-            ((issueRegion as any) as SVG.Shape).attr('r', `${(consts.BASE_POINT_SIZE * 3) / this.geometry.scale}`);
-            ((issueRegion as any) as SVG.Shape).attr(
-                'stroke-width',
-                `${consts.BASE_STROKE_WIDTH / this.geometry.scale}`,
-            );
-        }
-
-        // Transform patterns
-        for (const pattern of [this.issueRegionPattern_1, this.issueRegionPattern_2]) {
-            pattern.attr({
-                width: consts.BASE_PATTERN_SIZE / this.geometry.scale,
-                height: consts.BASE_PATTERN_SIZE / this.geometry.scale,
-            });
-
-            pattern.children().forEach((element: SVG.Element): void => {
-                element.attr('stroke-width', consts.BASE_STROKE_WIDTH / this.geometry.scale);
-            });
-        }
-
         // Transform handlers
         this.drawHandler.transform(this.geometry);
         this.editHandler.transform(this.geometry);
@@ -559,59 +535,6 @@ export class CanvasViewImpl implements CanvasView, Listener {
         for (const obj of [this.content, this.text, this.attachmentBoard]) {
             obj.style.width = `${this.geometry.image.width + this.geometry.offset * 2}px`;
             obj.style.height = `${this.geometry.image.height + this.geometry.offset * 2}px`;
-        }
-    }
-
-    private setupIssueRegions(issueRegions: Record<number, number[]>): void {
-        for (const issueRegion of Object.keys(this.drawnIssueRegions)) {
-            if (!(issueRegion in issueRegions) || !+issueRegion) {
-                this.drawnIssueRegions[+issueRegion].remove();
-                delete this.drawnIssueRegions[+issueRegion];
-            }
-        }
-
-        for (const issueRegion of Object.keys(issueRegions)) {
-            if (issueRegion in this.drawnIssueRegions) continue;
-            const points = this.translateToCanvas(issueRegions[+issueRegion]);
-            if (points.length === 2) {
-                this.drawnIssueRegions[+issueRegion] = this.adoptedContent
-                    .circle((consts.BASE_POINT_SIZE * 3 * 2) / this.geometry.scale)
-                    .center(points[0], points[1])
-                    .addClass('cvat_canvas_issue_region')
-                    .attr({
-                        id: `cvat_canvas_issue_region_${issueRegion}`,
-                        fill: 'url(#cvat_issue_region_pattern_1)',
-                    });
-            } else if (points.length === 4) {
-                const stringified = this.stringifyToCanvas([
-                    points[0],
-                    points[1],
-                    points[2],
-                    points[1],
-                    points[2],
-                    points[3],
-                    points[0],
-                    points[3],
-                ]);
-                this.drawnIssueRegions[+issueRegion] = this.adoptedContent
-                    .polygon(stringified)
-                    .addClass('cvat_canvas_issue_region')
-                    .attr({
-                        id: `cvat_canvas_issue_region_${issueRegion}`,
-                        fill: 'url(#cvat_issue_region_pattern_1)',
-                        'stroke-width': `${consts.BASE_STROKE_WIDTH / this.geometry.scale}`,
-                    });
-            } else {
-                const stringified = this.stringifyToCanvas(points);
-                this.drawnIssueRegions[+issueRegion] = this.adoptedContent
-                    .polygon(stringified)
-                    .addClass('cvat_canvas_issue_region')
-                    .attr({
-                        id: `cvat_canvas_issue_region_${issueRegion}`,
-                        fill: 'url(#cvat_issue_region_pattern_1)',
-                        'stroke-width': `${consts.BASE_STROKE_WIDTH / this.geometry.scale}`,
-                    });
-            }
         }
     }
 
@@ -881,7 +804,6 @@ export class CanvasViewImpl implements CanvasView, Listener {
         this.svgShapes = {};
         this.svgTexts = {};
         this.drawnStates = {};
-        this.drawnIssueRegions = {};
         this.activeElement = {
             clientID: null,
             attributeID: null,
@@ -914,28 +836,6 @@ export class CanvasViewImpl implements CanvasView, Listener {
         const loadingCircle: SVGCircleElement = window.document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         const gridDefs: SVGDefsElement = window.document.createElementNS('http://www.w3.org/2000/svg', 'defs');
         const gridRect: SVGRectElement = window.document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-
-        // Setup defs
-        const contentDefs = this.adoptedContent.defs();
-        this.issueRegionPattern_1 = contentDefs
-            .pattern(consts.BASE_PATTERN_SIZE, consts.BASE_PATTERN_SIZE, (add): void => {
-                add.line(0, 0, 0, 10).stroke('red');
-            })
-            .attr({
-                id: 'cvat_issue_region_pattern_1',
-                patternTransform: 'rotate(45)',
-                patternUnits: 'userSpaceOnUse',
-            });
-
-        this.issueRegionPattern_2 = contentDefs
-            .pattern(consts.BASE_PATTERN_SIZE, consts.BASE_PATTERN_SIZE, (add): void => {
-                add.line(0, 0, 0, 10).stroke('yellow');
-            })
-            .attr({
-                id: 'cvat_issue_region_pattern_2',
-                patternTransform: 'rotate(45)',
-                patternUnits: 'userSpaceOnUse',
-            });
 
         // Setup loading animation
         this.loadingAnimation.setAttribute('id', 'cvat_canvas_loading_animation');
@@ -1185,8 +1085,6 @@ export class CanvasViewImpl implements CanvasView, Listener {
             }
             const event: CustomEvent = new CustomEvent('canvas.setup');
             this.canvas.dispatchEvent(event);
-        } else if (reason === UpdateReasons.ISSUE_REGIONS_UPDATED) {
-            this.setupIssueRegions(this.controller.issueRegions);
         } else if (reason === UpdateReasons.GRID_UPDATED) {
             const size: Size = this.geometry.grid;
             this.gridPattern.setAttribute('width', `${size.width}`);

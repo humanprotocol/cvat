@@ -26,19 +26,7 @@ Cypress.Commands.add('assignJobToUser', (jobID, user) => {
         .click();
 });
 
-Cypress.Commands.add('reviewJobToUser', (jobID, user) => {
-    cy.getJobNum(jobID).then(($job) => {
-        cy.get('.cvat-task-jobs-table')
-            .contains('a', `Job #${$job}`)
-            .parents('.cvat-task-jobs-table-row')
-            .find('.cvat-job-reviewer-selector')
-            .find('[type="search"]')
-            .clear()
-            .type(`${user}{Enter}`);
-    });
-});
-
-Cypress.Commands.add('checkJobStatus', (jobID, status, assignee, reviewer) => {
+Cypress.Commands.add('checkJobStatus', (jobID, status, assignee) => {
     cy.getJobNum(jobID).then(($job) => {
         cy.get('.cvat-task-jobs-table')
             .contains('a', `Job #${$job}`)
@@ -47,9 +35,6 @@ Cypress.Commands.add('checkJobStatus', (jobID, status, assignee, reviewer) => {
                 cy.get('.cvat-job-item-status').should('have.text', status);
                 cy.get('.cvat-job-assignee-selector').within(() => {
                     cy.get('input[type="search"]').should('have.value', assignee);
-                });
-                cy.get('.cvat-job-reviewer-selector').within(() => {
-                    cy.get('input[type="search"]').should('have.value', reviewer);
                 });
             });
     });
@@ -149,19 +134,4 @@ Cypress.Commands.add('resolveReopenIssue', (issueLabel, resolveText, reopen) => 
     if (reopen) cy.get('.cvat-issue-dialog-header').find('[aria-label="close"]').click();
     cy.wait('@postComment').its('response.statusCode').should('equal', 201);
     cy.wait('@resolveReopenIssue').its('response.statusCode').should('equal', 200);
-});
-
-Cypress.Commands.add('submitReview', (decision, user) => {
-    cy.get('.cvat-submit-review-dialog').within(() => {
-        cy.contains(new RegExp(`^${decision}$`, 'g')).click();
-        if (decision === 'Review next') {
-            cy.intercept('GET', `/api/v1/users?search=${user}&limit=10&is_active=true`).as('searchUsers');
-            cy.get('.cvat-user-search-field').within(() => {
-                cy.get('input[type="search"]').clear().type(`${user}`);
-                cy.wait('@searchUsers').its('response.statusCode').should('equal', 200);
-                cy.get('input[type="search"]').type('{Enter}');
-            });
-        }
-        cy.contains('button', 'Submit').click();
-    });
 });

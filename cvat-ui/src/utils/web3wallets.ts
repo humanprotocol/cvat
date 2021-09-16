@@ -1,7 +1,6 @@
 // Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
-import Authereum from 'authereum';
 import MewConnect from '@myetherwallet/mewconnect-web-client';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
@@ -15,9 +14,6 @@ const providerOptions = {
             infuraId: process.env.INFURA_ID,
             rpc: `wss://${process.env.WEB3_NETWORK}.infura.io/ws/v3/${process.env.INFURA_ID}`,
         },
-    },
-    authereum: {
-        package: Authereum,
     },
     walletconnect: {
         package: WalletConnectProvider,

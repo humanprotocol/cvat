@@ -64,7 +64,7 @@ export default function SearchTooltip(props: Props): JSX.Element {
                     ) : null}
                     <Paragraph>
                         <Text strong>status: annotation</Text>
-                        <Text>annotation, validation, or completed</Text>
+                        <Text>annotation or completed</Text>
                     </Paragraph>
                     <Paragraph>
                         <Text strong>id: 5</Text>

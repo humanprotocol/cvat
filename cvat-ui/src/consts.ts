@@ -18,9 +18,6 @@ const NUCLIO_GUIDE =
     'https://openvinotoolkit.github.io/cvat//docs/administration/advanced/installation_automatic_annotation/';
 const CANVAS_BACKGROUND_COLORS = ['#ffffff', '#f1f1f1', '#e5e5e5', '#d8d8d8', '#CCCCCC', '#B3B3B3', '#999999'];
 const NEW_LABEL_COLOR = '#b3b3b3';
-const LATEST_COMMENTS_SHOWN_QUICK_ISSUE = 3;
-const QUICK_ISSUE_INCORRECT_POSITION_TEXT = 'Wrong position';
-const QUICK_ISSUE_INCORRECT_ATTRIBUTE_TEXT = 'Wrong attribute';
 const DEFAULT_PROJECT_SUBSETS = ['Train', 'Test', 'Validation'];
 
 export default {
@@ -37,8 +34,5 @@ export default {
     CANVAS_BACKGROUND_COLORS,
     NEW_LABEL_COLOR,
     NUCLIO_GUIDE,
-    LATEST_COMMENTS_SHOWN_QUICK_ISSUE,
-    QUICK_ISSUE_INCORRECT_POSITION_TEXT,
-    QUICK_ISSUE_INCORRECT_ATTRIBUTE_TEXT,
     DEFAULT_PROJECT_SUBSETS,
 };

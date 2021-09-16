@@ -70,7 +70,6 @@ class StatisticsModalContainer extends React.PureComponent<Props> {
                 startFrame={jobInstance.startFrame}
                 stopFrame={jobInstance.stopFrame}
                 assignee={jobInstance.assignee ? jobInstance.assignee.username : 'Nobody'}
-                reviewer={jobInstance.reviewer ? jobInstance.reviewer.username : 'Nobody'}
                 savingJobStatus={savingJobStatus}
                 closeStatistics={closeStatistics}
             />

@@ -113,8 +113,6 @@ const defaultState: AnnotationState = {
     sidebarCollapsed: false,
     appearanceCollapsed: false,
     filtersPanelVisible: false,
-    requestReviewDialogVisible: false,
-    submitReviewDialogVisible: false,
     predictor: {
         enabled: false,
         error: null,
@@ -159,7 +157,6 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 maxZ,
             } = action.payload;
 
-            const isReview = job.status === TaskStatus.REVIEW;
             let workspaceSelected = Workspace.STANDARD;
             let activeShapeType = ShapeType.RECTANGLE;
 
@@ -216,7 +213,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                     instance: job.task.dimension === DimensionType.DIM_2D ? new Canvas() : new Canvas3d(),
                 },
                 colors,
-                workspace: isReview ? Workspace.REVIEW_WORKSPACE : workspaceSelected,
+                workspace: workspaceSelected,
             };
         }
         case AnnotationActionTypes.GET_JOB_FAILED: {
@@ -504,22 +501,6 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
         }
         case AnnotationActionTypes.REPEAT_DRAW_SHAPE: {
             const { activeControl } = action.payload;
-
-            return {
-                ...state,
-                annotations: {
-                    ...state.annotations,
-                    activatedStateID: null,
-                },
-                canvas: {
-                    ...state.canvas,
-                    activeControl,
-                },
-            };
-        }
-        case AnnotationActionTypes.SELECT_ISSUE_POSITION: {
-            const { enabled } = action.payload;
-            const activeControl = enabled ? ActiveControl.OPEN_ISSUE : ActiveControl.CURSOR;
 
             return {
                 ...state,
@@ -1077,20 +1058,6 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                         ActiveControl.OPENCV_TOOLS :
                         ActiveControl.AI_TOOLS,
                 },
-            };
-        }
-        case AnnotationActionTypes.SWITCH_REQUEST_REVIEW_DIALOG: {
-            const { visible } = action.payload;
-            return {
-                ...state,
-                requestReviewDialogVisible: visible,
-            };
-        }
-        case AnnotationActionTypes.SWITCH_SUBMIT_REVIEW_DIALOG: {
-            const { visible } = action.payload;
-            return {
-                ...state,
-                submitReviewDialogVisible: visible,
             };
         }
         case AnnotationActionTypes.SET_FORCE_EXIT_ANNOTATION_PAGE_FLAG: {

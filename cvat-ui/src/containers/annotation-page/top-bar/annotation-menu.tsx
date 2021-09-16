@@ -1,4 +1,4 @@
-// Copyright (C) 2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -15,8 +15,6 @@ import {
     uploadJobAnnotationsAsync,
     removeAnnotationsAsync,
     saveAnnotationsAsync,
-    switchRequestReviewDialog as switchRequestReviewDialogAction,
-    switchSubmitReviewDialog as switchSubmitReviewDialogAction,
     setForceExitAnnotationFlag as setForceExitAnnotationFlagAction,
 } from 'actions/annotation-actions';
 
@@ -34,8 +32,6 @@ interface DispatchToProps {
     dumpAnnotations(task: any, dumper: any): void;
     exportDataset(task: any, exporter: any): void;
     removeAnnotations(sessionInstance: any): void;
-    switchRequestReviewDialog(visible: boolean): void;
-    switchSubmitReviewDialog(visible: boolean): void;
     setForceExitAnnotationFlag(forceExit: boolean): void;
     saveAnnotations(jobInstance: any, afterSave?: () => void): void;
     updateJob(jobInstance: any): void;
@@ -81,12 +77,6 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
         removeAnnotations(sessionInstance: any): void {
             dispatch(removeAnnotationsAsync(sessionInstance));
         },
-        switchRequestReviewDialog(visible: boolean): void {
-            dispatch(switchRequestReviewDialogAction(visible));
-        },
-        switchSubmitReviewDialog(visible: boolean): void {
-            dispatch(switchSubmitReviewDialogAction(visible));
-        },
         setForceExitAnnotationFlag(forceExit: boolean): void {
             dispatch(setForceExitAnnotationFlagAction(forceExit));
         },
@@ -114,8 +104,6 @@ function AnnotationMenuContainer(props: Props): JSX.Element {
         dumpAnnotations,
         exportDataset,
         removeAnnotations,
-        switchRequestReviewDialog,
-        switchSubmitReviewDialog,
         setForceExitAnnotationFlag,
         saveAnnotations,
         updateJob,
@@ -147,10 +135,6 @@ function AnnotationMenuContainer(props: Props): JSX.Element {
             const [action] = params.keyPath;
             if (action === Actions.REMOVE_ANNO) {
                 removeAnnotations(jobInstance);
-            } else if (action === Actions.REQUEST_REVIEW) {
-                switchRequestReviewDialog(true);
-            } else if (action === Actions.SUBMIT_REVIEW) {
-                switchSubmitReviewDialog(true);
             } else if (action === Actions.RENEW_JOB) {
                 jobInstance.status = TaskStatus.ANNOTATION;
                 updateJob(jobInstance);
@@ -165,8 +149,6 @@ function AnnotationMenuContainer(props: Props): JSX.Element {
         }
     };
 
-    const isReviewer = jobInstance.reviewer?.id === user.id || user.isSuperuser;
-
     return (
         <AnnotationMenuComponent
             taskMode={jobInstance.task.mode}
@@ -179,7 +161,6 @@ function AnnotationMenuContainer(props: Props): JSX.Element {
             setForceExitAnnotationFlag={setForceExitAnnotationFlag}
             saveAnnotations={saveAnnotations}
             jobInstance={jobInstance}
-            isReviewer={isReviewer}
         />
     );
 }

@@ -14,8 +14,6 @@ function build() {
     const ObjectState = require('./object-state');
     const Statistics = require('./statistics');
     const Comment = require('./comment');
-    const Issue = require('./issue');
-    const Review = require('./review');
     const { Job, Task } = require('./session');
     const { Project } = require('./project');
     const { Attribute, Label } = require('./labels');
@@ -727,8 +725,6 @@ function build() {
             ObjectState,
             MLModel,
             Comment,
-            Issue,
-            Review,
         },
     };
 
