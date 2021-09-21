@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import { CombinedState, ContextMenuType, Workspace } from 'reducers/interfaces';
 
 import CanvasContextMenuComponent from 'components/annotation-page/canvas/canvas-context-menu';
-import { updateCanvasContextMenu } from 'actions/annotation-actions';
-import { ThunkDispatch } from 'utils/redux';
 
 interface OwnProps {
     readonly: boolean;
@@ -24,11 +22,6 @@ interface StateToProps {
     type: ContextMenuType;
     collapsed: boolean | undefined;
     workspace: Workspace;
-}
-
-interface DispatchToProps {
-    onStartIssue(position: number[]): void;
-    openIssue(position: number[], message: string): void;
 }
 
 function mapStateToProps(state: CombinedState): StateToProps {
@@ -61,18 +54,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
     };
 }
 
-function mapDispatchToProps(dispatch: ThunkDispatch): DispatchToProps {
-    return {
-        onStartIssue(position: number[]): void {
-            dispatch(updateCanvasContextMenu(false, 0, 0));
-        },
-        openIssue(position: number[], message: string): void {
-            dispatch(updateCanvasContextMenu(false, 0, 0));
-        },
-    };
-}
-
-type Props = StateToProps & DispatchToProps & OwnProps;
+type Props = StateToProps & OwnProps;
 
 interface State {
     latestLeft: number;
@@ -199,12 +181,7 @@ class CanvasContextMenuContainer extends React.PureComponent<Props, State> {
     public render(): JSX.Element {
         const { left, top } = this.state;
         const {
-            visible,
-            contextMenuClientID,
-            objectStates,
-            type,
-            readonly,
-            workspace,
+            visible, contextMenuClientID, objectStates, type, readonly, workspace,
         } = this.props;
 
         return (
@@ -225,4 +202,4 @@ class CanvasContextMenuContainer extends React.PureComponent<Props, State> {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CanvasContextMenuContainer);
+export default connect(mapStateToProps)(CanvasContextMenuContainer);
