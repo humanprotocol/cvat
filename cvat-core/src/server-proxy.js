@@ -614,24 +614,6 @@
                 return response.data;
             }
 
-            async function createComment(data) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.post(`${backendAPI}/comments`, JSON.stringify(data), {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
             async function saveJob(id, jobData) {
                 const { backendAPI } = config;
 
@@ -1163,13 +1145,6 @@
                             run: runLambdaRequest,
                             call: callLambdaFunction,
                             cancel: cancelLambdaRequest,
-                        }),
-                        writable: false,
-                    },
-
-                    comments: {
-                        value: Object.freeze({
-                            create: createComment,
                         }),
                         writable: false,
                     },
