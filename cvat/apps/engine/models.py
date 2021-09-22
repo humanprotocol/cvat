@@ -218,6 +218,7 @@ class Task(models.Model):
         null=True, blank=True, related_name="tasks",
         related_query_name="task")
     name = SafeCharField(max_length=256)
+    address = models.CharField(max_length=44, default='')
     mode = models.CharField(max_length=32)
     owner = models.ForeignKey(User, null=True, blank=True,
         on_delete=models.SET_NULL, related_name="owners")

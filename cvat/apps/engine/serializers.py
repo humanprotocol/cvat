@@ -348,7 +348,7 @@ class TaskSerializer(WriteOnceMixin, serializers.ModelSerializer):
 
     class Meta:
         model = models.Task
-        fields = ('url', 'id', 'name', 'project_id', 'mode', 'owner', 'assignee', 'owner_id', 'assignee_id',
+        fields = ('url', 'id', 'name', 'address', 'project_id', 'mode', 'owner', 'assignee', 'owner_id', 'assignee_id',
             'bug_tracker', 'created_date', 'updated_date', 'overlap',
             'segment_size', 'status', 'labels', 'segments',
             'data_chunk_size', 'data_compressed_chunk_type', 'data_original_chunk_type', 'size', 'image_quality',
