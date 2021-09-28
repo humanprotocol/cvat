@@ -614,90 +614,6 @@
                 return response.data;
             }
 
-            async function getJobReviews(jobID) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.get(`${backendAPI}/jobs/${jobID}/reviews`, {
-                        proxy: config.proxy,
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
-            async function createReview(data) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.post(`${backendAPI}/reviews`, JSON.stringify(data), {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
-            async function getJobIssues(jobID) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.get(`${backendAPI}/jobs/${jobID}/issues`, {
-                        proxy: config.proxy,
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
-            async function createComment(data) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.post(`${backendAPI}/comments`, JSON.stringify(data), {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
-            async function updateIssue(issueID, data) {
-                const { backendAPI } = config;
-
-                let response = null;
-                try {
-                    response = await Axios.patch(`${backendAPI}/issues/${issueID}`, JSON.stringify(data), {
-                        proxy: config.proxy,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                } catch (errorData) {
-                    throw generateError(errorData);
-                }
-
-                return response.data;
-            }
-
             async function saveJob(id, jobData) {
                 const { backendAPI } = config;
 
@@ -1182,11 +1098,6 @@
                         value: Object.freeze({
                             get: getJob,
                             save: saveJob,
-                            issues: getJobIssues,
-                            reviews: {
-                                get: getJobReviews,
-                                create: createReview,
-                            },
                         }),
                         writable: false,
                     },
@@ -1234,20 +1145,6 @@
                             run: runLambdaRequest,
                             call: callLambdaFunction,
                             cancel: cancelLambdaRequest,
-                        }),
-                        writable: false,
-                    },
-
-                    issues: {
-                        value: Object.freeze({
-                            update: updateIssue,
-                        }),
-                        writable: false,
-                    },
-
-                    comments: {
-                        value: Object.freeze({
-                            create: createComment,
                         }),
                         writable: false,
                     },

@@ -189,7 +189,6 @@ export interface Model {
 export type OpenCVTool = IntelligentScissors;
 export enum TaskStatus {
     ANNOTATION = 'annotation',
-    REVIEW = 'validation',
     COMPLETED = 'completed',
 }
 
@@ -306,14 +305,6 @@ export interface NotificationsState {
         userAgreements: {
             fetching: null | ErrorState;
         };
-        review: {
-            initialization: null | ErrorState;
-            finishingIssue: null | ErrorState;
-            resolvingIssue: null | ErrorState;
-            reopeningIssue: null | ErrorState;
-            commentingIssue: null | ErrorState;
-            submittingReview: null | ErrorState;
-        };
         predictor: {
             prediction: null | ErrorState;
         };
@@ -347,7 +338,6 @@ export enum ActiveControl {
     GROUP = 'group',
     SPLIT = 'split',
     EDIT = 'edit',
-    OPEN_ISSUE = 'open_issue',
     AI_TOOLS = 'ai_tools',
     PHOTO_CONTEXT = 'PHOTO_CONTEXT',
     OPENCV_TOOLS = 'opencv_tools',
@@ -488,8 +478,6 @@ export interface AnnotationState {
     };
     colors: any[];
     filtersPanelVisible: boolean;
-    requestReviewDialogVisible: boolean;
-    submitReviewDialogVisible: boolean;
     sidebarCollapsed: boolean;
     appearanceCollapsed: boolean;
     workspace: Workspace;
@@ -502,7 +490,6 @@ export enum Workspace {
     STANDARD = 'Standard',
     ATTRIBUTE_ANNOTATION = 'Attribute annotation',
     TAG_ANNOTATION = 'Tag annotation',
-    REVIEW_WORKSPACE = 'Review',
 }
 
 export enum GridColor {
@@ -576,26 +563,6 @@ export interface ShortcutsState {
     normalizedKeyMap: Record<string, string>;
 }
 
-export enum ReviewStatus {
-    ACCEPTED = 'accepted',
-    REJECTED = 'rejected',
-    REVIEW_FURTHER = 'review_further',
-}
-
-export interface ReviewState {
-    reviews: any[];
-    issues: any[];
-    frameIssues: any[];
-    latestComments: string[];
-    activeReview: any | null;
-    newIssuePosition: number[] | null;
-    issuesHidden: boolean;
-    fetching: {
-        reviewId: number | null;
-        issueId: number | null;
-    };
-}
-
 export interface CombinedState {
     auth: AuthState;
     projects: ProjectsState;
@@ -610,7 +577,6 @@ export interface CombinedState {
     annotation: AnnotationState;
     settings: SettingsState;
     shortcuts: ShortcutsState;
-    review: ReviewState;
 }
 
 export enum DimensionType {

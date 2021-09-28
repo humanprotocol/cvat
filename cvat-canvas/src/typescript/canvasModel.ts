@@ -119,7 +119,6 @@ export enum UpdateReasons {
     IMAGE_MOVED = 'image_moved',
     GRID_UPDATED = 'grid_updated',
 
-    ISSUE_REGIONS_UPDATED = 'issue_regions_updated',
     OBJECTS_UPDATED = 'objects_updated',
     SHAPE_ACTIVATED = 'shape_activated',
     SHAPE_FOCUSED = 'shape_focused',
@@ -159,7 +158,6 @@ export enum Mode {
 export interface CanvasModel {
     readonly imageBitmap: boolean;
     readonly image: Image | null;
-    readonly issueRegions: Record<number, number[]>;
     readonly objects: any[];
     readonly zLayer: number | null;
     readonly gridSize: Size;
@@ -180,7 +178,6 @@ export interface CanvasModel {
     move(topOffset: number, leftOffset: number): void;
 
     setup(frameData: any, objectStates: any[], zLayer: number): void;
-    setupIssueRegions(issueRegions: Record<number, number[]>): void;
     activate(clientID: number | null, attributeID: number | null): void;
     rotate(rotationAngle: number): void;
     focus(clientID: number, padding: number): void;
@@ -220,7 +217,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
         gridSize: Size;
         left: number;
         objects: any[];
-        issueRegions: Record<number, number[]>;
         scale: number;
         top: number;
         zLayer: number | null;
@@ -270,7 +266,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
             },
             left: 0,
             objects: [],
-            issueRegions: {},
             scale: 1,
             top: 0,
             zLayer: null,
@@ -427,11 +422,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
                 }
                 throw exception;
             });
-    }
-
-    public setupIssueRegions(issueRegions: Record<number, number[]>): void {
-        this.data.issueRegions = issueRegions;
-        this.notify(UpdateReasons.ISSUE_REGIONS_UPDATED);
     }
 
     public activate(clientID: number | null, attributeID: number | null): void {
@@ -704,10 +694,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
 
     public get image(): Image | null {
         return this.data.image;
-    }
-
-    public get issueRegions(): Record<number, number[]> {
-        return { ...this.data.issueRegions };
     }
 
     public get objects(): any[] {

@@ -22,15 +22,14 @@ context('Multiple users. Assign task, job. Deactivating users.', () => {
     const imagesFolder = `cypress/fixtures/${imageFileName}`;
     const directoryToArchive = imagesFolder;
 
-    let authKey;
     const isStaff = false;
     const isSuperuser = false;
     const isActive = false;
 
     function changeCheckUserStatusOpenTask(userName) {
-        cy.changeUserActiveStatus(authKey, userName, isActive);
-        cy.checkUserStatuses(authKey, userName, isStaff, isSuperuser, isActive);
-        cy.intercept('GET', `/api/v1/users*${thirdUserName}*`).as('users');
+        cy.changeUserActiveStatus(userName, isActive);
+        cy.checkUserStatuses(userName, isStaff, isSuperuser, isActive);
+        cy.intercept('GET', `/api/v1/users*${Cypress.env()}*`).as('users');
         cy.openTask(taskName);
         cy.wait('@users');
         cy.get('.cvat-global-boundary').should('not.exist');
@@ -161,22 +160,13 @@ context('Multiple users. Assign task, job. Deactivating users.', () => {
             cy.logout();
         });
 
-        it('First user login. Getting authKey.', () => {
-            cy.visit('/');
-            cy.intercept('POST', '/api/v1/auth/login').as('login');
-            cy.login();
-            cy.wait('@login').then((response) => {
-                authKey = response['response']['body']['key'];
-            });
-        });
-
         it('Deactivate the second user (task assigned). Trying to open the task. Should be succefull.', () => {
-            changeCheckUserStatusOpenTask(secondUserName);
+            changeCheckUserStatusOpenTask(Cypress.env('regularUserEmail'));
             cy.goToTaskList();
         });
 
         it('Deactivate the third user (job assigned). Trying to open the task. Should be succefull.', () => {
-            changeCheckUserStatusOpenTask(thirdUserName);
+            changeCheckUserStatusOpenTask(Cypress.env('regularUser2Email'));
         });
     });
 });

@@ -1,4 +1,4 @@
-// Copyright (C) 2019-2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -19,7 +19,6 @@ import {
 
 export interface CanvasController {
     readonly objects: any[];
-    readonly issueRegions: Record<number, number[]>;
     readonly zLayer: number | null;
     readonly focusData: FocusData;
     readonly activeElement: ActiveElement;
@@ -121,10 +120,6 @@ export class CanvasControllerImpl implements CanvasController {
 
     public get zLayer(): number | null {
         return this.model.zLayer;
-    }
-
-    public get issueRegions(): Record<number, number[]> {
-        return this.model.issueRegions;
     }
 
     public get objects(): any[] {

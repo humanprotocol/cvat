@@ -131,7 +131,6 @@ context('Canvas 3D functionality. Basic actions.', () => {
             for (const dropdownItems of [
                 '[title="Attribute annotation"]',
                 '[title="Tag annotation"]',
-                '[title="Review"]',
             ]) {
                 cy.get('.cvat-workspace-selector-dropdown')
                     .not('.ant-select-dropdown-hidden')

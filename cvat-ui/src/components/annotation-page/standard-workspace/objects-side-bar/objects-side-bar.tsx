@@ -18,7 +18,6 @@ import LabelsList from 'components/annotation-page/standard-workspace/objects-si
 import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
 import { collapseSidebar as collapseSidebarAction } from 'actions/annotation-actions';
 import AppearanceBlock from 'components/annotation-page/appearance-block';
-import IssuesListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/issues-list';
 
 interface OwnProps {
     objectsList: JSX.Element;
@@ -105,9 +104,6 @@ function ObjectsSideBar(props: StateToProps & DispatchToProps & OwnProps): JSX.E
                 </Tabs.TabPane>
                 <Tabs.TabPane forceRender tab={<Text strong>Labels</Text>} key='labels'>
                     <LabelsList />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<Text strong>Issues</Text>} key='issues'>
-                    <IssuesListComponent />
                 </Tabs.TabPane>
             </Tabs>
 

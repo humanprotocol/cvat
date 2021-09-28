@@ -17,8 +17,7 @@ import cvat.apps.dataset_manager as dm
 from cvat.apps.engine import models
 from cvat.apps.engine.log import slogger
 from cvat.apps.engine.serializers import (AttributeSerializer, DataSerializer,
-    LabeledDataSerializer, SegmentSerializer, SimpleJobSerializer, TaskSerializer,
-    ReviewSerializer, IssueSerializer, CommentSerializer)
+    LabeledDataSerializer, SegmentSerializer, SimpleJobSerializer, TaskSerializer)
 from cvat.apps.engine.utils import av_scan_paths
 from cvat.apps.engine.models import StorageChoice, StorageMethodChoice, DataChoice
 from cvat.apps.engine.task import _create_thread
@@ -154,32 +153,6 @@ class _TaskBackupBase():
 
         return annotations
 
-    def _prepare_review_meta(self, review):
-        allowed_fields = {
-            'estimated_quality',
-            'status',
-            'issues',
-        }
-        return self._prepare_meta(allowed_fields, review)
-
-    def _prepare_issue_meta(self, issue):
-        allowed_fields = {
-            'frame',
-            'position',
-            'created_date',
-            'resolved_date',
-            'comments',
-        }
-        return self._prepare_meta(allowed_fields, issue)
-
-    def _prepare_comment_meta(self, comment):
-        allowed_fields = {
-            'message',
-            'created_date',
-            'updated_date',
-        }
-        return self._prepare_meta(allowed_fields, comment)
-
     def _get_db_jobs(self):
         if self._db_task:
             db_segments = list(self._db_task.segment_set.all().prefetch_related('job_set'))
@@ -286,47 +259,17 @@ class TaskExporter(_TaskBackupBase):
 
             return task
 
-        def serialize_comment(db_comment):
-            comment_serializer = CommentSerializer(db_comment)
-            comment_serializer.fields.pop('author')
-
-            return self._prepare_comment_meta(comment_serializer.data)
-
-        def serialize_issue(db_issue):
-            issue_serializer = IssueSerializer(db_issue)
-            issue_serializer.fields.pop('owner')
-            issue_serializer.fields.pop('resolver')
-
-            issue = issue_serializer.data
-            issue['comments'] = (serialize_comment(c) for c in db_issue.comment_set.order_by('id'))
-
-            return self._prepare_issue_meta(issue)
-
-        def serialize_review(db_review):
-            review_serializer = ReviewSerializer(db_review)
-            review_serializer.fields.pop('reviewer')
-            review_serializer.fields.pop('assignee')
-
-            review = review_serializer.data
-            review['issues'] = (serialize_issue(i) for i in db_review.issue_set.order_by('id'))
-
-            return self._prepare_review_meta(review)
-
         def serialize_segment(db_segment):
             db_job = db_segment.job_set.first()
             job_serializer = SimpleJobSerializer(db_job)
             job_serializer.fields.pop('url')
             job_serializer.fields.pop('assignee')
-            job_serializer.fields.pop('reviewer')
             job_data = self._prepare_job_meta(job_serializer.data)
 
             segment_serailizer = SegmentSerializer(db_segment)
             segment_serailizer.fields.pop('jobs')
             segment = segment_serailizer.data
             segment.update(job_data)
-
-            db_reviews = db_job.review_set.order_by('id')
-            segment['reviews'] = (serialize_review(r) for r in db_reviews)
 
             return segment
 
@@ -440,40 +383,6 @@ class TaskImporter(_TaskBackupBase):
 
     def _import_task(self):
 
-        def _create_comment(comment, db_issue):
-            comment['issue'] = db_issue.id
-            comment_serializer = CommentSerializer(data=comment)
-            comment_serializer.is_valid(raise_exception=True)
-            db_comment = comment_serializer.save()
-            return db_comment
-
-        def _create_issue(issue, db_review, db_job):
-            issue['review'] = db_review.id
-            issue['job'] = db_job.id
-            comments = issue.pop('comments')
-
-            issue_serializer = IssueSerializer(data=issue)
-            issue_serializer.is_valid( raise_exception=True)
-            db_issue = issue_serializer.save()
-
-            for comment in comments:
-                _create_comment(comment, db_issue)
-
-            return db_issue
-
-        def _create_review(review, db_job):
-            review['job'] = db_job.id
-            issues = review.pop('issues')
-
-            review_serializer = ReviewSerializer(data=review)
-            review_serializer.is_valid(raise_exception=True)
-            db_review = review_serializer.save()
-
-            for issue in issues:
-                _create_issue(issue, db_review, db_job)
-
-            return db_review
-
         data = self._manifest.pop('data')
         labels = self._manifest.pop('labels')
         jobs = self._manifest.pop('jobs')
@@ -528,9 +437,6 @@ class TaskImporter(_TaskBackupBase):
         for db_job, job in zip(self._get_db_jobs(), jobs):
             db_job.status = job['status']
             db_job.save()
-
-            for review in job['reviews']:
-                _create_review(review, db_job)
 
     def _import_annotations(self):
         db_jobs = self._get_db_jobs()

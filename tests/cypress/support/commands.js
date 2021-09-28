@@ -108,11 +108,12 @@ Cypress.Commands.add('deletingRegisteredUsers', (accountToDelete) => {
     });
 });
 
-Cypress.Commands.add('changeUserActiveStatus', (authKey, accountsToChangeActiveStatus, isActive) => {
+Cypress.Commands.add('changeUserActiveStatus', (accountsToChangeActiveStatus, isActive) => {
     cy.request({
         url: '/api/v1/users?page_size=all',
-        headers: {
-            Authorization: `Token ${authKey}`,
+        auth: {
+            username: Cypress.env('user'),
+            password: Cypress.env('password'),
         },
     }).then((response) => {
         const responceResult = response['body']['results'];
@@ -123,23 +124,25 @@ Cypress.Commands.add('changeUserActiveStatus', (authKey, accountsToChangeActiveS
                 cy.request({
                     method: 'PATCH',
                     url: `/api/v1/users/${userId}`,
-                    headers: {
-                        Authorization: `Token ${authKey}`,
+                    auth: {
+                        username: Cypress.env('user'),
+                        password: Cypress.env('password'),
                     },
-                        body: {
-                            is_active: isActive,
-                        },
+                    body: {
+                        is_active: isActive,
+                    },
                 });
             }
         });
     });
 });
 
-Cypress.Commands.add('checkUserStatuses', (authKey, userName, staffStatus, superuserStatus, activeStatus) => {
+Cypress.Commands.add('checkUserStatuses', (userName, staffStatus, superuserStatus, activeStatus) => {
     cy.request({
         url: '/api/v1/users?page_size=all',
-        headers: {
-            Authorization: `Token ${authKey}`,
+        auth: {
+            username: Cypress.env('user'),
+            password: Cypress.env('password'),
         },
     }).then((response) => {
         const responceResult = response['body']['results'];

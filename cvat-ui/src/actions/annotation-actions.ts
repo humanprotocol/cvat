@@ -123,7 +123,6 @@ export enum AnnotationActionTypes {
     CONFIRM_CANVAS_READY = 'CONFIRM_CANVAS_READY',
     DRAG_CANVAS = 'DRAG_CANVAS',
     ZOOM_CANVAS = 'ZOOM_CANVAS',
-    SELECT_ISSUE_POSITION = 'SELECT_ISSUE_POSITION',
     MERGE_OBJECTS = 'MERGE_OBJECTS',
     GROUP_OBJECTS = 'GROUP_OBJECTS',
     SPLIT_TRACK = 'SPLIT_TRACK',
@@ -186,8 +185,6 @@ export enum AnnotationActionTypes {
     INTERACT_WITH_CANVAS = 'INTERACT_WITH_CANVAS',
     SET_AI_TOOLS_REF = 'SET_AI_TOOLS_REF',
     GET_DATA_FAILED = 'GET_DATA_FAILED',
-    SWITCH_REQUEST_REVIEW_DIALOG = 'SWITCH_REQUEST_REVIEW_DIALOG',
-    SWITCH_SUBMIT_REVIEW_DIALOG = 'SWITCH_SUBMIT_REVIEW_DIALOG',
     SET_FORCE_EXIT_ANNOTATION_PAGE_FLAG = 'SET_FORCE_EXIT_ANNOTATION_PAGE_FLAG',
     UPDATE_PREDICTOR_STATE = 'UPDATE_PREDICTOR_STATE',
     GET_PREDICTIONS = 'GET_PREDICTIONS',
@@ -1016,8 +1013,6 @@ export function getJobAsync(tid: number, jid: number, initialFrame: number, init
                 });
             }
             const states = await job.annotations.get(frameNumber, showAllInterpolationTracks, filters);
-            const issues = await job.issues();
-            const reviews = await job.reviews();
             const [minZ, maxZ] = computeZRange(states);
             const colors = [...cvat.enums.colors];
 
@@ -1029,8 +1024,6 @@ export function getJobAsync(tid: number, jid: number, initialFrame: number, init
                 payload: {
                     openTime,
                     job,
-                    issues,
-                    reviews,
                     states,
                     frameNumber,
                     frameFilename: frameData.filename,
@@ -1155,15 +1148,6 @@ export function shapeDrawn(): AnyAction {
     return {
         type: AnnotationActionTypes.SHAPE_DRAWN,
         payload: {},
-    };
-}
-
-export function selectIssuePosition(enabled: boolean): AnyAction {
-    return {
-        type: AnnotationActionTypes.SELECT_ISSUE_POSITION,
-        payload: {
-            enabled,
-        },
     };
 }
 
@@ -1594,24 +1578,6 @@ export function redrawShapeAsync(): ThunkAction {
                 });
             }
         }
-    };
-}
-
-export function switchRequestReviewDialog(visible: boolean): AnyAction {
-    return {
-        type: AnnotationActionTypes.SWITCH_REQUEST_REVIEW_DIALOG,
-        payload: {
-            visible,
-        },
-    };
-}
-
-export function switchSubmitReviewDialog(visible: boolean): AnyAction {
-    return {
-        type: AnnotationActionTypes.SWITCH_SUBMIT_REVIEW_DIALOG,
-        payload: {
-            visible,
-        },
     };
 }
 
