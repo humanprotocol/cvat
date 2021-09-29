@@ -23,7 +23,7 @@ def notify_jobflow(db_jobs, db_task):
 
         payload = {
             "task_id": db_task.id,
-            "task_address": db_task.name,
+            "task_address": db_task.address,
             "payouts": payouts
         }
         response = requests.post(f'{CVAT_EXCHANGE_URL}/notify', json=payload)
