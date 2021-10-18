@@ -12,11 +12,11 @@ import Text from 'antd/lib/typography/Text';
 import Title from 'antd/lib/typography/Title';
 import moment from 'moment';
 
+import Descriptions from 'antd/lib/descriptions';
 import getCore from 'cvat-core-wrapper';
 import { getReposData, syncRepos } from 'utils/git-utils';
 import { ActiveInference } from 'reducers/interfaces';
 import AutomaticAnnotationProgress from 'components/tasks-page/automatic-annotation-progress';
-import Descriptions from 'antd/lib/descriptions';
 import UserSelector, { User } from './user-selector';
 import BugTrackerEditor from './bug-tracker-editor';
 import LabelsEditorComponent from '../labels-editor/labels-editor';
@@ -323,6 +323,21 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
         );
     }
 
+    private renderTaskDescription(): JSX.Element {
+        const { taskInstance } = this.props;
+        const description = taskInstance.description ?
+            taskInstance.description :
+            'Customer did not provide a task description.';
+
+        return (
+            <Descriptions className='cvat-task-parameters-task-description' bordered layout='vertical' size='small'>
+                <Descriptions.Item label='Task description' style={{ overflow: 'auto' }}>
+                    {description}
+                </Descriptions.Item>
+            </Descriptions>
+        );
+    }
+
     public render(): JSX.Element {
         const {
             activeInference, cancelAutoAnnotation, taskInstance, onTaskUpdate,
@@ -364,6 +379,11 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
                         {this.renderDatasetRepository()}
                         {!taskInstance.projectId && this.renderLabelsEditor()}
                         {taskInstance.projectId && this.renderSubsetField()}
+                    </Col>
+                </Row>
+                <Row justify='center' align='bottom' style={{ marginTop: 16 }}>
+                    <Col span={24} className='cvat-task-details-task-description'>
+                        {this.renderTaskDescription()}
                     </Col>
                 </Row>
             </div>
