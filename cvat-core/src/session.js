@@ -3,8 +3,6 @@
 // SPDX-License-Identifier: MIT
 
 (() => {
-    // eslint-disable-next-line no-unused-vars
-    const store = require('store');
     const PluginRegistry = require('./plugins');
     const loggerStorage = require('./logger-storage');
     const serverProxy = require('./server-proxy');
