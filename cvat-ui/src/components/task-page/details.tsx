@@ -331,7 +331,7 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
 
         return (
             <Descriptions className='cvat-task-parameters-task-description' bordered layout='vertical' size='small'>
-                <Descriptions.Item label='Task description' style={{ overflow: 'auto' }}>
+                <Descriptions.Item label='Task description' style={{ overflow: 'auto', whiteSpace: 'pre-line' }}>
                     {description}
                 </Descriptions.Item>
             </Descriptions>
