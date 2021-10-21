@@ -6,7 +6,7 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { Row, Col } from 'antd/lib/grid';
-import { QuestionCircleOutlined, CopyOutlined } from '@ant-design/icons';
+import { CopyOutlined } from '@ant-design/icons';
 import { ColumnFilterItem } from 'antd/lib/table/interface';
 import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
@@ -81,18 +81,24 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
             title: 'Job',
             dataIndex: 'job',
             key: 'job',
-            render: (id: number): JSX.Element => (
+            render: (jobInstance: any): JSX.Element => (
                 <div>
-                    <Button
-                        type='link'
-                        onClick={(e: React.MouseEvent): void => {
-                            e.preventDefault();
-                            push(`/tasks/${taskId}/jobs/${id}`);
-                        }}
-                        href={`/tasks/${taskId}/jobs/${id}`}
+                    <CVATTooltip
+                        trigger='hover'
+                        title={jobInstance.assignee ? '' : 'You need to assign yourself to the job before open it.'}
                     >
-                        {`Job #${id}`}
-                    </Button>
+                        <Button
+                            type='link'
+                            disabled={!jobInstance.assignee}
+                            onClick={(e: React.MouseEvent): void => {
+                                e.preventDefault();
+                                push(`/tasks/${taskId}/jobs/${jobInstance.id}`);
+                            }}
+                            href={`/tasks/${taskId}/jobs/${jobInstance.id}`}
+                        >
+                            {`Job #${jobInstance.id}`}
+                        </Button>
+                    </CVATTooltip>
                 </div>
             ),
         },
@@ -107,8 +113,7 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
             dataIndex: 'status',
             key: 'status',
             className: 'cvat-job-item-status',
-            render: (jobInstance: any): JSX.Element => {
-                const { status } = jobInstance;
+            render: (status: string): JSX.Element => {
                 let progressColor = null;
                 if (status === 'completed') {
                     progressColor = 'cvat-job-completed-color';
@@ -122,12 +127,12 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
                     </Text>
                 );
             },
-            sorter: sorter('status.status'),
+            sorter: sorter('status'),
             filters: [
                 { text: 'annotation', value: 'annotation' },
                 { text: 'completed', value: 'completed' },
             ],
-            onFilter: (value: string | number | boolean, record: any) => record.status.status === value,
+            onFilter: (value: string | number | boolean, record: any) => record.status === value,
         },
         {
             title: 'Started on',
@@ -143,8 +148,8 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
         },
         {
             title: 'Assignee',
-            dataIndex: 'assignee',
-            key: 'assignee',
+            dataIndex: 'job',
+            key: 'job',
             className: 'cvat-job-item-assignee',
             render: (jobInstance: any): JSX.Element => (
                 <UserSelector
@@ -175,12 +180,12 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
         const now = moment(moment.now());
         acc.push({
             key: job.id,
-            job: job.id,
+            // eslint-disable-next-line object-shorthand
+            job: job,
             frames: `${job.startFrame}-${job.stopFrame}`,
-            status: job,
+            status: job.status,
             started: `${created.format('MMMM Do YYYY HH:MM')}`,
             duration: `${moment.duration(now.diff(created)).humanize()}`,
-            assignee: job,
         });
 
         return acc;
