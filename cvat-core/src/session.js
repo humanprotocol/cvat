@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: MIT
 
 (() => {
-    const store = require('store');
     const PluginRegistry = require('./plugins');
     const loggerStorage = require('./logger-storage');
     const serverProxy = require('./server-proxy');
@@ -932,6 +931,7 @@
             const data = {
                 id: undefined,
                 name: undefined,
+                description: undefined,
                 project_id: undefined,
                 status: undefined,
                 size: undefined,
@@ -1038,6 +1038,16 @@
                             updatedFields.name = true;
                             data.name = value;
                         },
+                    },
+                    /**
+                     * @name description
+                     * @type {string}
+                     * @memberof module:API.cvat.classes.Task
+                     * @instance
+                     * @throws {module:API.cvat.exceptions.ArgumentError}
+                     */
+                    description: {
+                        get: () => data.description,
                     },
                     /**
                      * @name projectId
