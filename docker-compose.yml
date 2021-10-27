@@ -45,6 +45,7 @@ services:
       CVAT_REDIS_HOST: 'cvat_redis'
       CVAT_POSTGRES_HOST: 'cvat_db'
       ADAPTIVE_AUTO_ANNOTATION: 'false'
+      CVAT_EXCHANGE_URL: 'http://human-exchange-cvat:5001'
     volumes:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
