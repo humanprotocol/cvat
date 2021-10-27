@@ -8,7 +8,7 @@ from cvat.apps.authentication.models import WalletToUser
 from cvat.apps.engine.log import slogger
 from cvat.settings.base import CVAT_URL, CVAT_EXCHANGE_URL
 
-def notify_jobflow(db_jobs, db_task):
+def notify_cvat_exchange(db_jobs, db_task):
     logger = slogger.task[db_task.id]
     try:
         payouts = []
