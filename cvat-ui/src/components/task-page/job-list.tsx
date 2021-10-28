@@ -162,10 +162,10 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
                     }}
                 />
             ),
-            sorter: sorter('assignee.assignee.username'),
+            sorter: sorter('job.assignee.username'),
             filters: collectUsers('assignee'),
             onFilter: (value: string | number | boolean, record: any) =>
-                (record.assignee.assignee?.username || false) === value,
+                (record.job.assignee?.username || false) === value,
         },
     ];
 
@@ -180,8 +180,7 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
         const now = moment(moment.now());
         acc.push({
             key: job.id,
-            // eslint-disable-next-line object-shorthand
-            job: job,
+            job,
             frames: `${job.startFrame}-${job.stopFrame}`,
             status: job.status,
             started: `${created.format('MMMM Do YYYY HH:MM')}`,
