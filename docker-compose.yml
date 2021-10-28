@@ -44,6 +44,7 @@ services:
       ALLOWED_HOSTS: '*'
       CVAT_REDIS_HOST: 'cvat_redis'
       CVAT_POSTGRES_HOST: 'cvat_db'
+      CVAT_POSTGRES_PORT: 5432
       ADAPTIVE_AUTO_ANNOTATION: 'false'
     volumes:
       - cvat_data:/home/django/data
