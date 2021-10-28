@@ -47,3 +47,6 @@ yarn-error.log*
 /site/resources/
 /site/node_modules/
 /site/tech-doc-hugo
+
+# Deployment scripts
+.deploy
