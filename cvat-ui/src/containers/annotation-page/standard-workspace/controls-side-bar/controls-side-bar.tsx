@@ -26,6 +26,7 @@ interface StateToProps {
     keyMap: KeyMap;
     normalizedKeyMap: Record<string, string>;
     labels: any[];
+    type: string;
 }
 
 interface DispatchToProps {
@@ -43,7 +44,12 @@ function mapStateToProps(state: CombinedState): StateToProps {
     const {
         annotation: {
             canvas: { instance: canvasInstance, activeControl },
-            job: { labels },
+            job: {
+                labels,
+                instance: {
+                    task: { allowedAnnotationMode },
+                },
+            },
         },
         settings: {
             player: { rotateAll },
@@ -58,6 +64,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
         labels,
         normalizedKeyMap,
         keyMap,
+        allowedAnnotationMode,
     };
 }
 

@@ -18,7 +18,7 @@ import {
     FilterIcon, FullscreenIcon, InfoIcon, BrainIcon,
 } from 'icons';
 import {
-    CombinedState, DimensionType, Workspace, PredictorState,
+    CombinedState, DimensionType, Workspace, PredictorState, AllowedInstruments,
 } from 'reducers/interfaces';
 
 interface Props {
@@ -185,9 +185,19 @@ function RightGroup(props: Props): JSX.Element {
                                 </Select.Option>
                             );
                         }
+                        if (jobInstance.task.allowedAnnotationMode === AllowedInstruments.TAG) {
+                            if (ws === Workspace.STANDARD3D) {
+                                return null;
+                            }
+                            return (
+                                <Select.Option disabled={ws === Workspace.ATTRIBUTE_ANNOTATION} key={ws} value={ws}>
+                                    {ws}
+                                </Select.Option>
+                            );
+                        }
                         if (ws !== Workspace.STANDARD3D) {
                             return (
-                                <Select.Option key={ws} value={ws}>
+                                <Select.Option disabled={ws !== Workspace.STANDARD} key={ws} value={ws}>
                                     {ws}
                                 </Select.Option>
                             );
