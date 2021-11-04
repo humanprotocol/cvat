@@ -492,6 +492,12 @@ export enum Workspace {
     TAG_ANNOTATION = 'Tag annotation',
 }
 
+export enum AllowedInstruments {
+    RECTANGLE = 'Rectangle',
+    POLYSHAPE = 'Polyshape',
+    TAG = 'Tag',
+}
+
 export enum GridColor {
     White = 'White',
     Black = 'Black',

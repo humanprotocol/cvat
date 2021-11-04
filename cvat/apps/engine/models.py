@@ -237,6 +237,7 @@ class Task(models.Model):
     dimension = models.CharField(max_length=2, choices=DimensionType.choices(), default=DimensionType.DIM_2D)
     subset = models.CharField(max_length=64, blank=True, default="")
     is_exchange_notified = models.BooleanField(default=False)
+    allowed_annotation_mode = models.CharField(max_length=64, blank=True, default="")
 
     # Extend default permission model
     class Meta:
