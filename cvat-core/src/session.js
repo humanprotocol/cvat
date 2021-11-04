@@ -955,7 +955,7 @@
                 use_cache: undefined,
                 copy_data: undefined,
                 dimension: undefined,
-                allowed_annotation_mode: undefined,
+                allowed_annotation_instrument: undefined,
             };
 
             const updatedFields = new FieldUpdateTrigger({
@@ -1058,7 +1058,7 @@
                      * @throws {module:API.cvat.exceptions.ArgumentError}
                      */
                     allowedAnnotationMode: {
-                        get: () => data.allowed_annotation_mode,
+                        get: () => data.allowed_annotation_instrument,
                     },
                     /**
                      * @name projectId

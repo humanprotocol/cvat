@@ -391,7 +391,7 @@ class TaskSerializer(WriteOnceMixin, serializers.ModelSerializer):
             'bug_tracker', 'created_date', 'updated_date', 'overlap',
             'segment_size', 'status', 'labels', 'segments',
             'data_chunk_size', 'data_compressed_chunk_type', 'data_original_chunk_type', 'size', 'image_quality',
-            'data', 'dimension', 'subset', 'allowed_annotation_mode')
+            'data', 'dimension', 'subset', 'allowed_annotation_instrument')
         read_only_fields = ('mode', 'created_date', 'updated_date', 'status', 'data_chunk_size', 'owner', 'assignee',
             'data_compressed_chunk_type', 'data_original_chunk_type', 'size', 'image_quality', 'data')
         write_once_fields = ('overlap', 'segment_size', 'project_id')
