@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create a task with set an issue tracker.', () => {
     const caseId = '61';
     const labelName = `Case ${caseId}`;
@@ -23,7 +25,7 @@ context('Create a task with set an issue tracker.', () => {
     const incorrectBugTrackerUrl = 'somebugtracker.info/task12';
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

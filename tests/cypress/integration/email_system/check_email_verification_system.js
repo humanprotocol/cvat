@@ -15,23 +15,27 @@ const randomString = (isPassword) => {
 
 context('Check email verification system', () => {
     const caseId = 'Email verification system';
-    const firstName = `${randomString()}`;
-    const lastName = `${randomString()}`;
-    const userName = `${randomString()}`;
-    const emailAddr = `${userName}@local.local`;
-    const password = `${randomString(true)}`;
 
     before(() => {
-        cy.visit('auth/register');
-        cy.url().should('include', '/auth/register');
+        cy.visit('/');
+        cy.url().should('include', '/auth/login');
+    });
+
+    after(() => {
+        cy.deletingRegisteredUsers([Cypress.env('regularUserEmail')]);
     });
 
     describe(`Case: "${caseId}"`, () => {
         it('Register user. Notification exist. The response status is successful.', () => {
             cy.intercept('POST', '/api/v1/auth/register').as('userRegister');
-            cy.userRegistration(firstName, lastName, userName, emailAddr, password);
+            cy.userRegistration(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.get('.ant-notification-topRight')
-                .contains(`We have sent an email with a confirmation link to ${emailAddr}.`)
+                .contains(`We have sent an email with a confirmation link to ${Cypress.env('regularUserEmail')}.`)
                 .should('exist');
             cy.wait('@userRegister').its('response.statusCode').should('eq', 201);
         });

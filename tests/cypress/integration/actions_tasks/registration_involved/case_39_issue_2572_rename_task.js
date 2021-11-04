@@ -22,13 +22,6 @@ context('Rename a task.', () => {
     const imagesFolder = `cypress/fixtures/${imageFileName}`;
     const directoryToArchive = imagesFolder;
     const newNaskName = taskName.replace('39', '3339');
-    const secondUserName = 'Case39';
-    const secondUser = {
-        firstName: `Firtstnamerenametask`,
-        lastName: `Lastnamerenametask`,
-        emailAddr: `${secondUserName.toLowerCase()}@local.local`,
-        password: 'Pass!UserCase39',
-    };
 
     function renameTask(taskName, newValue) {
         cy.get('.cvat-task-details-task-name').within(() => {
@@ -38,7 +31,7 @@ context('Rename a task.', () => {
     }
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);
@@ -47,7 +40,8 @@ context('Rename a task.', () => {
     });
 
     after(() => {
-        cy.deletingRegisteredUsers([secondUserName]);
+        cy.deletingRegisteredUsers([Cypress.env('regularUserEmail')]);
+        cy.visit('/admin');
         cy.login();
         cy.deleteTask(newNaskName);
     });
@@ -59,19 +53,18 @@ context('Rename a task.', () => {
             cy.logout();
         });
         it('Registration a second user. Rename the task. Status 403 appear.', () => {
-            cy.goToRegisterPage();
+            cy.visit('/');
             cy.userRegistration(
-                secondUser.firstName,
-                secondUser.lastName,
-                secondUserName,
-                secondUser.emailAddr,
-                secondUser.password,
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
             );
             cy.openTask(newNaskName);
             renameTask(newNaskName, '{leftarrow}{leftarrow}3{Enter}');
             cy.get('.cvat-notification-notice-update-task-failed').should('exist');
             cy.closeNotification('.cvat-notification-notice-update-task-failed');
-            cy.logout(secondUserName);
+            cy.logout();
         });
     });
 });

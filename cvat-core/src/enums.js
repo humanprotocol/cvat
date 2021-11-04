@@ -1,4 +1,4 @@
-// Copyright (C) 2019-2020 Intel Corporation
+// Copyright (C) 2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -23,13 +23,11 @@
      * @name TaskStatus
      * @memberof module:API.cvat.enums
      * @property {string} ANNOTATION 'annotation'
-     * @property {string} VALIDATION 'validation'
      * @property {string} COMPLETED 'completed'
      * @readonly
      */
     const TaskStatus = Object.freeze({
         ANNOTATION: 'annotation',
-        VALIDATION: 'validation',
         COMPLETED: 'completed',
     });
 
@@ -45,22 +43,6 @@
     const DimensionType = Object.freeze({
         DIMENSION_2D: '2d',
         DIMENSION_3D: '3d',
-    });
-
-    /**
-     * Review statuses
-     * @enum {string}
-     * @name ReviewStatus
-     * @memberof module:API.cvat.enums
-     * @property {string} ACCEPTED 'accepted'
-     * @property {string} REJECTED 'rejected'
-     * @property {string} REVIEW_FURTHER 'review_further'
-     * @readonly
-     */
-    const ReviewStatus = Object.freeze({
-        ACCEPTED: 'accepted',
-        REJECTED: 'rejected',
-        REVIEW_FURTHER: 'review_further',
     });
 
     /**
@@ -336,7 +318,6 @@
     module.exports = {
         ShareFileType,
         TaskStatus,
-        ReviewStatus,
         TaskMode,
         AttributeType,
         ObjectType,

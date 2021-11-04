@@ -6,6 +6,7 @@ from rest_framework import views
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_auth.registration.views import RegisterView as _RegisterView
+from rest_auth.views import LoginView as _LoginView
 from allauth.account import app_settings as allauth_settings
 from furl import furl
 

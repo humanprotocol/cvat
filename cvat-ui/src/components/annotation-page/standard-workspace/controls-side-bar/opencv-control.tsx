@@ -19,7 +19,7 @@ import getCore from 'cvat-core-wrapper';
 import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
 import { IntelligentScissors } from 'utils/opencv-wrapper/intelligent-scissors';
 import {
-    CombinedState, ActiveControl, OpenCVTool, ObjectType,
+    CombinedState, ActiveControl, OpenCVTool, ObjectType, AllowedInstruments,
 } from 'reducers/interfaces';
 import {
     interactWithCanvas,
@@ -383,7 +383,9 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
     }
 
     public render(): JSX.Element {
-        const { isActivated, canvasInstance, labels } = this.props;
+        const {
+            isActivated, canvasInstance, labels, jobInstance,
+        } = this.props;
         const dynamcPopoverPros = isActivated ?
             {
                 overlayStyle: {
@@ -403,7 +405,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                 className: 'cvat-tools-control',
             };
 
-        return !labels.length ? (
+        return !labels.length || jobInstance.task.allowedAnnotationMode !== AllowedInstruments.POLYSHAPE ? (
             <Icon className='cvat-opencv-control cvat-disabled-canvas-control' component={OpenCVIcon} />
         ) : (
             <CustomPopover

@@ -5,7 +5,9 @@ import shutil
 
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import User
+from cvat.apps.authentication.models import User
+
+from cvat.apps.engine.notify_cvat_exchange import notify_cvat_exchange
 
 from .models import (
     Data,
@@ -27,6 +29,8 @@ def update_task_status(instance, **kwargs):
         status = StatusChoice.VALIDATION
 
     if status != db_task.status:
+        if status == StatusChoice.COMPLETED and not db_task.is_exchange_notified:
+            notify_cvat_exchange(db_jobs, db_task)
         db_task.status = status
         db_task.save()
 

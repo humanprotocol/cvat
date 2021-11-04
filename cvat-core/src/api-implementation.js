@@ -60,8 +60,8 @@
             firstName,
             lastName,
             email,
-            password1,
-            password2,
+            walletAddress,
+            signedEmail,
             userConfirmations,
         ) => {
             const user = await serverProxy.server.register(
@@ -69,16 +69,16 @@
                 firstName,
                 lastName,
                 email,
-                password1,
-                password2,
+                walletAddress,
+                signedEmail,
                 userConfirmations,
             );
 
             return new User(user);
         };
 
-        cvat.server.login.implementation = async (username, password) => {
-            await serverProxy.server.login(username, password);
+        cvat.server.login.implementation = async (email, walletAddress, signedEmail) => {
+            await serverProxy.server.login(email, walletAddress, signedEmail);
         };
 
         cvat.server.logout.implementation = async () => {
@@ -87,14 +87,6 @@
 
         cvat.server.changePassword.implementation = async (oldPassword, newPassword1, newPassword2) => {
             await serverProxy.server.changePassword(oldPassword, newPassword1, newPassword2);
-        };
-
-        cvat.server.requestPasswordReset.implementation = async (email) => {
-            await serverProxy.server.requestPasswordReset(email);
-        };
-
-        cvat.server.resetPassword.implementation = async (newPassword1, newPassword2, uid, token) => {
-            await serverProxy.server.resetPassword(newPassword1, newPassword2, uid, token);
         };
 
         cvat.server.authorized.implementation = async () => {

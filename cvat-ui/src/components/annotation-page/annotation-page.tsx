@@ -10,9 +10,6 @@ import Spin from 'antd/lib/spin';
 import notification from 'antd/lib/notification';
 
 import AttributeAnnotationWorkspace from 'components/annotation-page/attribute-annotation-workspace/attribute-annotation-workspace';
-import SubmitAnnotationsModal from 'components/annotation-page/request-review-modal';
-import ReviewAnnotationsWorkspace from 'components/annotation-page/review-workspace/review-workspace';
-import SubmitReviewModal from 'components/annotation-page/review/submit-review-modal';
 import StandardWorkspaceComponent from 'components/annotation-page/standard-workspace/standard-workspace';
 import StandardWorkspace3DComponent from 'components/annotation-page/standard3D-workspace/standard3D-workspace';
 import TagAnnotationWorkspace from 'components/annotation-page/tag-annotation-workspace/tag-annotation-workspace';
@@ -126,15 +123,8 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                     <TagAnnotationWorkspace />
                 </Layout.Content>
             )}
-            {workspace === Workspace.REVIEW_WORKSPACE && (
-                <Layout.Content className='cvat-annotation-layout-content'>
-                    <ReviewAnnotationsWorkspace />
-                </Layout.Content>
-            )}
             <FiltersModalComponent />
             <StatisticsModalContainer />
-            <SubmitAnnotationsModal />
-            <SubmitReviewModal />
         </Layout>
     );
 }

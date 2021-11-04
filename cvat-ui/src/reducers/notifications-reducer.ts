@@ -15,7 +15,6 @@ import { AnnotationActionTypes } from 'actions/annotation-actions';
 import { NotificationsActionType } from 'actions/notification-actions';
 import { BoundariesActionTypes } from 'actions/boundaries-actions';
 import { UserAgreementsActionTypes } from 'actions/useragreements-actions';
-import { ReviewActionTypes } from 'actions/review-actions';
 
 import { NotificationsState } from './interfaces';
 
@@ -27,8 +26,6 @@ const defaultState: NotificationsState = {
             logout: null,
             register: null,
             changePassword: null,
-            requestPasswordReset: null,
-            resetPassword: null,
             loadAuthActions: null,
         },
         projects: {
@@ -98,14 +95,6 @@ const defaultState: NotificationsState = {
         userAgreements: {
             fetching: null,
         },
-        review: {
-            commentingIssue: null,
-            finishingIssue: null,
-            initialization: null,
-            reopeningIssue: null,
-            resolvingIssue: null,
-            submittingReview: null,
-        },
         predictor: {
             prediction: null,
         },
@@ -122,8 +111,6 @@ const defaultState: NotificationsState = {
         auth: {
             changePasswordDone: '',
             registerDone: '',
-            requestPasswordResetDone: '',
-            resetPasswordDone: '',
         },
     },
 };
@@ -184,8 +171,8 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         register: {
-                            message: 'Could not register on the server',
-                            reason: action.payload.error.toString(),
+                            message: 'Could not login on the server',
+                            reason: 'Unable to login with provided credentials',
                         },
                     },
                 },
@@ -233,61 +220,6 @@ export default function (state = defaultState, action: AnyAction): Notifications
                             message: 'Could not change password',
                             reason: action.payload.error.toString(),
                             className: 'cvat-notification-notice-change-password-failed',
-                        },
-                    },
-                },
-            };
-        }
-        case AuthActionTypes.REQUEST_PASSWORD_RESET_SUCCESS: {
-            return {
-                ...state,
-                messages: {
-                    ...state.messages,
-                    auth: {
-                        ...state.messages.auth,
-                        requestPasswordResetDone: `Check your email for a link to reset your password.
-                            If it doesn’t appear within a few minutes, check your spam folder.`,
-                    },
-                },
-            };
-        }
-        case AuthActionTypes.REQUEST_PASSWORD_RESET_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    auth: {
-                        ...state.errors.auth,
-                        requestPasswordReset: {
-                            message: 'Could not reset password on the server.',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case AuthActionTypes.RESET_PASSWORD_SUCCESS: {
-            return {
-                ...state,
-                messages: {
-                    ...state.messages,
-                    auth: {
-                        ...state.messages.auth,
-                        resetPasswordDone: 'Password has been reset with the new password.',
-                    },
-                },
-            };
-        }
-        case AuthActionTypes.RESET_PASSWORD_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    auth: {
-                        ...state.errors.auth,
-                        resetPassword: {
-                            message: 'Could not set new password on the server.',
-                            reason: action.payload.error.toString(),
                         },
                     },
                 },
@@ -1045,96 +977,6 @@ export default function (state = defaultState, action: AnyAction): Notifications
                         ...state.errors.userAgreements,
                         fetching: {
                             message: 'Could not get user agreements from the server',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.INITIALIZE_REVIEW_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        initialization: {
-                            message: 'Could not initialize review session',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.FINISH_ISSUE_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        finishingIssue: {
-                            message: 'Could not open a new issue',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.RESOLVE_ISSUE_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        resolvingIssue: {
-                            message: 'Could not resolve the issue',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.REOPEN_ISSUE_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        reopeningIssue: {
-                            message: 'Could not reopen the issue',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.COMMENT_ISSUE_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        commentingIssue: {
-                            message: 'Could not comment the issue',
-                            reason: action.payload.error.toString(),
-                        },
-                    },
-                },
-            };
-        }
-        case ReviewActionTypes.SUBMIT_REVIEW_FAILED: {
-            return {
-                ...state,
-                errors: {
-                    ...state.errors,
-                    review: {
-                        ...state.errors.review,
-                        submittingReview: {
-                            message: 'Could not submit review session to the server',
                             reason: action.payload.error.toString(),
                         },
                     },

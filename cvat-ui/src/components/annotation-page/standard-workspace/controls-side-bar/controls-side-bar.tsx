@@ -5,7 +5,7 @@
 import React from 'react';
 import Layout from 'antd/lib/layout';
 
-import { ActiveControl, Rotation } from 'reducers/interfaces';
+import { ActiveControl, Rotation, AllowedInstruments } from 'reducers/interfaces';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { Canvas } from 'cvat-canvas-wrapper';
 
@@ -33,6 +33,7 @@ interface Props {
     keyMap: KeyMap;
     normalizedKeyMap: Record<string, string>;
     labels: any[];
+    allowedAnnotationMode: string;
 
     mergeObjects(enabled: boolean): void;
     groupObjects(enabled: boolean): void;
@@ -70,6 +71,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
         normalizedKeyMap,
         keyMap,
         labels,
+        allowedAnnotationMode,
         mergeObjects,
         groupObjects,
         splitTrack,
@@ -224,29 +226,33 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
             <ObservedDrawRectangleControl
                 canvasInstance={canvasInstance}
                 isDrawing={activeControl === ActiveControl.DRAW_RECTANGLE}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.RECTANGLE}
             />
             <ObservedDrawPolygonControl
                 canvasInstance={canvasInstance}
                 isDrawing={activeControl === ActiveControl.DRAW_POLYGON}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
             <ObservedDrawPolylineControl
                 canvasInstance={canvasInstance}
                 isDrawing={activeControl === ActiveControl.DRAW_POLYLINE}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
             <ObservedDrawPointsControl
                 canvasInstance={canvasInstance}
                 isDrawing={activeControl === ActiveControl.DRAW_POINTS}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
             <ObservedDrawCuboidControl
                 canvasInstance={canvasInstance}
                 isDrawing={activeControl === ActiveControl.DRAW_CUBOID}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
-            <ObservedSetupTagControl canvasInstance={canvasInstance} isDrawing={false} disabled={!labels.length} />
+            <ObservedSetupTagControl
+                canvasInstance={canvasInstance}
+                isDrawing={false}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.TAG}
+            />
 
             <hr />
 
@@ -255,7 +261,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 canvasInstance={canvasInstance}
                 activeControl={activeControl}
                 mergeObjects={mergeObjects}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
             <ObservedGroupControl
                 switchGroupShortcut={normalizedKeyMap.SWITCH_GROUP_MODE}
@@ -263,14 +269,14 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 canvasInstance={canvasInstance}
                 activeControl={activeControl}
                 groupObjects={groupObjects}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
             <ObservedSplitControl
                 canvasInstance={canvasInstance}
                 switchSplitShortcut={normalizedKeyMap.SWITCH_SPLIT_MODE}
                 activeControl={activeControl}
                 splitTrack={splitTrack}
-                disabled={!labels.length}
+                disabled={!labels.length || allowedAnnotationMode !== AllowedInstruments.POLYSHAPE}
             />
 
             <ExtraControlsControl />

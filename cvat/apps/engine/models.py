@@ -6,8 +6,9 @@ import os
 import re
 from enum import Enum
 
+from cvat.apps.authentication.models import User
+
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -217,6 +218,8 @@ class Task(models.Model):
         null=True, blank=True, related_name="tasks",
         related_query_name="task")
     name = SafeCharField(max_length=256)
+    description = models.TextField(blank=True)
+    address = models.CharField(max_length=44, default='')
     mode = models.CharField(max_length=32)
     owner = models.ForeignKey(User, null=True, blank=True,
         on_delete=models.SET_NULL, related_name="owners")
@@ -233,6 +236,8 @@ class Task(models.Model):
     data = models.ForeignKey(Data, on_delete=models.CASCADE, null=True, related_name="tasks")
     dimension = models.CharField(max_length=2, choices=DimensionType.choices(), default=DimensionType.DIM_2D)
     subset = models.CharField(max_length=64, blank=True, default="")
+    is_exchange_notified = models.BooleanField(default=False)
+    allowed_annotation_instrument = models.CharField(max_length=64, blank=True, default="")
 
     # Extend default permission model
     class Meta:
@@ -326,7 +331,6 @@ class Segment(models.Model):
 class Job(models.Model):
     segment = models.ForeignKey(Segment, on_delete=models.CASCADE)
     assignee = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    reviewer = models.ForeignKey(User, null=True, blank=True, related_name='review_job_set', on_delete=models.SET_NULL)
     status = models.CharField(max_length=32, choices=StatusChoice.choices(),
         default=StatusChoice.ANNOTATION)
 
@@ -409,18 +413,6 @@ class ShapeType(str, Enum):
 class SourceType(str, Enum):
     AUTO = 'auto'
     MANUAL = 'manual'
-
-    @classmethod
-    def choices(self):
-        return tuple((x.value, x.name) for x in self)
-
-    def __str__(self):
-        return self.value
-
-class ReviewStatus(str, Enum):
-    ACCEPTED = 'accepted'
-    REJECTED = 'rejected'
-    REVIEW_FURTHER = 'review_further'
 
     @classmethod
     def choices(self):
@@ -513,30 +505,6 @@ class TrackedShapeAttributeVal(AttributeVal):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rating = models.FloatField(default=0.0)
-
-class Review(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    reviewer = models.ForeignKey(User, null=True, blank=True, related_name='reviews', on_delete=models.SET_NULL)
-    assignee = models.ForeignKey(User, null=True, blank=True, related_name='reviewed', on_delete=models.SET_NULL)
-    estimated_quality = models.FloatField()
-    status = models.CharField(max_length=16, choices=ReviewStatus.choices())
-
-class Issue(models.Model):
-    frame = models.PositiveIntegerField()
-    position = FloatArrayField()
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    review = models.ForeignKey(Review, null=True, blank=True, on_delete=models.SET_NULL)
-    owner = models.ForeignKey(User, null=True, blank=True, related_name='issues', on_delete=models.SET_NULL)
-    resolver = models.ForeignKey(User, null=True, blank=True, related_name='resolved_issues', on_delete=models.SET_NULL)
-    created_date = models.DateTimeField(auto_now_add=True)
-    resolved_date = models.DateTimeField(null=True, blank=True)
-
-class Comment(models.Model):
-    issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    message = models.TextField(default='')
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
 
 class CloudProviderChoice(str, Enum):
     AWS_S3 = 'AWS_S3_BUCKET'

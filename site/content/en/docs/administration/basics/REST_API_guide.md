@@ -18,8 +18,6 @@ The HTTP protocol is used to transport a data.
 Requests are divided into groups:
 
 - `auth` - user authorization queries
-- `comments` - requests to post/delete comments to issues
-- `issues` - update, delete and view problem comments
 - `jobs` -requests to manage the job
 - `lambda` - requests to work with lambda function
 - `projects` - project management queries
@@ -27,7 +25,7 @@ Requests are divided into groups:
 - `reviews` -adding and removing the review of the job
 - `server` - server information requests
 - `tasks` - requests to manage tasks
-- `users` -  user management queries
+- `users` - user management queries
 
 Besides it contains `Models`.
 Models - the data type is described using a 

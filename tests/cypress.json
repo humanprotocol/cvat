@@ -7,8 +7,14 @@
   "downloadsFolder": "cypress/fixtures",
   "env": {
     "user": "admin",
-    "email": "admin@localhost.company",
-    "password": "12qwaszx"
+    "email": "admin@admin.com",
+    "password": "Password2",
+    "regularUserEmail": "user@test.com",
+    "regularUserWalletAddress": "0xC4f81FBF7Be438112A8B02D34000B9c607693A36",
+    "regularUserSignedEmail": "0x7d0bb429f8d89244c08ed31f00059cf34d8e71b228961377c08ab1d98def671b19163c87480e0206867cc76a771857ad14dbf608d9340d2a94f160d15362378c1b",
+    "regularUser2Email": "user2@test.com",
+    "regularUser2WalletAddress": "0xE3087cfEadEb3242C204fC47aC7Dd36446C4A65C",
+    "regularUser2SignedEmail": "0x8367167c41e2da1de79ac4b5ce8db8b67b771762e79949861d06a603c2a2be485f0f86eb3a270b549625e9ea39eb8635093613008ee9e88779a251465e4190161c"
   },
   "testFiles": [
     "auth_page.js",

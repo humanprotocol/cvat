@@ -38,7 +38,6 @@ import {
     changeSaturationLevel,
     switchAutomaticBordering,
 } from 'actions/settings-actions';
-import { reviewActions } from 'actions/review-actions';
 import {
     ColorBy,
     GridColor,
@@ -60,7 +59,6 @@ interface StateToProps {
     activatedAttributeID: number | null;
     selectedStatesID: number[];
     annotations: any[];
-    frameIssues: any[] | null;
     frameData: any;
     frameAngle: number;
     frameFetching: boolean;
@@ -124,7 +122,6 @@ interface DispatchToProps {
     onSwitchAutomaticBordering(enabled: boolean): void;
     onFetchAnnotation(): void;
     onGetDataFailed(error: any): void;
-    onStartIssue(position: number[]): void;
 }
 
 function mapStateToProps(state: CombinedState): StateToProps {
@@ -170,7 +167,6 @@ function mapStateToProps(state: CombinedState): StateToProps {
                 opacity, colorBy, selectedOpacity, outlined, outlineColor, showBitmap, showProjections,
             },
         },
-        review: { frameIssues, issuesHidden },
         shortcuts: { keyMap },
     } = state;
 
@@ -178,8 +174,6 @@ function mapStateToProps(state: CombinedState): StateToProps {
         sidebarCollapsed,
         canvasInstance,
         jobInstance,
-        frameIssues:
-            issuesHidden || ![Workspace.REVIEW_WORKSPACE, Workspace.STANDARD].includes(workspace) ? null : frameIssues,
         frameData,
         frameAngle: frameAngles[frame - jobInstance.startFrame],
         frameFetching,
@@ -318,9 +312,6 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
         },
         onGetDataFailed(error: any): void {
             dispatch(getDataFailed(error));
-        },
-        onStartIssue(position: number[]): void {
-            dispatch(reviewActions.startIssue(position));
         },
     };
 }

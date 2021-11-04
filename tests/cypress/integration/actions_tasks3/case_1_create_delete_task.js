@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Create and delete a annotation task', () => {
     const caseId = '1';
     const labelName = `Case ${caseId}`;
@@ -23,7 +25,7 @@ context('Create and delete a annotation task', () => {
     const directoryToArchive = imagesFolder;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

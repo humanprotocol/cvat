@@ -43,7 +43,6 @@ interface StateToProps {
     activatedStateID: number | null;
     activatedAttributeID: number | null;
     selectedStatesID: number[];
-    frameIssues: any[] | null;
     frameAngle: number;
     frameFetching: boolean;
     frame: number;
@@ -134,7 +133,6 @@ function mapStateToProps(state: CombinedState): StateToProps {
                 opacity, colorBy, selectedOpacity, outlined, outlineColor, showBitmap, showProjections,
             },
         },
-        review: { frameIssues, issuesHidden },
         shortcuts: { keyMap },
     } = state;
 
@@ -146,8 +144,6 @@ function mapStateToProps(state: CombinedState): StateToProps {
         contextMenuVisibility,
         annotations,
         sidebarCollapsed,
-        frameIssues:
-            issuesHidden || ![Workspace.REVIEW_WORKSPACE, Workspace.STANDARD].includes(workspace) ? null : frameIssues,
         frameAngle: frameAngles[frame - jobInstance.startFrame],
         frameFetching,
         frame,

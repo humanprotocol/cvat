@@ -18,7 +18,6 @@ interface Props {
     data: any;
     visible: boolean;
     assignee: string;
-    reviewer: string;
     startFrame: number;
     stopFrame: number;
     bugTracker: string;
@@ -34,7 +33,6 @@ export default function StatisticsModalComponent(props: Props): JSX.Element {
         data,
         visible,
         assignee,
-        reviewer,
         startFrame,
         stopFrame,
         bugTracker,
@@ -183,12 +181,6 @@ export default function StatisticsModalComponent(props: Props): JSX.Element {
                             Assignee
                         </Text>
                         <Text className='cvat-text'>{assignee}</Text>
-                    </Col>
-                    <Col span={4}>
-                        <Text strong className='cvat-text'>
-                            Reviewer
-                        </Text>
-                        <Text className='cvat-text'>{reviewer}</Text>
                     </Col>
                     <Col span={4}>
                         <Text strong className='cvat-text'>

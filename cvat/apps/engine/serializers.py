@@ -7,7 +7,8 @@ import re
 import shutil
 
 from rest_framework import serializers, exceptions
-from django.contrib.auth.models import User, Group
+from cvat.apps.authentication.models import User
+from django.contrib.auth.models import Group
 
 from cvat.apps.dataset_manager.formats.utils import get_label_color
 from cvat.apps.engine import models
@@ -42,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
             'groups', 'is_staff', 'is_superuser', 'is_active', 'last_login',
             'date_joined')
         read_only_fields = ('last_login', 'date_joined')
-        write_only_fields = ('password', )
+        write_only_fields = ('password', 'hashed_signed_email')
         ordering = ['-id']
 
 class AttributeSerializer(serializers.ModelSerializer):
@@ -143,25 +144,60 @@ class JobSerializer(serializers.ModelSerializer):
     stop_frame = serializers.ReadOnlyField(source="segment.stop_frame")
     assignee = BasicUserSerializer(allow_null=True, required=False)
     assignee_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-    reviewer = BasicUserSerializer(allow_null=True, required=False)
-    reviewer_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
 
     class Meta:
         model = models.Job
-        fields = ('url', 'id', 'assignee', 'assignee_id', 'reviewer',
-            'reviewer_id', 'status', 'start_frame', 'stop_frame', 'task_id')
-        read_only_fields = ('assignee', 'reviewer')
+        fields = ('url', 'id', 'assignee', 'assignee_id',
+            'status', 'start_frame', 'stop_frame', 'task_id')
+        read_only_fields = ('assignee', )
+
+    def update(self, instance, validated_data):
+        from rest_framework.utils import model_meta
+
+        serializers.raise_errors_on_nested_writes('update', self, validated_data)
+        info = model_meta.get_field_info(instance)
+
+        validated_assignee_id = validated_data.get('assignee_id', None)
+        validated_job_status = validated_data.get('status', None)
+
+        if validated_job_status is not None:
+            if validated_job_status == 'completed' and instance.assignee_id is None:
+                raise serializers.ValidationError('Job must have an assignee to be finished.')
+        elif validated_assignee_id != instance.assignee_id:
+            assignee = models.User.objects.get(id=validated_data.get('assignee_id', None))
+            if assignee.is_staff or assignee.is_superuser:
+                raise serializers.ValidationError('Admins could not be assigned to the job.')
+
+        # Simply set each attribute on the instance, and then save it.
+        # Note that unlike `.create()` we don't need to treat many-to-many
+        # relationships as being a special case. During updates we already
+        # have an instance pk for the relationships to be associated with.
+        m2m_fields = []
+        for attr, value in validated_data.items():
+            if attr in info.relations and info.relations[attr].to_many:
+                m2m_fields.append((attr, value))
+            else:
+                setattr(instance, attr, value)
+
+        instance.save()
+
+        # Note that many-to-many fields are set after updating instance.
+        # Setting m2m fields triggers signals which could potentially change
+        # updated instance and we do not want it to collide with .update()
+        for attr, value in m2m_fields:
+            field = getattr(instance, attr)
+            field.set(value)
+
+        return instance
 
 class SimpleJobSerializer(serializers.ModelSerializer):
     assignee = BasicUserSerializer(allow_null=True)
     assignee_id = serializers.IntegerField(write_only=True, allow_null=True)
-    reviewer = BasicUserSerializer(allow_null=True, required=False)
-    reviewer_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
 
     class Meta:
         model = models.Job
-        fields = ('url', 'id', 'assignee', 'assignee_id', 'reviewer', 'reviewer_id', 'status')
-        read_only_fields = ('assignee', 'reviewer')
+        fields = ('url', 'id', 'assignee', 'assignee_id', 'status')
+        read_only_fields = ('assignee', )
 
 class SegmentSerializer(serializers.ModelSerializer):
     jobs = SimpleJobSerializer(many=True, source='job_set')
@@ -351,11 +387,11 @@ class TaskSerializer(WriteOnceMixin, serializers.ModelSerializer):
 
     class Meta:
         model = models.Task
-        fields = ('url', 'id', 'name', 'project_id', 'mode', 'owner', 'assignee', 'owner_id', 'assignee_id',
+        fields = ('url', 'id', 'name', 'description', 'address', 'project_id', 'mode', 'owner', 'assignee', 'owner_id', 'assignee_id',
             'bug_tracker', 'created_date', 'updated_date', 'overlap',
             'segment_size', 'status', 'labels', 'segments',
             'data_chunk_size', 'data_compressed_chunk_type', 'data_original_chunk_type', 'size', 'image_quality',
-            'data', 'dimension', 'subset')
+            'data', 'dimension', 'subset', 'allowed_annotation_instrument')
         read_only_fields = ('mode', 'created_date', 'updated_date', 'status', 'data_chunk_size', 'owner', 'assignee',
             'data_compressed_chunk_type', 'data_original_chunk_type', 'size', 'image_quality', 'data')
         write_once_fields = ('overlap', 'segment_size', 'project_id')
@@ -709,67 +745,6 @@ class AnnotationFileSerializer(serializers.Serializer):
 
 class TaskFileSerializer(serializers.Serializer):
     task_file = serializers.FileField()
-
-class ReviewSerializer(serializers.ModelSerializer):
-    assignee = BasicUserSerializer(allow_null=True, required=False)
-    assignee_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-    reviewer = BasicUserSerializer(allow_null=True, required=False)
-    reviewer_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-
-    class Meta:
-        model = models.Review
-        fields = '__all__'
-        read_only_fields = ('id', 'assignee', 'reviewer', )
-        write_once_fields = ('job', 'reviewer_id', 'assignee_id', 'estimated_quality', 'status', )
-        ordering = ['-id']
-
-class IssueSerializer(serializers.ModelSerializer):
-    owner = BasicUserSerializer(allow_null=True, required=False)
-    owner_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-    resolver = BasicUserSerializer(allow_null=True, required=False)
-    resolver_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-
-    position = serializers.ListField(
-        child=serializers.FloatField(),
-        allow_empty=False,
-    )
-
-    class Meta:
-        model = models.Issue
-        fields = '__all__'
-        read_only_fields = ('created_date', 'id', 'owner', 'resolver', )
-        write_once_fields = ('frame', 'position', 'job', 'owner_id', 'review', )
-        ordering = ['-id']
-
-class CommentSerializer(serializers.ModelSerializer):
-    author = BasicUserSerializer(allow_null=True, required=False)
-    author_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
-
-    class Meta:
-        model = models.Comment
-        fields = '__all__'
-        read_only_fields = ('created_date', 'updated_date', 'id', 'author', )
-        write_once_fields = ('issue', 'author_id', )
-
-class CombinedIssueSerializer(IssueSerializer):
-    comment_set = CommentSerializer(many=True)
-
-class CombinedReviewSerializer(ReviewSerializer):
-    issue_set = CombinedIssueSerializer(many=True)
-
-    def create(self, validated_data):
-        issues_validated_data = validated_data.pop('issue_set')
-        db_review = models.Review.objects.create(**validated_data)
-        for issue in issues_validated_data:
-            issue['review'] = db_review
-
-            comments_validated_data = issue.pop('comment_set')
-            db_issue = models.Issue.objects.create(**issue)
-            for comment in comments_validated_data:
-                comment['issue'] = db_issue
-                models.Comment.objects.create(**comment)
-
-        return db_review
 
 class BaseCloudStorageSerializer(serializers.ModelSerializer):
     owner = BasicUserSerializer(required=False)

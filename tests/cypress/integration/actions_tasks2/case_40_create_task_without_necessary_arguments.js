@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Try to create a task without necessary arguments.', () => {
     const caseId = '40';
     const labelName = `Case ${caseId}`;
@@ -21,7 +23,7 @@ context('Try to create a task without necessary arguments.', () => {
     const directoryToArchive = imagesFolder;
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.imageGenerator(imagesFolder, imageFileName, width, height, color, posX, posY, labelName, imagesCount);
         cy.createZipArchive(directoryToArchive, archivePath);

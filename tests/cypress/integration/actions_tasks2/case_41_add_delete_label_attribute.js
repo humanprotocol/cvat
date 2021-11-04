@@ -4,6 +4,8 @@
 
 /// <reference types="cypress" />
 
+import '../../support/preserve_cookies';
+
 context('Add/delete labels and attributes.', () => {
     const caseId = '41';
     const labelName = `Case ${caseId}`;
@@ -11,7 +13,7 @@ context('Add/delete labels and attributes.', () => {
     const textDefaultValue = 'Some default value for type Text';
 
     before(() => {
-        cy.visit('auth/login');
+        cy.visit('/admin');
         cy.login();
         cy.get('#cvat-create-task-button').click();
     });

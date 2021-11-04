@@ -13,9 +13,11 @@ require('../plugins/compareImages/compareImagesCommand');
 let selectedValueGlobal = '';
 
 Cypress.Commands.add('login', (username = Cypress.env('user'), password = Cypress.env('password')) => {
-    cy.get('[placeholder="Username"]').type(username);
-    cy.get('[placeholder="Password"]').type(password);
+    cy.get('input[name="username"]').type(username);
+    cy.get('input[name="password"]').type(password);
     cy.get('[type="submit"]').click();
+    cy.url().should('match', /\/admin\//);
+    cy.get('a[href*="/"]').contains('View site').click();
     cy.url().should('match', /\/tasks$/);
     cy.document().then((doc) => {
         const loadSettingFailNotice = Array.from(doc.querySelectorAll('.cvat-notification-notice-load-settings-fail'));
@@ -23,9 +25,29 @@ Cypress.Commands.add('login', (username = Cypress.env('user'), password = Cypres
     });
 });
 
-Cypress.Commands.add('logout', (username = Cypress.env('user')) => {
+Cypress.Commands.add('regularUserLogin', (email, walletAddress, signedEmail) => {
+    cy.request({
+        method: 'POST',
+        url: '/api/v1/auth/login',
+        body: {
+            email: email,
+            wallet_address: walletAddress,
+            signed_email: signedEmail,
+        },
+    })
+        .then((response) => response['body']['key'])
+        .then((token) =>
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }),
+        );
+});
+
+Cypress.Commands.add('logout', () => {
     cy.get('.cvat-right-header').within(() => {
-        cy.get('.cvat-header-menu-dropdown').should('have.text', username).trigger('mouseover', { which: 1 });
+        cy.get('.cvat-header-menu-dropdown').trigger('mouseover', { which: 1 });
     });
     cy.get('span[aria-label="logout"]').click();
     cy.url().should('include', '/auth/login');
@@ -33,14 +55,26 @@ Cypress.Commands.add('logout', (username = Cypress.env('user')) => {
     cy.closeModalUnsupportedPlatform();
 });
 
-Cypress.Commands.add('userRegistration', (firstName, lastName, userName, emailAddr, password) => {
-    cy.get('#firstName').type(firstName);
-    cy.get('#lastName').type(lastName);
-    cy.get('#username').type(userName);
-    cy.get('#email').type(emailAddr);
-    cy.get('#password1').type(password);
-    cy.get('#password2').type(password);
-    cy.get('.register-form-button').click();
+Cypress.Commands.add('userRegistration', (userName, emailAddr, walletAddr, signedEmail) => {
+    cy.request({
+        method: 'POST',
+        url: '/api/v1/auth/register',
+        body: {
+            username: userName,
+            email: emailAddr,
+            wallet_address: walletAddr,
+            signed_email: signedEmail,
+        },
+    })
+        .then((response) => response['body']['key'])
+        .then((token) =>
+            cy.visit('/', {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }),
+        );
+
     if (Cypress.browser.family === 'chromium') {
         cy.url().should('include', '/tasks');
     }
@@ -48,46 +82,38 @@ Cypress.Commands.add('userRegistration', (firstName, lastName, userName, emailAd
 
 Cypress.Commands.add('deletingRegisteredUsers', (accountToDelete) => {
     cy.request({
-        method: 'POST',
-        url: '/api/v1/auth/login',
-        body: {
+        url: '/api/v1/users?page_size=all',
+        auth: {
             username: Cypress.env('user'),
-            email: Cypress.env('email'),
             password: Cypress.env('password'),
         },
     }).then((response) => {
-        const authKey = response['body']['key'];
-        cy.request({
-            url: '/api/v1/users?page_size=all',
-            headers: {
-                Authorization: `Token ${authKey}`,
-            },
-        }).then((response) => {
-            const responceResult = response['body']['results'];
-            for (const user of responceResult) {
-                const userId = user['id'];
-                const userName = user['username'];
-                for (const account of accountToDelete) {
-                    if (userName === account) {
-                        cy.request({
-                            method: 'DELETE',
-                            url: `/api/v1/users/${userId}`,
-                            headers: {
-                                Authorization: `Token ${authKey}`,
-                            },
-                        });
-                    }
+        const responceResult = response['body']['results'];
+        for (const user of responceResult) {
+            const userId = user['id'];
+            const userName = user['username'];
+            for (const account of accountToDelete) {
+                if (userName === account) {
+                    cy.request({
+                        method: 'DELETE',
+                        url: `/api/v1/users/${userId}`,
+                        auth: {
+                            username: Cypress.env('user'),
+                            password: Cypress.env('password'),
+                        },
+                    });
                 }
             }
-        });
+        }
     });
 });
 
-Cypress.Commands.add('changeUserActiveStatus', (authKey, accountsToChangeActiveStatus, isActive) => {
+Cypress.Commands.add('changeUserActiveStatus', (accountsToChangeActiveStatus, isActive) => {
     cy.request({
         url: '/api/v1/users?page_size=all',
-        headers: {
-            Authorization: `Token ${authKey}`,
+        auth: {
+            username: Cypress.env('user'),
+            password: Cypress.env('password'),
         },
     }).then((response) => {
         const responceResult = response['body']['results'];
@@ -98,23 +124,25 @@ Cypress.Commands.add('changeUserActiveStatus', (authKey, accountsToChangeActiveS
                 cy.request({
                     method: 'PATCH',
                     url: `/api/v1/users/${userId}`,
-                    headers: {
-                        Authorization: `Token ${authKey}`,
+                    auth: {
+                        username: Cypress.env('user'),
+                        password: Cypress.env('password'),
                     },
-                        body: {
-                            is_active: isActive,
-                        },
+                    body: {
+                        is_active: isActive,
+                    },
                 });
             }
         });
     });
 });
 
-Cypress.Commands.add('checkUserStatuses', (authKey, userName, staffStatus, superuserStatus, activeStatus) => {
+Cypress.Commands.add('checkUserStatuses', (userName, staffStatus, superuserStatus, activeStatus) => {
     cy.request({
         url: '/api/v1/users?page_size=all',
-        headers: {
-            Authorization: `Token ${authKey}`,
+        auth: {
+            username: Cypress.env('user'),
+            password: Cypress.env('password'),
         },
     }).then((response) => {
         const responceResult = response['body']['results'];
@@ -179,9 +207,7 @@ Cypress.Commands.add(
         }
         cy.contains('button', 'Submit').click();
         if (expectedResult === 'success') {
-            cy.get('.cvat-notification-create-task-success')
-                .should('exist')
-                .find('[data-icon="close"]').click();
+            cy.get('.cvat-notification-create-task-success').should('exist').find('[data-icon="close"]').click();
         }
         if (!forProject) {
             cy.goToTaskList();

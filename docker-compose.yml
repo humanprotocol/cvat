@@ -18,6 +18,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_DB: cvat
       POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - '5433:5432'
     volumes:
       - cvat_db:/var/lib/postgresql/data
 
@@ -42,7 +44,9 @@ services:
       ALLOWED_HOSTS: '*'
       CVAT_REDIS_HOST: 'cvat_redis'
       CVAT_POSTGRES_HOST: 'cvat_db'
+      CVAT_POSTGRES_PORT: 5432
       ADAPTIVE_AUTO_ANNOTATION: 'false'
+      CVAT_EXCHANGE_URL: 'http://human-exchange-cvat:5001'
     volumes:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys

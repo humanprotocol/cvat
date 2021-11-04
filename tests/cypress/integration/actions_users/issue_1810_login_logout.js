@@ -4,54 +4,45 @@
 
 /// <reference types="cypress" />
 
-import { taskName } from '../../support/const';
+const labelName = `Main task`;
+const taskName = `New annotation task for ${labelName}`;
 
 context('When clicking on the Logout button, get the user session closed.', () => {
     const issueId = '1810';
     let taskId;
 
-    function login(userName, password) {
-        cy.get('[placeholder="Username"]').clear().type(userName);
-        cy.get('[placeholder="Password"]').clear().type(password);
-        cy.get('[type="submit"]').click();
-    }
-
     before(() => {
-        cy.visit('auth/login');
+        cy.userRegistration(
+            Cypress.env('regularUserEmail'),
+            Cypress.env('regularUserEmail'),
+            Cypress.env('regularUserWalletAddress'),
+            Cypress.env('regularUserSignedEmail'),
+        );
+    });
+
+    after(() => {
+        cy.deletingRegisteredUsers([Cypress.env('regularUserEmail')]);
     });
 
     describe(`Testing issue "${issueId}"`, () => {
-        it('Login', () => {
+        it('Login and logout', () => {
             cy.closeModalUnsupportedPlatform();
-            cy.login();
-        });
-
-        it('Logout', () => {
-            cy.logout();
+            cy.visit('/');
+            cy.logout(Cypress.env('regularUserEmail'));
+            cy.url().should('include', '/auth/login');
         });
 
         it('Login and open task', () => {
-            cy.login();
+            cy.regularUserLogin(
+                Cypress.env('regularUserEmail'),
+                Cypress.env('regularUserWalletAddress'),
+                Cypress.env('regularUserSignedEmail'),
+            );
             cy.openTask(taskName);
             // get id task
             cy.url().then((link) => {
                 taskId = Number(link.split('/').slice(-1)[0]);
             });
-        });
-
-        it('Logout and login to task via GUI', () => {
-            // logout from task
-            cy.get('.cvat-right-header').within(() => {
-                cy.get('.cvat-header-menu-dropdown')
-                    .should('have.text', Cypress.env('user'))
-                    .trigger('mouseover', { which: 1 });
-            });
-            cy.get('span[aria-label="logout"]').click();
-            cy.url().should('include', `/auth/login/?next=/tasks/${taskId}`);
-            // login to task
-            login(Cypress.env('user'), Cypress.env('password'));
-            cy.url().should('include', `/tasks/${taskId}`).and('not.include', '/auth/login');
-            cy.contains('.cvat-task-details-task-name', `${taskName}`).should('be.visible');
         });
 
         it('Logout and login to task via token', () => {
@@ -61,9 +52,9 @@ context('When clicking on the Logout button, get the user session closed.', () =
                 method: 'POST',
                 url: '/api/v1/auth/login',
                 body: {
-                    username: Cypress.env('user'),
-                    email: Cypress.env('email'),
-                    password: Cypress.env('password'),
+                    email: Cypress.env('regularUserEmail'),
+                    wallet_address: Cypress.env('regularUserWalletAddress'),
+                    signed_email: Cypress.env('regularUserSignedEmail'),
                 },
             }).then(async (response) => {
                 response = await response['headers']['set-cookie'];
@@ -72,25 +63,41 @@ context('When clicking on the Logout button, get the user session closed.', () =
                 cy.visit(`/login-with-token/${sessionId}/${csrfToken}?next=/tasks/${taskId}`);
                 cy.contains('.cvat-task-details-task-name', `${taskName}`).should('be.visible');
             });
-        });
-
-        it('Incorrect user and correct password', () => {
             cy.logout();
-            login('randomUser123', Cypress.env('password'));
-            cy.url().should('include', '/auth/login');
-            cy.closeNotification('.cvat-notification-notice-login-failed');
         });
 
-        it('Correct user and incorrect password', () => {
-            login(Cypress.env('user'), 'randomPassword123');
+        it('Correct email and incorrect wallet', () => {
+            cy.request({
+                method: 'POST',
+                url: '/api/v1/auth/login',
+                failOnStatusCode: false,
+                body: {
+                    email: Cypress.env('regularUserEmail'),
+                    wallet_address: 'NonExistingWalletAddress',
+                    signed_email: 'IncorrectSignedEmail',
+                },
+            }).then((response) => {
+                expect(response.status).to.eq(500);
+            });
+            cy.visit('/');
             cy.url().should('include', '/auth/login');
-            cy.closeNotification('.cvat-notification-notice-login-failed');
         });
 
-        it('Incorrect user and incorrect password', () => {
-            login('randomUser123', 'randomPassword123');
+        it('Inorrect email and correct wallet', () => {
+            cy.request({
+                method: 'POST',
+                url: '/api/v1/auth/login',
+                failOnStatusCode: false,
+                body: {
+                    email: 'NonExistingWallet@test.com',
+                    wallet_address: Cypress.env('regularUserWalletAddress'),
+                    signed_email: 'IncorrectSignedEmail',
+                },
+            }).then((response) => {
+                expect(response.status).to.eq(500);
+            });
+            cy.visit('/');
             cy.url().should('include', '/auth/login');
-            cy.closeNotification('.cvat-notification-notice-login-failed');
         });
     });
 });

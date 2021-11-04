@@ -20,7 +20,6 @@ interface Props {
     loadActivity: string | null;
     dumpActivities: string[] | null;
     exportActivities: string[] | null;
-    isReviewer: boolean;
     jobInstance: any;
     onClickMenu(params: MenuInfo, file?: File): void;
     setForceExitAnnotationFlag(forceExit: boolean): void;
@@ -33,8 +32,6 @@ export enum Actions {
     EXPORT_TASK_DATASET = 'export_task_dataset',
     REMOVE_ANNO = 'remove_anno',
     OPEN_TASK = 'open_task',
-    REQUEST_REVIEW = 'request_review',
-    SUBMIT_REVIEW = 'submit_review',
     FINISH_JOB = 'finish_job',
     RENEW_JOB = 'renew_job',
 }
@@ -47,7 +44,6 @@ export default function AnnotationMenuComponent(props: Props): JSX.Element {
         loadActivity,
         dumpActivities,
         exportActivities,
-        isReviewer,
         jobInstance,
         onClickMenu,
         setForceExitAnnotationFlag,
@@ -130,8 +126,6 @@ export default function AnnotationMenuComponent(props: Props): JSX.Element {
                 },
                 okText: 'Delete',
             });
-        } else if ([Actions.REQUEST_REVIEW].includes(copyParams.key as Actions)) {
-            checkUnsavedChanges(copyParams);
         } else if (copyParams.key === Actions.FINISH_JOB) {
             Modal.confirm({
                 title: 'The job status is going to be switched',
@@ -192,11 +186,7 @@ export default function AnnotationMenuComponent(props: Props): JSX.Element {
                     Open the task
                 </a>
             </Menu.Item>
-            {jobStatus === 'annotation' && is2d && <Menu.Item key={Actions.REQUEST_REVIEW}>Request a review</Menu.Item>}
             {jobStatus === 'annotation' && <Menu.Item key={Actions.FINISH_JOB}>Finish the job</Menu.Item>}
-            {jobStatus === 'validation' && isReviewer && (
-                <Menu.Item key={Actions.SUBMIT_REVIEW}>Submit the review</Menu.Item>
-            )}
             {jobStatus === 'completed' && <Menu.Item key={Actions.RENEW_JOB}>Renew the job</Menu.Item>}
         </Menu>
     );
