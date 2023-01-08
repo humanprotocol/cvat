@@ -1,0 +1,10187 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.83.1" /><link rel="canonical" type="text/html" href="../../../../../../docs/api_sdk/sdk/reference/models/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="../../../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Models | CVAT</title>
+<meta name="description" content=""><meta property="og:title" content="Models" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/docs/api_sdk/sdk/reference/models/" /><meta property="og:site_name" content="CVAT" />
+
+<meta itemprop="name" content="Models">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Models"/>
+<meta name="twitter:description" content=""/>
+
+
+
+
+<link rel="preload" href="../../../../../../scss/main.min.591a88c412fca6c692021fe322184768cfc320012e0a443e8514b68fd373aa21.css" as="style">
+<link href="../../../../../../scss/main.min.591a88c412fca6c692021fe322184768cfc320012e0a443e8514b68fd373aa21.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+<link rel="stylesheet" href="../../../../../../css/prism.css"/>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+
+
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../../../about/">
+    <span class="navbar-logo"><svg width="98" height="27" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M101 0v29l-52.544.001C44.326 35.511 35.598 40 25.5 40 11.417 40 0 31.27.0 20.5S11.417 1 25.5 1c4.542.0 8.807.908 12.5 2.5V0h63z" id="logoA"/></defs><g transform="translate(-2 -1)" fill="none" fill-rule="evenodd"><mask id="logoB" fill="#fff"><use xlink:href="#logoA"/></mask><path d="M48.142 1c4.736.0 6.879 3.234 6.879 5.904v2.068h-4.737V6.904c0-.79-.789-2.144-2.142-2.144-1.654.0-2.368 1.354-2.368 2.144v15.192c0 .79.714 2.144 2.368 2.144 1.353.0 2.142-1.354 2.142-2.144v-2.068h4.737v2.068c0 2.67-2.143 5.904-6.88 5.904C42.956 28 41 24.766 41 22.134V6.904C41 4.234 42.955 1 48.142 1zM19-6c9.389.0 17 7.611 17 17s-7.611 17-17 17S2 20.389 2 11 9.611-6 19-6zm42.256 7.338 3.345 19.48h.075l3.42-19.48h5l-6.052 26.324h-5L56.22 1.338h5.037zm20.706.0 5.413 26.324h-4.699l-.94-6.13h-4.548l-.902 6.13h-4.435l5.413-26.324h4.698zm18.038.0v3.723h-4.849v22.6h-4.699v-22.6h-4.81V1.338H1e2zM19 4a7 7 0 100 14 7 7 0 000-14zm60.557 4.295h-.113l-1.466 9.439h3.007l-1.428-9.439z" fill="#fff" fill-rule="nonzero" mask="url(#logoB)"/></g></svg></span>
+  </a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      
+      
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="nav-link active" href="../../../../../../docs/" ><span class="active">Documentation</span></a>
+      </li>
+      
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="nav-link" href="../../../../../../about/" ><span>About</span></a>
+      </li>
+      
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        
+        
+        
+        
+        
+        
+        <a class="nav-link" href="https://app.cvat.ai"  ><span>Try it now</span></a>
+      </li>
+      
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        
+        
+        
+        
+        
+        
+        <a class="nav-link" href="https://github.com/cvat-ai/cvat"  ><i class='fab fa-github'></i><span>GitHub</span></a>
+      </li>
+      
+      
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-target="#dropdown_ver" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            develop
+          </a>
+        </li>
+        
+      
+      
+    </ul>
+  </div>
+  <div class="dropdown-menu" id="dropdown_ver" aria-labelledby="navbarDropdownMenuLink">
+    
+      
+        <a class="dropdown-item" href="../../../../../../docs/api_sdk/sdk/reference/models/">Latest version</a>
+    
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../../../offline-search-index.155d8aab4a227a085bcde5bbb3a51a7b.json"
+  data-offline-search-base-href="../../../../../../"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="../../../../../../docs/api_sdk/sdk/reference/models/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Models</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-cb60a01a3cbf0e31fe17c9cbe9ebd519">About class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-76b2fbb512e95ffc2b489479e80f00ba">AdvancedAuthentication class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-90d11da2b0b708d1c3972889149026b7">AnnotationFileRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-3957ec97e33e04f18a56fceef2cd3097">AnnotationsRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-f8f520b999adf558a191d31f7edfc630">Attribute class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-bb35b2221d722ce88227f395550ed484">AttributeRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-b646f0992e0ef526837317c3fbdf3679">AttributeVal class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-29c332a42187e561f2d31f058afabb78">AttributeValRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-2cabd8f2188990804dbb8dfca0322c77">BackupWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>10: <a href="#pg-e93512cc6fcb64ee77e97be8f5a965cc">BasicUser class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>11: <a href="#pg-2f5fd814e61e782f755ab37a1f841e9a">BasicUserRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>12: <a href="#pg-875402b355ec90fd453460c54d808319">ChunkType class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>13: <a href="#pg-def64b1ee391d0f4f03758936fcd291f">CloudStorageRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>14: <a href="#pg-abaebf815e3cf14b498750508bcf04a7">CloudStorageWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>15: <a href="#pg-0d969f76b08d322e7378054009822be2">CommentRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>16: <a href="#pg-d497b4f1fa7c0d0162210d866c255e18">CommentReadOwner class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>17: <a href="#pg-7690d92251db9fe1a639cd92329da31f">CommentWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>18: <a href="#pg-777fd9eb1c442656046b515c2affe8ab">CredentialsTypeEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>19: <a href="#pg-189504f3b208fbf09f12238fb353c5e1">DataMetaRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>20: <a href="#pg-dddea03733dd102b7fbbd8152aa2e2f8">DataRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>21: <a href="#pg-5a75133c534c7403e923d4ba4b25cbb4">DatasetFileRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>22: <a href="#pg-ccb9596caff1c8ddd99c17bb7373deae">DatasetFormat class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>23: <a href="#pg-96bb56cf74e009711162dfb16ed0360e">DatasetFormats class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>24: <a href="#pg-612de5c481cf7cb5d11f26d62e8760a4">DatasetWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>25: <a href="#pg-918c500e93a04097c359cbc9693fa43b">Events class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>26: <a href="#pg-d6976f5317345386734cfc660acbb7b7">EventsEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>27: <a href="#pg-8644792afabdaad840ac932dfd5ee50e">Exception class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>28: <a href="#pg-2581eececc940767dba2c596ef8bc0bc">ExceptionRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>29: <a href="#pg-57cb29511946fadb581c879c443bc02a">FileInfo class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>30: <a href="#pg-99179fe21b36bffbb5a5da1c2acd13bd">FileInfoTypeEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>31: <a href="#pg-7e53911b3a61fe4e3201d1bfecd2c2f8">FrameMeta class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>32: <a href="#pg-f21fb8973a11292c6764b0f53d817ab2">InputTypeEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>33: <a href="#pg-4af739a9041345dc41696f81ef1d5dde">InvitationRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>34: <a href="#pg-5e829a3aff4a525bf3f3e28957beb5e5">InvitationWrite class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>35: <a href="#pg-e61794872090d4b448ec01da2a3ea96f">InvitationWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>36: <a href="#pg-a99c533de21253be2c90d8f393a52bd2">IssueRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>37: <a href="#pg-a1f6805c3309edd9dc4f6673d79fe6de">IssueWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>38: <a href="#pg-8c579281b94bfa383c95df159b3023cd">JobAnnotationsUpdateRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>39: <a href="#pg-eabb80864bda5e30208173e9f50f8e19">JobCommit class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>40: <a href="#pg-97e8b3ecb8298d139c65681ef88456c0">JobRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>41: <a href="#pg-e26d4935032c383a6a55e83cb5c324de">JobStage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>42: <a href="#pg-7464895518f1e7c2a191ee9ed7d1a5e4">JobStatus class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>43: <a href="#pg-41771073cf27d58d28f772f716bddda2">Label class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>44: <a href="#pg-d1ad23d71c9c802a6dc1764672bcc341">LabeledData class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>45: <a href="#pg-7d51f54bde2b58c51668decf77953fed">LabeledDataRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>46: <a href="#pg-1c1810b05edabf0b3567eb6e5ec42d67">LabeledImage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>47: <a href="#pg-3993950de3d3ba26cc01538040dbe013">LabeledImageRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>48: <a href="#pg-79a67b8633acbc1b75016a45e54952a4">LabeledShape class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>49: <a href="#pg-78e6cc6ddd71e374b60d58557735d2c2">LabeledShapeRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>50: <a href="#pg-1a31ff692067ae0fdaa1a17892efe9fa">LabeledTrack class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>51: <a href="#pg-91451cad3172d56411a3a7aabbfabb89">LabeledTrackRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>52: <a href="#pg-17c0ce37f662350ef3f77d050f68389b">LocationEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>53: <a href="#pg-99cfee3b05728a0abdadaa01d4b81a51">LogEvent class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>54: <a href="#pg-0fbb3c7c1eaf08ab53b26ac17b4e5bea">LogEventRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>55: <a href="#pg-62e9b10e5b01a50a00320592e530899c">LoginSerializerExRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>56: <a href="#pg-0da0a60a4a970cd92811a2dd7359978c">Manifest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>57: <a href="#pg-36da014b66f25da391f5b8be0f4be848">ManifestRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>58: <a href="#pg-c069ba613ae716e99d3129135b16308a">MembershipRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>59: <a href="#pg-3fcc39a16d247e851ab812cd1679c895">MembershipWrite class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>60: <a href="#pg-6806d18879c0c500b218030b13232bfe">MetaUser class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>61: <a href="#pg-e56e8ec9251579187141de8d82405eed">OnlineFunctionCallRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>62: <a href="#pg-e739c182c41c26caff5e48e0786d5be6">OperationStatus class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>63: <a href="#pg-b280a2f45496c04d76b8c32d9c3369e0">OrganizationRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>64: <a href="#pg-a7fe6bd9cfbcb01e072c7826b7ee2c85">OrganizationWrite class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>65: <a href="#pg-17f3802b55716f83947c5e3ab0419738">OrganizationWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>66: <a href="#pg-400ba95ac2fa37eceb848b4f040f4a2c">PaginatedCloudStorageReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>67: <a href="#pg-9d450085b28f069e5703ccc47ae15157">PaginatedCommentReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>68: <a href="#pg-fbfdb7debfe40bd489142359673fbbf1">PaginatedInvitationReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>69: <a href="#pg-8458283cd9bb95d281d24749b3f08edf">PaginatedIssueReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>70: <a href="#pg-1c5e04361bddcab001e85242f7c47096">PaginatedJobCommitList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>71: <a href="#pg-761317656d9f54a71db5339ae0c37845">PaginatedJobReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>72: <a href="#pg-ba175f79ed5a16920807b8c326b1b1b2">PaginatedMembershipReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>73: <a href="#pg-abd157e1e824387bc9db3e70631ac003">PaginatedMetaUserList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>74: <a href="#pg-bd205be4a68308842e94aba3deefc082">PaginatedPolymorphicProjectList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>75: <a href="#pg-dd6ddf046cef4155d2a83e837de1e163">PaginatedTaskReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>76: <a href="#pg-23247da2ede153f8e810ff4f6ea6e675">PaginatedWebhookDeliveryReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>77: <a href="#pg-210c0a775faa89789f49bc4e1432f634">PaginatedWebhookReadList class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>78: <a href="#pg-d39389191ce9bcae9f5c96ef68029386">PasswordChangeRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>79: <a href="#pg-164d885980893b65d1ce4316b1fc6f4c">PasswordResetConfirmRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>80: <a href="#pg-27965db314b66955bcdc4541ec19cb38">PasswordResetSerializerExRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>81: <a href="#pg-95408bc4d74074caf3befc7d05650864">PatchedCloudStorageWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>82: <a href="#pg-621068d6b7ebb7ee6d054feaf1d66820">PatchedCommentWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>83: <a href="#pg-de6131b0d6362d45da442ba2e459e76c">PatchedDataMetaWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>84: <a href="#pg-e78bbb4671ad08e60544af80f9ead4dd">PatchedInvitationWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>85: <a href="#pg-b6c32da91d7bf2de0518b78fa713223c">PatchedIssueWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>86: <a href="#pg-e95cc4f58f9bed9822d2923d75e0669a">PatchedJobWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>87: <a href="#pg-ece5b4ad76ed1a1ec72b56c9267de3c2">PatchedLabeledDataRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>88: <a href="#pg-1ff2604615d44a15123a2d4c7b4cea6a">PatchedLabelRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>89: <a href="#pg-9ccc552063562e60b2327a7d05462943">PatchedMembershipWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>90: <a href="#pg-30448124fd92f00517f0f1f308d45497">PatchedOrganizationWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>91: <a href="#pg-751a0c9a52142ecef38bfc981e3a4bf8">PatchedProjectWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>92: <a href="#pg-f288c8632419d46a8244f2654e723009">PatchedProjectWriteRequestTargetStorage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>93: <a href="#pg-2f1b4aab04fcffeaa80311db1c7be60d">PatchedTaskWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>94: <a href="#pg-ef56d35b36cc0bfed49760a8be84a91f">PatchedTaskWriteRequestTargetStorage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>95: <a href="#pg-fc5b95aae1172e84470f6c47ac27a966">PatchedUserRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>96: <a href="#pg-12b261bb50330e4269229033ef64f70f">PatchedWebhookWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>97: <a href="#pg-f41479b511b10208d762084b12a0f0f2">Plugins class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>98: <a href="#pg-f9e679015319240663713600edbac2f1">PolymorphicProject class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>99: <a href="#pg-ea2c9ab9185ff0ac519020b425aab672">ProjectFileRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>100: <a href="#pg-11c3a55d5736d088c8295a4a793ed99c">ProjectRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>101: <a href="#pg-612e405da826d82de5357d91564e81b2">ProjectReadAssignee class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>102: <a href="#pg-42f549ab79df83137c9c63f12ce23368">ProjectReadOwner class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>103: <a href="#pg-a21b908a49cb9a5949c5300867583e9f">ProjectReadTargetStorage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>104: <a href="#pg-f9129653a5a27b7d82a41699f8f94c4e">ProjectSearch class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>105: <a href="#pg-baf71fd70ecac838f3d943736935a50f">ProjectWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>106: <a href="#pg-35fe78ba82e6a93ee9f4c29cbfaee978">ProviderTypeEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>107: <a href="#pg-a8d22306dc2a9041b0c9bb817a67d71d">RegisterSerializerEx class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>108: <a href="#pg-a7931aec122538c8ec7712ffd0ab914a">RegisterSerializerExRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>109: <a href="#pg-ea33b7e4b8725fd0abdcf6f286ac17fe">RestAuthDetail class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>110: <a href="#pg-f3c887ec259fda5c19e49c6277d410e1">RoleEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>111: <a href="#pg-826a0d683fd2d782d88ecec96a58dc75">RqStatus class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>112: <a href="#pg-fdb3846bc0306b18b68a633d588ca0f9">RqStatusStateEnum class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>113: <a href="#pg-4075e245439c06d08cc66262983479a8">Segment class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>114: <a href="#pg-edfced4ffea49ec0788b213b460756e4">ShapeType class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>115: <a href="#pg-365dc18472552d7a9526884d5e20c6cd">SigningRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>116: <a href="#pg-17bcab7e4107fc2b2864589d992df61e">SimpleJob class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>117: <a href="#pg-4b49b6273a8774fcd79d20651697e9fb">SortingMethod class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>118: <a href="#pg-515201a2d8a66d39d376463258668ed2">Storage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>119: <a href="#pg-abc89399dcfd49a7902e8b3ab048d4df">StorageMethod class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>120: <a href="#pg-757bb4897889712fa9a28c3cb6fa75c5">StorageRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>121: <a href="#pg-aebb60440a1259e098ae40e88c3dfb6c">StorageType class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>122: <a href="#pg-9a25a179f47c0a9331de6f5a206d5224">Sublabel class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>123: <a href="#pg-de43da91d2edc996c4d3672900f9947c">SubLabeledShape class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>124: <a href="#pg-71b35a2a545893f1999145ffede43611">SubLabeledShapeRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>125: <a href="#pg-d6dbef6e9adc2cdeb1174441d4193849">SubLabeledTrack class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>126: <a href="#pg-bc91c62de1999af50d529435eec425de">SubLabeledTrackRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>127: <a href="#pg-2ce0d3d44d03cffa085d7bf290ecefbf">SublabelRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>128: <a href="#pg-7e40830e6f95d4ce47564d660190b96a">TaskAnnotationsUpdateRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>129: <a href="#pg-9068e108dc12375ff3fc65793065ee5f">TaskAnnotationsWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>130: <a href="#pg-758c9896f710596255d5eacc9a71744e">TaskFileRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>131: <a href="#pg-fc24ced82b00d591bd87883183d33fc5">TaskRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>132: <a href="#pg-bb4d4251f5ac08954e2efa2dbc023495">TaskReadTargetStorage class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>133: <a href="#pg-a235536e0aeb6303405d5df25327e205">TaskWriteRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>134: <a href="#pg-ff0993382da4a16b1e77cff0882d5241">Token class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>135: <a href="#pg-59bd11f5b0449cbaec4ee1924ca67a1c">TrackedShape class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>136: <a href="#pg-6216213c4e355a55c44f69227edbb951">TrackedShapeRequest class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>137: <a href="#pg-4efcdaf2dc19f2caaaf7ef59348ad174">User class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>138: <a href="#pg-9cd2cfd71fc7766281aeefaf79c1e274">WebhookContentType class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>139: <a href="#pg-e3c745e4224b9f2a9afca525f6aa7740">WebhookDeliveryRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>140: <a href="#pg-2e50f2859efba67731c6445ca2c3abc0">WebhookRead class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>141: <a href="#pg-9ca7dc77561612157e18bd26996a1afe">WebhookType class reference</a></li>
+
+
+    
+  
+    
+    
+	
+<li>142: <a href="#pg-0c3a7881b1a7a29323093c619710a528">WebhookWriteRequest class reference</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-cb60a01a3cbf0e31fe17c9cbe9ebd519">1 - About class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-76b2fbb512e95ffc2b489479e80f00ba">2 - AdvancedAuthentication class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>google_account_authentication</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>github_account_authentication</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-90d11da2b0b708d1c3972889149026b7">3 - AnnotationFileRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>annotation_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3957ec97e33e04f18a56fceef2cd3097">4 - AnnotationsRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image"><strong>[LabeledImage]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape"><strong>[LabeledShape]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track"><strong>[LabeledTrack]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f8f520b999adf558a191d31f7edfc630">5 - Attribute class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>mutable</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>input_type</strong></td>
+<td><a href="../input-type-enum"><strong>InputTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>default_value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>values</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-bb35b2221d722ce88227f395550ed484">6 - AttributeRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>mutable</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>input_type</strong></td>
+<td><a href="../input-type-enum"><strong>InputTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>default_value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>values</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b646f0992e0ef526837317c3fbdf3679">7 - AttributeVal class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>spec_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-29c332a42187e561f2d31f058afabb78">8 - AttributeValRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>spec_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2cabd8f2188990804dbb8dfca0322c77">9 - BackupWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>project_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e93512cc6fcb64ee77e97be8f5a965cc">10 - BasicUser class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2f5fd814e61e782f755ab37a1f841e9a">11 - BasicUserRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-875402b355ec90fd453460c54d808319">12 - ChunkType class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;video&rdquo;, &ldquo;imageset&rdquo;, &ldquo;list&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-def64b1ee391d0f4f03758936fcd291f">13 - CloudStorageRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>provider_type</strong></td>
+<td><a href="../provider-type-enum"><strong>ProviderTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>resource</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>display_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>credentials_type</strong></td>
+<td><a href="../credentials-type-enum"><strong>CredentialsTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>manifests</strong></td>
+<td><a href="../manifest"><strong>[Manifest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>specific_attributes</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-abaebf815e3cf14b498750508bcf04a7">14 - CloudStorageWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>provider_type</strong></td>
+<td><a href="../provider-type-enum"><strong>ProviderTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>resource</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>display_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>credentials_type</strong></td>
+<td><a href="../credentials-type-enum"><strong>CredentialsTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user-request"><strong>BasicUserRequest</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>session_token</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>account_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>secret_key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>key_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>specific_attributes</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>manifests</strong></td>
+<td><a href="../manifest-request"><strong>[ManifestRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0d969f76b08d322e7378054009822be2">15 - CommentRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>issue</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d497b4f1fa7c0d0162210d866c255e18">16 - CommentReadOwner class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7690d92251db9fe1a639cd92329da31f">17 - CommentWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>issue</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-777fd9eb1c442656046b515c2affe8ab">18 - CredentialsTypeEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;KEY_SECRET_KEY_PAIR&rdquo;, &ldquo;ACCOUNT_NAME_TOKEN_PAIR&rdquo;, &ldquo;KEY_FILE_PATH&rdquo;, &ldquo;ANONYMOUS_ACCESS&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-189504f3b208fbf09f12238fb353c5e1">19 - DataMetaRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>image_quality</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frames</strong></td>
+<td><a href="../frame-meta"><strong>[FrameMeta], none_type</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>deleted_frames</strong></td>
+<td><strong>[int]</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chunk_size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>start_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>stop_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>frame_filter</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-dddea03733dd102b7fbbd8152aa2e2f8">20 - DataRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>image_quality</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chunk_size</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>start_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>stop_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>frame_filter</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>compressed_chunk_type</strong></td>
+<td><a href="../chunk-type"><strong>ChunkType</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>original_chunk_type</strong></td>
+<td><a href="../chunk-type"><strong>ChunkType</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>client_files</strong></td>
+<td><strong>[file_type]</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>server_files</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>remote_files</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>use_zip_chunks</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>use_cache</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>copy_data</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>storage_method</strong></td>
+<td><a href="../storage-method"><strong>StorageMethod</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>storage</strong></td>
+<td><a href="../storage-type"><strong>StorageType</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>sorting_method</strong></td>
+<td><a href="../sorting-method"><strong>SortingMethod</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>filename_pattern</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5a75133c534c7403e923d4ba4b25cbb4">21 - DatasetFileRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>dataset_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ccb9596caff1c8ddd99c17bb7373deae">22 - DatasetFormat class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ext</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>enabled</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>dimension</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-96bb56cf74e009711162dfb16ed0360e">23 - DatasetFormats class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>importers</strong></td>
+<td><a href="../dataset-format"><strong>[DatasetFormat]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>exporters</strong></td>
+<td><a href="../dataset-format"><strong>[DatasetFormat]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-612de5c481cf7cb5d11f26d62e8760a4">24 - DatasetWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>dataset_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-918c500e93a04097c359cbc9693fa43b">25 - Events class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>webhook_type</strong></td>
+<td><a href="../webhook-type"><strong>WebhookType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>events</strong></td>
+<td><a href="../events-enum"><strong>[EventsEnum]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d6976f5317345386734cfc660acbb7b7">26 - EventsEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;create:comment&rdquo;, &ldquo;create:invitation&rdquo;, &ldquo;create:issue&rdquo;, &ldquo;create:project&rdquo;, &ldquo;create:task&rdquo;, &ldquo;delete:comment&rdquo;, &ldquo;delete:invitation&rdquo;, &ldquo;delete:issue&rdquo;, &ldquo;delete:membership&rdquo;, &ldquo;delete:project&rdquo;, &ldquo;delete:task&rdquo;, &ldquo;update:comment&rdquo;, &ldquo;update:issue&rdquo;, &ldquo;update:job&rdquo;, &ldquo;update:membership&rdquo;, &ldquo;update:organization&rdquo;, &ldquo;update:project&rdquo;, &ldquo;update:task&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8644792afabdaad840ac932dfd5ee50e">27 - Exception class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>system</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>filename</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>line</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>column</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>stack</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>job_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>proj_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2581eececc940767dba2c596ef8bc0bc">28 - ExceptionRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>system</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>filename</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>line</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>column</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>stack</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>job_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>proj_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-57cb29511946fadb581c879c443bc02a">29 - FileInfo class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../file-info-type-enum"><strong>FileInfoTypeEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>mime_type</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-99179fe21b36bffbb5a5da1c2acd13bd">30 - FileInfoTypeEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;REG&rdquo;, &ldquo;DIR&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7e53911b3a61fe4e3201d1bfecd2c2f8">31 - FrameMeta class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>width</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>has_related_context</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f21fb8973a11292c6764b0f53d817ab2">32 - InputTypeEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;checkbox&rdquo;, &ldquo;radio&rdquo;, &ldquo;number&rdquo;, &ldquo;text&rdquo;, &ldquo;select&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4af739a9041345dc41696f81ef1d5dde">33 - InvitationRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5e829a3aff4a525bf3f3e28957beb5e5">34 - InvitationWrite class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e61794872090d4b448ec01da2a3ea96f">35 - InvitationWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a99c533de21253be2c90d8f393a52bd2">36 - IssueRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>position</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>comments</strong></td>
+<td><a href="../comment-read"><strong>[CommentRead]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>job</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>resolved</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a1f6805c3309edd9dc4f6673d79fe6de">37 - IssueWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>job</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>resolved</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8c579281b94bfa383c95df159b3023cd">38 - JobAnnotationsUpdateRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image-request"><strong>[LabeledImageRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape-request"><strong>[LabeledShapeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track-request"><strong>[LabeledTrackRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>annotation_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-eabb80864bda5e30208173e9f50f8e19">39 - JobCommit class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>timestamp</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>scope</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-97e8b3ecb8298d139c65681ef88456c0">40 - JobRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>dimension</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../label"><strong>[Label]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>task_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>stage</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>mode</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>start_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>stop_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data_chunk_size</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data_compressed_chunk_type</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e26d4935032c383a6a55e83cb5c324de">41 - JobStage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;annotation&rdquo;, &ldquo;validation&rdquo;, &ldquo;acceptance&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7464895518f1e7c2a191ee9ed7d1a5e4">42 - JobStatus class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;annotation&rdquo;, &ldquo;validation&rdquo;, &ldquo;completed&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-41771073cf27d58d28f772f716bddda2">43 - Label class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>color</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute"><strong>[Attribute]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>deleted</strong></td>
+<td><strong>bool</strong></td>
+<td>Delete label if value is true from proper Task/Project object</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>svg</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>sublabels</strong></td>
+<td><a href="../sublabel"><strong>[Sublabel]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>has_parent</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d1ad23d71c9c802a6dc1764672bcc341">44 - LabeledData class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image"><strong>[LabeledImage]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape"><strong>[LabeledShape]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track"><strong>[LabeledTrack]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7d51f54bde2b58c51668decf77953fed">45 - LabeledDataRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image-request"><strong>[LabeledImageRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape-request"><strong>[LabeledShapeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track-request"><strong>[LabeledTrackRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1c1810b05edabf0b3567eb6e5ec42d67">46 - LabeledImage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3993950de3d3ba26cc01538040dbe013">47 - LabeledImageRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-79a67b8633acbc1b75016a45e54952a4">48 - LabeledShape class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>elements</strong></td>
+<td><a href="../sub-labeled-shape"><strong>[SubLabeledShape]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-78e6cc6ddd71e374b60d58557735d2c2">49 - LabeledShapeRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>elements</strong></td>
+<td><a href="../sub-labeled-shape-request"><strong>[SubLabeledShapeRequest]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1a31ff692067ae0fdaa1a17892efe9fa">50 - LabeledTrack class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../tracked-shape"><strong>[TrackedShape]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>elements</strong></td>
+<td><a href="../sub-labeled-track"><strong>[SubLabeledTrack]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-91451cad3172d56411a3a7aabbfabb89">51 - LabeledTrackRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../tracked-shape-request"><strong>[TrackedShapeRequest]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>elements</strong></td>
+<td><a href="../sub-labeled-track-request"><strong>[SubLabeledTrackRequest]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-17c0ce37f662350ef3f77d050f68389b">52 - LocationEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;cloud_storage&rdquo;, &ldquo;local&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-99cfee3b05728a0abdadaa01d4b81a51">53 - LogEvent class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>client_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>job_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>proj_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>payload</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0fbb3c7c1eaf08ab53b26ac17b4e5bea">54 - LogEventRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>client_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>job_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>proj_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>payload</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-62e9b10e5b01a50a00320592e530899c">55 - LoginSerializerExRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>password</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0da0a60a4a970cd92811a2dd7359978c">56 - Manifest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>filename</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-36da014b66f25da391f5b8be0f4be848">57 - ManifestRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>filename</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c069ba613ae716e99d3129135b16308a">58 - MembershipRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>user</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>joined_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>role</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>invitation</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3fcc39a16d247e851ab812cd1679c895">59 - MembershipWrite class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>joined_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-6806d18879c0c500b218030b13232bfe">60 - MetaUser class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_staff</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether the user can log into this admin site.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_superuser</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates that this user has all permissions without explicitly assigning them.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether this user should be treated as active. Unselect this instead of deleting accounts.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_login</strong></td>
+<td><strong>datetime, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>date_joined</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>groups</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e56e8ec9251579187141de8d82405eed">61 - OnlineFunctionCallRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>job</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e739c182c41c26caff5e48e0786d5be6">62 - OperationStatus class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;new&rdquo;, &ldquo;in progress&rdquo;, &ldquo;completed&rdquo;, &ldquo;rejected&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b280a2f45496c04d76b8c32d9c3369e0">63 - OrganizationRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>slug</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>contact</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a7fe6bd9cfbcb01e072c7826b7ee2c85">64 - OrganizationWrite class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>slug</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>contact</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-17f3802b55716f83947c5e3ab0419738">65 - OrganizationWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>slug</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>contact</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-400ba95ac2fa37eceb848b4f040f4a2c">66 - PaginatedCloudStorageReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../cloud-storage-read"><strong>[CloudStorageRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9d450085b28f069e5703ccc47ae15157">67 - PaginatedCommentReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../comment-read"><strong>[CommentRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-fbfdb7debfe40bd489142359673fbbf1">68 - PaginatedInvitationReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../invitation-read"><strong>[InvitationRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8458283cd9bb95d281d24749b3f08edf">69 - PaginatedIssueReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../issue-read"><strong>[IssueRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1c5e04361bddcab001e85242f7c47096">70 - PaginatedJobCommitList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../job-commit"><strong>[JobCommit]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-761317656d9f54a71db5339ae0c37845">71 - PaginatedJobReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../job-read"><strong>[JobRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ba175f79ed5a16920807b8c326b1b1b2">72 - PaginatedMembershipReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../membership-read"><strong>[MembershipRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-abd157e1e824387bc9db3e70631ac003">73 - PaginatedMetaUserList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../meta-user"><strong>[MetaUser]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-bd205be4a68308842e94aba3deefc082">74 - PaginatedPolymorphicProjectList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../polymorphic-project"><strong>[PolymorphicProject]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-dd6ddf046cef4155d2a83e837de1e163">75 - PaginatedTaskReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../task-read"><strong>[TaskRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-23247da2ede153f8e810ff4f6ea6e675">76 - PaginatedWebhookDeliveryReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../webhook-delivery-read"><strong>[WebhookDeliveryRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-210c0a775faa89789f49bc4e1432f634">77 - PaginatedWebhookReadList class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>previous</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>results</strong></td>
+<td><a href="../webhook-read"><strong>[WebhookRead]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d39389191ce9bcae9f5c96ef68029386">78 - PasswordChangeRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>old_password</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>new_password1</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>new_password2</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-164d885980893b65d1ce4316b1fc6f4c">79 - PasswordResetConfirmRequest class reference</h1>
+    
+	<p>Serializer for confirming a password reset attempt.</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>new_password1</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>new_password2</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>uid</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-27965db314b66955bcdc4541ec19cb38">80 - PasswordResetSerializerExRequest class reference</h1>
+    
+	<p>Serializer for requesting a password reset e-mail.</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-95408bc4d74074caf3befc7d05650864">81 - PatchedCloudStorageWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>provider_type</strong></td>
+<td><a href="../provider-type-enum"><strong>ProviderTypeEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>resource</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>display_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user-request"><strong>BasicUserRequest</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>credentials_type</strong></td>
+<td><a href="../credentials-type-enum"><strong>CredentialsTypeEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>session_token</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>account_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>secret_key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>key_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>specific_attributes</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>manifests</strong></td>
+<td><a href="../manifest-request"><strong>[ManifestRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-621068d6b7ebb7ee6d054feaf1d66820">82 - PatchedCommentWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-de6131b0d6362d45da442ba2e459e76c">83 - PatchedDataMetaWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>deleted_frames</strong></td>
+<td><strong>[int]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e78bbb4671ad08e60544af80f9ead4dd">84 - PatchedInvitationWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b6c32da91d7bf2de0518b78fa713223c">85 - PatchedIssueWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>position</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>resolved</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e95cc4f58f9bed9822d2923d75e0669a">86 - PatchedJobWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>assignee</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>stage</strong></td>
+<td><a href="../job-stage"><strong>JobStage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td><a href="../operation-status"><strong>OperationStatus</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ece5b4ad76ed1a1ec72b56c9267de3c2">87 - PatchedLabeledDataRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image-request"><strong>[LabeledImageRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape-request"><strong>[LabeledShapeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track-request"><strong>[LabeledTrackRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1ff2604615d44a15123a2d4c7b4cea6a">88 - PatchedLabelRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>color</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-request"><strong>[AttributeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>deleted</strong></td>
+<td><strong>bool</strong></td>
+<td>Delete label if value is true from proper Task/Project object</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>svg</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>sublabels</strong></td>
+<td><a href="../sublabel-request"><strong>[SublabelRequest]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>has_parent</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9ccc552063562e60b2327a7d05462943">89 - PatchedMembershipWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>role</strong></td>
+<td><a href="../role-enum"><strong>RoleEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-30448124fd92f00517f0f1f308d45497">90 - PatchedOrganizationWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>slug</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>contact</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-751a0c9a52142ecef38bfc981e3a4bf8">91 - PatchedProjectWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../patched-label-request"><strong>[PatchedLabelRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>owner_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../patched-project-write-request-target-storage"><strong>PatchedProjectWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../patched-project-write-request-target-storage"><strong>PatchedProjectWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_subsets</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f288c8632419d46a8244f2654e723009">92 - PatchedProjectWriteRequestTargetStorage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2f1b4aab04fcffeaa80311db1c7be60d">93 - PatchedTaskWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>owner_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../patched-label-request"><strong>[PatchedLabelRequest]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>subset</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../patched-task-write-request-target-storage"><strong>PatchedTaskWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../patched-task-write-request-target-storage"><strong>PatchedTaskWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ef56d35b36cc0bfed49760a8be84a91f">94 - PatchedTaskWriteRequestTargetStorage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-fc5b95aae1172e84470f6c47ac27a966">95 - PatchedUserRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>groups</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_staff</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether the user can log into this admin site.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_superuser</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates that this user has all permissions without explicitly assigning them.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether this user should be treated as active. Unselect this instead of deleting accounts.</td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-12b261bb50330e4269229033ef64f70f">96 - PatchedWebhookWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>target_url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>content_type</strong></td>
+<td><a href="../webhook-content-type"><strong>WebhookContentType</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>secret</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>enable_ssl</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>events</strong></td>
+<td><a href="../events-enum"><strong>[EventsEnum]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f41479b511b10208d762084b12a0f0f2">97 - Plugins class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>git_integration</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>analytics</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>models</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>predict</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f9e679015319240663713600edbac2f1">98 - PolymorphicProject class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../label"><strong>[Label]</strong></a></td>
+<td></td>
+<td>[optional] [readonly]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tasks</strong></td>
+<td><strong>[int]</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../project-read-owner"><strong>ProjectReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../project-read-assignee"><strong>ProjectReadAssignee</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_subsets</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>dimension</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../project-read-target-storage"><strong>ProjectReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../project-read-target-storage"><strong>ProjectReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ea2c9ab9185ff0ac519020b425aab672">99 - ProjectFileRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>project_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-11c3a55d5736d088c8295a4a793ed99c">100 - ProjectRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../label"><strong>[Label]</strong></a></td>
+<td></td>
+<td>[optional] [readonly]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tasks</strong></td>
+<td><strong>[int]</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../project-read-owner"><strong>ProjectReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../project-read-assignee"><strong>ProjectReadAssignee</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_subsets</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>dimension</strong></td>
+<td><strong>str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../project-read-target-storage"><strong>ProjectReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../project-read-target-storage"><strong>ProjectReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-612e405da826d82de5357d91564e81b2">101 - ProjectReadAssignee class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-42f549ab79df83137c9c63f12ce23368">102 - ProjectReadOwner class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a21b908a49cb9a5949c5300867583e9f">103 - ProjectReadTargetStorage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f9129653a5a27b7d82a41699f8f94c4e">104 - ProjectSearch class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-baf71fd70ecac838f3d943736935a50f">105 - ProjectWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../patched-label-request"><strong>[PatchedLabelRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>owner_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../patched-project-write-request-target-storage"><strong>PatchedProjectWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../patched-project-write-request-target-storage"><strong>PatchedProjectWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>task_subsets</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-35fe78ba82e6a93ee9f4c29cbfaee978">106 - ProviderTypeEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;AWS_S3_BUCKET&rdquo;, &ldquo;AZURE_CONTAINER&rdquo;, &ldquo;GOOGLE_DRIVE&rdquo;, &ldquo;GOOGLE_CLOUD_STORAGE&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a8d22306dc2a9041b0c9bb817a67d71d">107 - RegisterSerializerEx class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a7931aec122538c8ec7712ffd0ab914a">108 - RegisterSerializerExRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>password1</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>password2</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ea33b7e4b8725fd0abdcf6f286ac17fe">109 - RestAuthDetail class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>detail</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f3c887ec259fda5c19e49c6277d410e1">110 - RoleEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;worker&rdquo;, &ldquo;supervisor&rdquo;, &ldquo;maintainer&rdquo;, &ldquo;owner&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-826a0d683fd2d782d88ecec96a58dc75">111 - RqStatus class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>state</strong></td>
+<td><a href="../rq-status-state-enum"><strong>RqStatusStateEnum</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &quot;&quot;</td>
+</tr>
+<tr>
+<td><strong>progress</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-fdb3846bc0306b18b68a633d588ca0f9">112 - RqStatusStateEnum class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;Queued&rdquo;, &ldquo;Started&rdquo;, &ldquo;Finished&rdquo;, &ldquo;Failed&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4075e245439c06d08cc66262983479a8">113 - Segment class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>jobs</strong></td>
+<td><a href="../simple-job"><strong>[SimpleJob]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>start_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>stop_frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-edfced4ffea49ec0788b213b460756e4">114 - ShapeType class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;rectangle&rdquo;, &ldquo;polygon&rdquo;, &ldquo;polyline&rdquo;, &ldquo;points&rdquo;, &ldquo;ellipse&rdquo;, &ldquo;cuboid&rdquo;, &ldquo;mask&rdquo;, &ldquo;skeleton&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-365dc18472552d7a9526884d5e20c6cd">115 - SigningRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-17bcab7e4107fc2b2864589d992df61e">116 - SimpleJob class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>stage</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4b49b6273a8774fcd79d20651697e9fb">117 - SortingMethod class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;lexicographical&rdquo;, &ldquo;natural&rdquo;, &ldquo;predefined&rdquo;, &ldquo;random&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-515201a2d8a66d39d376463258668ed2">118 - Storage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-abc89399dcfd49a7902e8b3ab048d4df">119 - StorageMethod class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;cache&rdquo;, &ldquo;file_system&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-757bb4897889712fa9a28c3cb6fa75c5">120 - StorageRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-aebb60440a1259e098ae40e88c3dfb6c">121 - StorageType class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;cloud_storage&rdquo;, &ldquo;local&rdquo;, &ldquo;share&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9a25a179f47c0a9331de6f5a206d5224">122 - Sublabel class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>color</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute"><strong>[Attribute]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>has_parent</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-de43da91d2edc996c4d3672900f9947c">123 - SubLabeledShape class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-71b35a2a545893f1999145ffede43611">124 - SubLabeledShapeRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d6dbef6e9adc2cdeb1174441d4193849">125 - SubLabeledTrack class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../tracked-shape"><strong>[TrackedShape]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-bc91c62de1999af50d529435eec425de">126 - SubLabeledTrackRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../tracked-shape-request"><strong>[TrackedShapeRequest]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of &ldquo;manual&rdquo;</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2ce0d3d44d03cffa085d7bf290ecefbf">127 - SublabelRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>color</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-request"><strong>[AttributeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>has_parent</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7e40830e6f95d4ce47564d660190b96a">128 - TaskAnnotationsUpdateRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><a href="../labeled-image-request"><strong>[LabeledImageRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>shapes</strong></td>
+<td><a href="../labeled-shape-request"><strong>[LabeledShapeRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>tracks</strong></td>
+<td><a href="../labeled-track-request"><strong>[LabeledTrackRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+<tr>
+<td><strong>annotation_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9068e108dc12375ff3fc65793065ee5f">129 - TaskAnnotationsWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>annotation_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-758c9896f710596255d5eacc9a71744e">130 - TaskFileRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>task_file</strong></td>
+<td><strong>file_type</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-fc24ced82b00d591bd87883183d33fc5">131 - TaskRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../label"><strong>[Label]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>mode</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../basic-user"><strong>BasicUser</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee</strong></td>
+<td><a href="../comment-read-owner"><strong>CommentReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>overlap</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>segment_size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>segments</strong></td>
+<td><a href="../segment"><strong>[Segment]</strong></a></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data_chunk_size</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data_compressed_chunk_type</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data_original_chunk_type</strong></td>
+<td><strong>bool, date, datetime, dict, float, int, list, str, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>image_quality</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>dimension</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>subset</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../task-read-target-storage"><strong>TaskReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../task-read-target-storage"><strong>TaskReadTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-bb4d4251f5ac08954e2efa2dbc023495">132 - TaskReadTargetStorage class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><a href="../location-enum"><strong>LocationEnum</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>cloud_storage_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a235536e0aeb6303405d5df25327e205">133 - TaskWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>owner_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>assignee_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>bug_tracker</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>overlap</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>segment_size</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>labels</strong></td>
+<td><a href="../patched-label-request"><strong>[PatchedLabelRequest]</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>subset</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>target_storage</strong></td>
+<td><a href="../patched-task-write-request-target-storage"><strong>PatchedTaskWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>source_storage</strong></td>
+<td><a href="../patched-task-write-request-target-storage"><strong>PatchedTaskWriteRequestTargetStorage</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ff0993382da4a16b1e77cff0882d5241">134 - Token class reference</h1>
+    
+	<p>Serializer for Token model.</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>key</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-59bd11f5b0449cbaec4ee1924ca67a1c">135 - TrackedShape class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val"><strong>[AttributeVal]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-6216213c4e355a55c44f69227edbb951">136 - TrackedShapeRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../shape-type"><strong>ShapeType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>frame</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>occluded</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>outside</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of False</td>
+</tr>
+<tr>
+<td><strong>z_order</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0</td>
+</tr>
+<tr>
+<td><strong>rotation</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of 0.0</td>
+</tr>
+<tr>
+<td><strong>points</strong></td>
+<td><strong>[float]</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>attributes</strong></td>
+<td><a href="../attribute-val-request"><strong>[AttributeValRequest]</strong></a></td>
+<td></td>
+<td>[optional]  if omitted the server will use the default value of []</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4efcdaf2dc19f2caaaf7ef59348ad174">137 - User class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>username</strong></td>
+<td><strong>str</strong></td>
+<td>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>groups</strong></td>
+<td><strong>[str]</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_staff</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether the user can log into this admin site.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_superuser</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates that this user has all permissions without explicitly assigning them.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td>Designates whether this user should be treated as active. Unselect this instead of deleting accounts.</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>last_login</strong></td>
+<td><strong>datetime, none_type</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>date_joined</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9cd2cfd71fc7766281aeefaf79c1e274">138 - WebhookContentType class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>defaults to &ldquo;application/json&rdquo;,  must be one of [&ldquo;application/json&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e3c745e4224b9f2a9afca525f6aa7740">139 - WebhookDeliveryRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>webhook_id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>event</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>status_code</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>redelivery</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>changed_fields</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>request</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>response</strong></td>
+<td><strong>{str: (bool, date, datetime, dict, float, int, list, str, none_type)}</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2e50f2859efba67731c6445ca2c3abc0">140 - WebhookRead class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../webhook-type"><strong>WebhookType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>content_type</strong></td>
+<td><a href="../webhook-content-type"><strong>WebhookContentType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>target_url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>enable_ssl</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>created_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>updated_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>owner</strong></td>
+<td><a href="../project-read-owner"><strong>ProjectReadOwner</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>project</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>organization</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>events</strong></td>
+<td><a href="../events-enum"><strong>[EventsEnum]</strong></a></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>last_status</strong></td>
+<td><strong>int</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+<tr>
+<td><strong>last_delivery_date</strong></td>
+<td><strong>datetime</strong></td>
+<td></td>
+<td>[optional] [readonly]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9ca7dc77561612157e18bd26996a1afe">141 - WebhookType class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>must be one of [&ldquo;organization&rdquo;, &ldquo;project&rdquo;, ]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0c3a7881b1a7a29323093c619710a528">142 - WebhookWriteRequest class reference</h1>
+    
+	<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>target_url</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="../webhook-type"><strong>WebhookType</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>events</strong></td>
+<td><a href="../events-enum"><strong>[EventsEnum]</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>content_type</strong></td>
+<td><a href="../webhook-content-type"><strong>WebhookContentType</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>secret</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>is_active</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>enable_ssl</strong></td>
+<td><strong>bool</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>project_id</strong></td>
+<td><strong>int, none_type</strong></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-2 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gitter public chat" aria-label="Gitter public chat">
+    <a class="text-white" rel="noopener noreferrer" href="https://gitter.im/opencv-cvat/public">
+      <i class="fab fa-gitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+    <a class="text-white" rel="noopener noreferrer" href="https://stackoverflow.com/search?q=%23cvat">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="YouTube" aria-label="YouTube">
+    <a class="text-white" rel="noopener noreferrer" href="https://www.youtube.com/user/nmanovic">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/cvat-ai/cvat">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Forum on Intel Developer Zone" aria-label="Forum on Intel Developer Zone">
+    <a class="text-white" rel="noopener noreferrer" href="https://community.intel.com/t5/Intel-Distribution-of-OpenVINO/bd-p/distribution-openvino-toolkit">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gitter developers chat" aria-label="Gitter developers chat">
+    <a class="text-white" rel="noopener noreferrer" href="https://gitter.im/opencv-cvat/dev">
+      <i class="fab fa-gitter"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-8 text-center order-sm-2">
+        
+        |
+        <small class="mx-1"><a href="https://www.cvat.ai/terms-of-use">Terms of Use</a></small>
+      </div>
+  
+    <p class="mt-2"><a href="../../../../../../about/">About</a></p>
+  
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="../../../../../../js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+
+
+
+<script src='../../../../../../js/prism.js'></script>
+
+
+
+  </body>
+</html>
